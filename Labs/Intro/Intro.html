@@ -90,7 +90,7 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
 </div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
   <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Buscar este libro ..." aria-label="Buscar este libro ..." autocomplete="off" >
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
         <ul class="nav bd-sidenav">
@@ -297,8 +297,8 @@ const thebe_selector_output = ".output, .cell_output"
             
             <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
                 data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-                aria-expanded="true" aria-label="Navegación de palanca" aria-controls="site-navigation"
-                title="Navegación de palanca" data-toggle="tooltip" data-placement="left">
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
                 <i class="fas fa-bars"></i>
                 <i class="fas fa-arrow-left"></i>
                 <i class="fas fa-arrow-up"></i>
@@ -306,7 +306,7 @@ const thebe_selector_output = ".output, .cell_output"
             
             
 <div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Descarga esta pagina"><i
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
             class="fas fa-download"></i></button>
 
     <div class="dropdown-buttons">
@@ -314,10 +314,10 @@ const thebe_selector_output = ".output, .cell_output"
         
         <!-- Download raw file -->
         <a class="dropdown-buttons" href="../../_sources/Labs/Intro/Intro.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Descargar archivo fuente" data-toggle="tooltip"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Imprimir en PDF"
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
                 onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
     </div>
 </div>
@@ -327,8 +327,8 @@ const thebe_selector_output = ".output, .cell_output"
             <!-- Full screen (wrap in <a> to have style consistency -->
 
 <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Modo de pantalla completa"
-        title="Modo de pantalla completa"><i
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
             class="fas fa-expand"></i></button></a>
 
             <!-- Launch buttons -->
@@ -341,7 +341,7 @@ const thebe_selector_output = ".output, .cell_output"
         
         
         <a class="colab-button" href="https://colab.research.google.com/github/mariabda2/ML_2022/blob/master/Labs/Intro/Intro.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
-                title="Lanzamiento Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
+                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
                     src="../../_static/images/logo_colab.png"
                     alt="Interact on Colab">Colab</button></a>
         
@@ -355,10 +355,20 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
             <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contenido
+                <i class="fas fa-list"></i> Contents
             </div>
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#objetivos-del-laboratorio">
+   Objetivos del laboratorio
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#nuestra-primera-sesion">
+   Nuestra primera sesión
+  </a>
+ </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#google-colab-y-jupyter-notebooks">
    Google Colab y Jupyter Notebooks
@@ -448,10 +458,20 @@ const thebe_selector_output = ".output, .cell_output"
                     <div id="jb-print-toc">
                         
                         <div>
-                            <h2> Contenido </h2>
+                            <h2> Contents </h2>
                         </div>
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#objetivos-del-laboratorio">
+   Objetivos del laboratorio
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#nuestra-primera-sesion">
+   Nuestra primera sesión
+  </a>
+ </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#google-colab-y-jupyter-notebooks">
    Google Colab y Jupyter Notebooks
@@ -550,7 +570,22 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <div class="tex2jax_ignore mathjax_ignore section" id="introduccion-al-laboratorio">
 <h1>INTRODUCCIÓN AL LABORATORIO<a class="headerlink" href="#introduccion-al-laboratorio" title="Permalink to this headline">¶</a></h1>
-<p>Este sección explica los laboratorios que realizarán durante el curso.</p>
+<div class="section" id="objetivos-del-laboratorio">
+<h2>Objetivos del laboratorio<a class="headerlink" href="#objetivos-del-laboratorio" title="Permalink to this headline">¶</a></h2>
+<ol class="simple">
+<li><p><strong>Que les comience a gustar (o les siga gustando)  los temas vistos en clase</strong></p></li>
+<li><p>Usar la teoria como una herramienta: <strong>la teoría nos ayuda a saber si nuestros resultados están haciendo sentido</strong></p></li>
+<li><p>Desarrollar habilidades para poder usar el Machine Learning (esperando que lo puedan usar sin importar el campo que se dediquen)</p></li>
+</ol>
+<p>Objetivos específicos:</p>
+<ol class="simple">
+<li><p>Sentirnos cómodos leyendo documentaciòn de librerías</p></li>
+<li><p>Sentirnos cómodos entendiendo características de los conjuntos de datos (más allá de los números)</p></li>
+<li><p>Desarrollar síntesis de conceptos y usarlos para responder preguntas</p></li>
+</ol>
+</div>
+<div class="section" id="nuestra-primera-sesion">
+<h2>Nuestra primera sesión<a class="headerlink" href="#nuestra-primera-sesion" title="Permalink to this headline">¶</a></h2>
 <ol class="simple">
 <li><p>Los laboratorios están en Python 3.7</p></li>
 <li><p>Son escritos usando <a class="reference external" href="https://jupyter.org">notebooks</a></p></li>
@@ -562,24 +597,25 @@ const thebe_selector_output = ".output, .cell_output"
 <li><p>Conceptos rapidos de Python</p>
 <ol class="simple">
 <li><p>Básicos y más importantes</p></li>
-<li><p>Profundización (Lectura y práctica)</p></li>
+<li><p><strong>Profundización (Lectura y práctica)</strong></p></li>
 </ol>
 </li>
 <li><p>Manejo de vectores y matrices en NumPy</p>
 <ol class="simple">
 <li><p>Básicos y más importantes</p></li>
-<li><p>Profundización (Lectura y práctica)</p></li>
+<li><p><strong>Profundización (Lectura y práctica)</strong></p></li>
 </ol>
 </li>
 <li><p>Manejo de estructuras de datos en pandas. Graficos en matplolib</p>
 <ol class="simple">
 <li><p>Básicos y más importantes</p></li>
-<li><p>Profundización (Lectura y práctica)</p></li>
+<li><p><strong>Profundización (Lectura y práctica)</strong></p></li>
 </ol>
 </li>
 <li><p>Estructuras de los laboratorios</p></li>
 </ol>
-<p>En cada una de las secciones pueden encontrar diferentes ejercicios para ir practicando y afianzado los conceptos presentados.</p>
+<p><strong>Profundización (Lectura y práctica)</strong> ejercicios para ir practicando y afianzado los conceptos presentados.</p>
+</div>
 <div class="section" id="google-colab-y-jupyter-notebooks">
 <h2>Google Colab y Jupyter Notebooks<a class="headerlink" href="#google-colab-y-jupyter-notebooks" title="Permalink to this headline">¶</a></h2>
 <p>Un Jupyter notebook es un proyecto open source que permite ejecutar interactivamente varios lenjuages de programación. Su nombre es un referencia a los lenguajes que fueron principales en el inicio el proyecto: JUlia, PYThon y R. Pero en la actulidad se han expandido a muchos otras más. Este proyecto también se conocio antes bajo el nombre de <strong>IPython Notebooks</strong>.  Los notebooks, en su formato “crudo” son un archivo <a class="reference external" href="https://en.wikipedia.org/wiki/JSON">JSON</a> que es renderizado para permitir combinar tanto codigo, texto (Usando <a class="reference external" href="https://en.wikipedia.org/wiki/Markdown">Markdown</a>), lenguaje matemático y graficas.</p>
@@ -596,7 +632,7 @@ const thebe_selector_output = ".output, .cell_output"
 <p>Sin embargo también ha logrado una buena pouplaridad en otros entornos. inlcusive, se ha discuito que <a class="reference external" href="https://www.theatlantic.com/science/archive/2018/04/the-scientific-paper-is-obsolete/556676/">pueden ser una buena alternativa para susbtituir el formato estandar del paper cientifico</a>.</p>
 <p>De la misma manera los jupyter notebook son la base para productos comerciales de los principales proveedores de computación en la nube como lo son:</p>
 <ul class="simple">
-<li><p><a class="reference external" href="https://cloud.google.com/ai-platform/?hl=es-419">AI Platform</a> De Google Computing Platform. O <a class="reference external" href="https://cloud.google.com/vertex-ai">VertexAI</a></p></li>
+<li><p><a class="reference external" href="https://cloud.google.com/vertex-ai">VertexAI</a></p></li>
 <li><p><a class="reference external" href="https://aws.amazon.com/es/sagemaker/">Amazon SageMaker</a> de Amazon Web Services</p></li>
 <li><p><a class="reference external" href="https://notebooks.azure.com/">Azure Notebooks</a> de Microsoft Azure</p></li>
 <li><p>Y otros servicios usados en entornos de Big Data como son <a class="reference external" href="https://databricks.com/">Databricks</a>, <a class="reference external" href="https://www.cloudera.com/products/data-science-and-engineering/data-science-workbench.html">Cloudera</a> y <a class="reference external" href="https://zeppelin.apache.org/">Apache Zepelin</a>.</p></li>
@@ -650,17 +686,19 @@ Haz click en la opción “+ Texto” (en la parte de arriba o al final de la ce
 </pre></div>
 </div>
 <p>¿cual es la salida?</p>
-<p>Tambien es de utilidad conocer los shorcuts o accesos rapidos de colab, explora que combinaciones de teclas te pueden servir para agilizar el trabajo en Colab.</p>
+<p>Tambien es de utilidad conocer los shorcuts o accesos rapidos de colab, explora que combinaciones de teclas pueden servir para agilizar el trabajo en Colab.</p>
 <p><img alt="colabshortcuts" src="https://miro.medium.com/max/625/1*BmBIeAJrSl47_1j3TlxQUQ.png" /></p>
+<hr class="docutils" />
+<p>Icebreaker (Participación) <strong>“Quiz”</strong></p>
 </div>
 </div>
+<hr class="docutils" />
 <div class="section" id="conceptos-de-python">
 <h2>Conceptos de Python<a class="headerlink" href="#conceptos-de-python" title="Permalink to this headline">¶</a></h2>
 <p>En esta sección se hace una presentación de conceptos utiles de Python, si bien para el desarrollo del curso no es necesario y no se busca que las practicas esten enfocadas a desarrollar habilidades especificas de Python, si es de utilidad tener claras algunas capacidades de Python.</p>
-<p>Durante nuestra sesión</p>
 <div class="section" id="basicos">
 <h3>Básicos<a class="headerlink" href="#basicos" title="Permalink to this headline">¶</a></h3>
-<p>Aca solo veremos conceptos que van ser muy comunes en nuestro laboratorio. Se recomienda leer y praticas la siguiente subsección.</p>
+<p><strong>Aca solo veremos conceptos que van ser muy comunes en nuestro laboratorio. Se recomienda leer y practicar la siguiente subsección.</strong></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Tuplas</span>
@@ -738,7 +776,10 @@ Haz click en la opción “+ Texto” (en la parte de arriba o al final de la ce
 </div>
 </div>
 </div>
+<hr class="docutils" />
+<p>Icebreaker (Participación) <strong>“Quiz”</strong></p>
 </div>
+<hr class="docutils" />
 <div class="section" id="profundizacion">
 <h3>Profundización<a class="headerlink" href="#profundizacion" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
@@ -862,7 +903,7 @@ Haz click en la opción “+ Texto” (en la parte de arriba o al final de la ce
 <li><p>Multiplicación matricial</p></li>
 <li><p>Indexación de matrices</p></li>
 </ul>
-<p>Y en la subsección Siguiente se da algunos ejemplos para profundizar en el manejo de numpy.</p>
+<p><strong>Aca solo veremos conceptos que van ser muy comunes en nuestro laboratorio. Se recomienda leer y practicar la siguiente subsección.</strong></p>
 <div class="section" id="id1">
 <h3>Básicos<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
 <p>El paquete NumPy introdujo los arrays N-dimensionales, acontinuación se mostrará las rutinas más utilizadas en los laboratorios. (Más rutinas <a class="reference external" href="https://docs.scipy.org/doc/numpy/reference/routines.array-creation.html">aquí</a>)</p>
@@ -1132,37 +1173,6 @@ En este  ejercicio tambien vas observar en funcionamiento un concepto de <em>num
 </div>
 </div>
 </div>
-<p>Concatenar vectores y matrices</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">9</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">10</span><span class="p">]])</span>
-<span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">3</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">11</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">12</span><span class="p">]])</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;a:</span><span class="se">\n</span><span class="s2"> &quot;</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2"> b: </span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">((</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">((</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">((</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">))</span>
-</pre></div>
-</div>
-</div>
-</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Algunas veces es util, obtener una lista</span>
@@ -1218,9 +1228,31 @@ En este  ejercicio tambien vas observar en funcionamiento un concepto de <em>num
 </div>
 </div>
 <p>Con ciclos <strong>for</strong> tenemos una implementación que es casi 200 %  más lenta que la implementación “vectorizada”.</p>
+<hr class="docutils" />
+<p>Icebreaker (Participación) <strong>“Quiz”</strong></p>
 </div>
+<hr class="docutils" />
 <div class="section" id="profundizacion-en-numpy">
 <h3>Profundización en numpy<a class="headerlink" href="#profundizacion-en-numpy" title="Permalink to this headline">¶</a></h3>
+<p>Concatenar vectores y matrices</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">9</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">10</span><span class="p">]])</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">3</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">11</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">12</span><span class="p">]])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;a:</span><span class="se">\n</span><span class="s2"> &quot;</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2"> b: </span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+
+<span class="c1"># cuales son las diferencias?</span>
+<span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">((</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="c1"># cuales son las diferencias?</span>
+<span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">((</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># cuales son las diferencias?</span>
+<span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">((</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Calculo del promedio</span>
@@ -1310,6 +1342,7 @@ En este  ejercicio tambien vas observar en funcionamiento un concepto de <em>num
 </div>
 <div class="section" id="manejo-de-estructuras-de-datos-en-pandas-graficos-en-matplotlib">
 <h2>Manejo de estructuras de datos en Pandas. Graficos en matplotlib<a class="headerlink" href="#manejo-de-estructuras-de-datos-en-pandas-graficos-en-matplotlib" title="Permalink to this headline">¶</a></h2>
+<p><strong>Aca solo veremos conceptos que van ser muy comunes en nuestro laboratorio. Se recomienda leer y practicar la siguiente subsección.</strong></p>
 <div class="section" id="id2">
 <h3>Básicos<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
@@ -1603,7 +1636,7 @@ En este  ejercicio tambien vas observar en funcionamiento un concepto de <em>num
 </div>
 </div>
 </div>
-<p>Ejercicio!</p>
+<p>Otro… Ejercicio!</p>
 <p><a class="reference external" href="https://pandas.pydata.org/">Explora un poco más la librería de pandas</a></p>
 <p><a class="reference external" href="https://seaborn.pydata.org/">Explora esta librería de visualizacion que se integra con pandas</a></p>
 </div>
@@ -1620,9 +1653,10 @@ En este  ejercicio tambien vas observar en funcionamiento un concepto de <em>num
 </ol>
 <p>Hacer la implemetación del algoritmo del modelo. Son modelos que se explicaron en la teoría vista en clase, una vez comprenda su funcionamiento se completa ya sea el algoritmo o la implementación correcta de las librerías usando los recursos que ya tiene el laboratorio.</p>
 <ol class="simple">
-<li><p>Entrenamiento y resultados</p></li>
+<li><p>Completar codigo: Entrenamiento y resultados</p></li>
 </ol>
-<p>En este punto debe hacer uso de las funciones escritas en el punto anterior para realizar el proceso de modelamiento y simulación de los datos de cargados en el punto 1. En escencia tambien es un ejercicio de completar código, pero usando funciones previas y/o completar código para generar una tabla de resultados y derivar conclusiones de estos mismos.</p>
+<p>En este punto se deben hacer uso de las funciones escritas en el punto anterior para realizar el proceso de modelamiento y simulación de los datos de cargados en el punto 1.</p>
+<p>En escencia tambien es un ejercicio de completar código, pero usando funciones previas y/o completar código para generar una tabla de resultados y derivar conclusiones de estos mismos.</p>
 <p>Los ejercicios para completar parte del código, son similares al siguiente:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1726,8 +1760,8 @@ En este  ejercicio tambien vas observar en funcionamiento un concepto de <em>num
 <p>De igual manera, en cada notebook van a encontrar <strong>preguntas abiertas</strong>, Que deberán ser respondidas con:</p>
 <ul class="simple">
 <li><p>los resultados del laboratorio,</p></li>
-<li><p>información vista en clase</p></li>
-<li><p>pequeña investigación relacionada con la tematica de la sesión.</p></li>
+<li><p>información vista en clase (recordar usar la teoria como una herramienta)</p></li>
+<li><p>pequeña investigación relacionada con la tematica de la sesión</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1738,13 +1772,14 @@ En este  ejercicio tambien vas observar en funcionamiento un concepto de <em>num
 </div>
 </div>
 </div>
-<p>Recuerda seguir el código del honor y responder concientemente:</p>
+<p>Recuerda seguir el código del honor y responder concientemente, cada pregunta abierta es:</p>
 <ul class="simple">
-<li><p>son un es espacio de aprendizaje</p></li>
+<li><p>Un es espacio de aprendizaje</p></li>
 <li><p>sirven para afianzar tus conocimientos</p></li>
 <li><p>sirve para validar como interpretas lo que haces</p></li>
 <li><p>sirven para practicar la síntesis de tu entedimiento</p></li>
 <li><p>son revisadas (hay algoritmos que me ayudan a detectar respuestas similares… ¡incluso de semestres pasados!)</p></li>
+<li><p>Valen un 60% del laboratorio! – Si todos los ejercicio de codigo estas correcto pero las respuestas a las preguntas abiertas no tienen una buena calidad, puedes tener una mala nota</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1758,10 +1793,12 @@ En este  ejercicio tambien vas observar en funcionamiento un concepto de <em>num
 <p><strong>NOTA de test automaticos y preguntas abiertas</strong></p>
 <ul class="simple">
 <li><p>Los test miden que tu código más que simplemente se ejecute se esté comportando como se debe.</p></li>
-<li><p>Sin embargo debido a que podemos relizar varias soluciones que pueden no estar cubiertas en los tests (adicionado que estos test fueron escritos por un profersor que es humano) se hadn detectado algunos casos que el test no evalúa de manera totalmente correcta la función que se está pidiendo. Esto puede influenciar respuestas no validadas en las preguntas abiertas</p></li>
-<li><p>En estos casos la calificación del código es correcta y se ganan los puntos. Pero en la pregunta abierta no aplicaría lo mismo.
-La idea de las preguntas abiertas es saber que  estamos entendiendo qué está haciendo el código no simplemente que se ejecute bien o que pase el test.
-si hay un error que no se detecta antes de iniciar nuestra sesión de laboratorio, si el test era exitoso los puntos son válidos</p></li>
+<li><p>Sin embargo debido a que podemos relizar varias soluciones que pueden no estar cubiertas en los tests. se han detectado algunos casos que el test no evalúa de manera totalmente correcta la función que se está pidiendo. <strong>Esto puede influenciar respuestas no validas en las preguntas abiertas</strong>.</p></li>
+<li><p>En estos casos la calificación del código es correcta y se ganan los puntos. Pero en la pregunta abierta no aplicaría lo mismo. Aunque el test del codigo pase pero se este generando un resultado que hace que la respuesta a la pregunta abierta carezca de sentido.</p></li>
+</ul>
+<p>La idea de las preguntas abiertas es saber que  estamos entendiendo qué está haciendo el código.</p>
+<p>si hay un error que no se detecta antes de iniciar nuestra sesión de laboratorio, si el test era exitoso los puntos son válidos</p>
+<ul class="simple">
 <li><p>Ante la duda, de observar que un test este pasando pero los resultados no coinciden con lo que esperamos, <strong>preguntar</strong>.</p></li>
 </ul>
 <p>Finalmente al final de cada notebook, encontrarán un formulario que debe ser diligenciado con la información correspondiente.</p>
@@ -1789,7 +1826,7 @@ si hay un error que no se detecta antes de iniciar nuestra sesión de laboratori
 <li><p>Los espacios para laboratorio son para <strong>ustedes</strong>, traten de aprovecharlos al máximo.</p></li>
 <li><p>Es invalido enviar los laboratorios vía correo electronico y otro medio que no haya sido especificado. Se debe seguir el proceso descrito en la anterior sección.</p></li>
 <li><p>Muy buena práctica: cuando se confirma que todos los tests están correctos, reiniciar el kernel, y dar en ejecutar todas las líneas de código. De esta manera te aseguras que todo está correcto para el envío del laboratorio.</p></li>
-<li><p>Tener en cuenta, que si bien hay tests automáticos, los notebooks serán revisados (<strong>manera manual</strong> preguntas abiertas) y van a ser ejecutados (In notebook con errores pueden determinar una mala calficación) . Hagan los ejercicios a <strong>conciencia y con toda la dispocisión para aprender y generar habilidades</strong>.</p></li>
+<li><p>Tener en cuenta, que si bien hay tests automáticos, los notebooks serán revisados (<strong>manera manual</strong> preguntas abiertas) y van a ser ejecutados (Un notebook con errores puede terminar en una mala calficación) . Hagan los ejercicios a <strong>conciencia y con toda la dispocisión para aprender y generar habilidades</strong>.</p></li>
 <li><p>Es muy importante revisar las guias de laboratorio con anterioridad. Es muy factible que si el primer vistazo que le hacen a la guia es durante la sesión conjunta, el tiempo no sera un aliado.</p></li>
 <li><p>Las fechas/horas limites de entrega estan definidas. Debemos respetar las  reglas para el grupo. <strong>De antemano se entienden que todos podemos tener condiciones/situaciones diferentes, sin embargo no habrá excepciones si no se siguen las pautas descritas en el estatuto estudiantíl</strong>.</p></li>
 </ol>
@@ -1818,7 +1855,7 @@ si hay un error que no se detecta antes de iniciar nuestra sesión de laboratori
         },
         kernelOptions: {
             kernelName: "python3",
-            path: "./Labs\Intro"
+            path: "./Labs/Intro"
         },
         predefinedOutput: true
     }
@@ -1851,9 +1888,9 @@ si hay un error que no se detecta antes de iniciar nuestra sesión de laboratori
     <footer class="footer">
   <p>
     
-      Por Profesora Maria Bernarda Salazar Sánchez -- Laboratorio por Germán E. Melo  -  Universidad de Antioquia<br/>
+      By Profesora Maria Bernarda Salazar Sánchez -- Laboratorio por Germán E. Melo  -  Universidad de Antioquia<br/>
     
-        &copy; Derechos de autor 2021.<br/>
+        &copy; Copyright 2021.<br/>
   </p>
 </footer>
 </main>
