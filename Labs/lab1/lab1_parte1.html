@@ -464,6 +464,15 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title Pregunta Abierta</span>
+<span class="c1">#@markdown  ¿Explique en sus palabras que es un problema de regresión?</span>
+<span class="n">respuesta_1</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span> <span class="c1">#@param {type:&quot;string&quot;}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Ejercicio de Codigo</span>
 <span class="k">def</span> <span class="nf">num_muestras_carac</span><span class="p">(</span><span class="n">X</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Esta funcion es encargada retornar el numero de muestras</span>
@@ -471,8 +480,9 @@ const thebe_selector_output = ".output, .cell_output"
 
 <span class="sd">        X: matriz numpy</span>
 <span class="sd">        retorna:</span>
-<span class="sd">            numero de caracteristicas (int/float)</span>
 <span class="sd">            numero de muestras (int/float)</span>
+<span class="sd">            numero de caracteristicas (int/float)</span>
+<span class="sd">            </span>
 <span class="sd">    &quot;&quot;&quot;</span>
     
     <span class="k">return</span> <span class="p">()</span>
@@ -484,15 +494,6 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## la funcion que prueba tu implementacion</span>
 <span class="n">GRADER_LAB_1_P1</span><span class="o">.</span><span class="n">run_test</span><span class="p">(</span><span class="s2">&quot;ejercicio1&quot;</span><span class="p">,</span> <span class="n">num_muestras_carac</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title Pregunta Abierta</span>
-<span class="c1">#@markdown  ¿Explique en sus palabras que es un problema de regresión?</span>
-<span class="n">respuesta_1</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span> <span class="c1">#@param {type:&quot;string&quot;}</span>
 </pre></div>
 </div>
 </div>
@@ -565,8 +566,14 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title Pregunta Abierta</span>
-<span class="c1">#@markdown  ¿cual es el objetivo de la extension_matriz? recordar que estamos &quot;ajustando&quot; en una regresión</span>
-<span class="n">respuesta_2</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span> <span class="c1">#@param {type:&quot;string&quot;}</span>
+<span class="c1">#@markdown Analiza el codigo de la funcion `extension_matriz` ¿cual de la opciones es mejor justificada?</span>
+<span class="c1">#@markdown Recuerda la teoria para</span>
+<span class="c1">#@markdown A) `np.concatenate((unos.T, X), axis=1)` puede ser reemplazada por `np.concatenate((unos, X.T), axis=0)`</span>
+<span class="c1">#@markdown B) `np.concatenate((unos.T, X), axis=1)` hace referencia a la extension de matrix, que es necesaria para ajustar un termino independiente en el modelo de regresión</span>
+<span class="c1">#@markdown C) La funcion nos ayuda ha asegurar que dos matrices A y B son multiplicables, haciendo que número de columnas de A coincida con el número de filas de B </span>
+<span class="c1">#@markdown D) El modelo de regresion tiene terminos independientes y dependientes, para que el modelo funcione debemos usar la extension de matriz para adicionar varias &quot;columnas&quot; vector de uno</span>
+<span class="c1">#@markdown Selecciona dentro las lista desplegable</span>
+<span class="n">respuesta_2</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span> <span class="c1">#@param [&quot;&quot;, &quot;A&quot;, &quot;B&quot;, &quot;C&quot;, &quot;D&quot;]</span>
 </pre></div>
 </div>
 </div>
@@ -648,7 +655,7 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title Pregunta Abierta</span>
-<span class="c1">#@markdown  ¿que representa Xtrain, que diferencia hay con Xtest? Explicar en terminos teoricos(no usar el código como justificación)</span>
+<span class="c1">#@markdown  ¿Cuantas muestras tiene el conjunto de entrenamiento y por que es menor que e conjunto de prueba?</span>
 <span class="n">respuesta_3</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span> <span class="c1">#@param {type:&quot;string&quot;}</span>
 </pre></div>
 </div>
@@ -668,13 +675,13 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Ejercicio de Código</span>
-<span class="k">def</span> <span class="nf">evaluar_modelo</span> <span class="p">(</span><span class="n">W</span><span class="p">,</span> <span class="n">X_to_test</span><span class="p">,</span> <span class="n">Y_True</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">evaluar_modelo</span> <span class="p">(</span><span class="n">W</span><span class="p">,</span> <span class="n">Y_True</span><span class="p">,</span> <span class="n">X_to_test</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; funcion que evalua un modelo de regresión usando el error cuadratico medio</span>
 
 <span class="sd">    W: es un matriz con los parametros del modelo entrenados</span>
-<span class="sd">    X_to_test: conjunto de datos para usar en el evaluamiento del modelo</span>
 <span class="sd">    Y_True: valores reales para usar en el evaluamiento del modelo</span>
-
+<span class="sd">    X_to_test: conjunto de datos para usar en el evaluamiento del modelo</span>
+<span class="sd">    </span>
 <span class="sd">    retorna: el error cuadratico medio</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="c1">## Comienza a completar tu codigo. recuerda usar la funciones ya definidas</span>
