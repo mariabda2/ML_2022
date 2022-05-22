@@ -553,7 +553,7 @@ const thebe_selector_output = ".output, .cell_output"
 <span class="sd">    retorna: X_ext: matriz con unos extendidos, Y: maitrz con dimensiones ajustadas</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="c1">#Obtenemos las dimensiones antes de exteneder la matriz</span>
-    <span class="n">caracterisitcas</span><span class="p">,</span> <span class="n">muestras</span> <span class="o">=</span> <span class="n">num_muestras_carac</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+    <span class="n">muestras</span><span class="p">,</span><span class="n">caracterisitcas</span> <span class="o">=</span> <span class="n">num_muestras_carac</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
     <span class="c1">#Extendemos la matriz X</span>
     <span class="n">unos</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">muestras</span><span class="p">)])</span>
     <span class="n">X_ext</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">((</span><span class="n">unos</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">X</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
@@ -597,8 +597,8 @@ const thebe_selector_output = ".output, .cell_output"
     <span class="sd">&quot;&quot;&quot;Gradiente descendente para regresión lineal múltiple</span>
 <span class="sd">    X: Matriz de datos</span>
 <span class="sd">    Y: vector con los valores a predecir</span>
-<span class="sd">    W: Vector de parámetros del modelo</span>
 <span class="sd">    eta: Taza de aprendizaje</span>
+<span class="sd">    iteraciones: </span>
 
 <span class="sd">    retorna: W el valor de de los parametros de regresión polinomica</span>
 <span class="sd">             costos: array con el costo por iteracion</span>
@@ -606,11 +606,12 @@ const thebe_selector_output = ".output, .cell_output"
     <span class="c1"># nuevamente usamos la función</span>
     <span class="c1"># para saber el numero de muestras y caractersiticas</span>
     <span class="n">X_ext</span> <span class="o">=</span> <span class="n">extension_matriz</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
-    <span class="n">caracterisitcas</span><span class="p">,</span> <span class="n">N</span> <span class="o">=</span> <span class="n">num_muestras_carac</span><span class="p">(</span><span class="n">X_ext</span><span class="p">)</span>
+    <span class="c1"># usar la funcion creada anteriormente</span>
+    <span class="n">N</span><span class="p">,</span> <span class="n">caracterisitcas</span> <span class="o">=</span>  <span class="p">(</span><span class="n">X_ext</span><span class="p">)</span>
     <span class="c1">#Inicializamos el vector de parámetros con ceros y</span>
     <span class="n">W</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span><span class="n">caracterisitcas</span><span class="p">))</span>
     <span class="n">W</span> <span class="o">=</span> <span class="n">W</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="n">W</span><span class="p">),</span> <span class="mi">1</span><span class="p">)</span>    
-    <span class="c1"># incializamos vector para almacenar costos</span>
+    <span class="c1"># incializamos vector para almacenar el costo</span>
     <span class="n">costos</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">iteraciones</span><span class="p">)</span>
 
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">iteraciones</span><span class="p">):</span>
@@ -647,7 +648,7 @@ const thebe_selector_output = ".output, .cell_output"
 <span class="c1"># de nuestro modelo</span>
 <span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 <span class="c1"># usamos nuestra funcion para obtener el numero de muestras</span>
-<span class="n">_</span><span class="p">,</span> <span class="n">N</span> <span class="o">=</span> <span class="n">num_muestras_carac</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">N</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">num_muestras_carac</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 <span class="n">ind</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">permutation</span><span class="p">(</span><span class="n">N</span><span class="p">)</span>
 <span class="n">Xtrain</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="n">ind</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="nb">int</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">ceil</span><span class="p">(</span><span class="mf">0.7</span><span class="o">*</span><span class="n">N</span><span class="p">))],:]</span>
 <span class="n">Xtest</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="n">ind</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">ceil</span><span class="p">(</span><span class="mf">0.7</span><span class="o">*</span><span class="n">N</span><span class="p">)):</span><span class="n">N</span><span class="p">],:]</span>
@@ -962,7 +963,7 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title Pregunta Abierta</span>
-<span class="c1">#@markdown ¿Que nombre recibie la normalización que aplicamos en nuestro laboratorio?</span>
+<span class="c1">#@markdown ¿Que nombre recibe la normalización que aplicamos en nuestro laboratorio?</span>
 
 <span class="c1">#@markdown A) `Zscore`, ya que usamos la función de la libreria `stats.stats.zscore`</span>
 
