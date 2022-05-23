@@ -426,11 +426,14 @@ const thebe_selector_output = ".output, .cell_output"
 <span class="c1"># Ejecuta esta celda!</span>
 <span class="o">%</span><span class="k">load_ext</span> autoreload
 <span class="o">%</span><span class="k">autoreload</span> 2
-<span class="c1">#for local</span>
-<span class="c1">#import sys ; sys.path.append(&#39;../commons/utils/&#39;); sys.path.append(&#39;../commons/utils/data&#39;)</span>
-<span class="o">!</span>wget https://raw.githubusercontent.com/mariabda2/ML_2022/master/Labs/commons/utils/general.py -O general.py
-<span class="kn">from</span> <span class="nn">general</span> <span class="kn">import</span> <span class="n">configure_lab1_p2</span>
-<span class="n">configure_lab1_p2</span><span class="p">()</span>
+<span class="n">in_colab</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="k">if</span> <span class="ow">not</span> <span class="n">in_colab</span><span class="p">:</span>
+    <span class="kn">import</span> <span class="nn">sys</span> <span class="p">;</span> <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;../commons/utils/&#39;</span><span class="p">);</span> <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;../commons/utils/data&#39;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span> 
+    <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s1">&#39;wget https://raw.githubusercontent.com/mariabda2/ML_2022/master/Labs/commons/utils/general.py -O general.py&#39;</span><span class="p">)</span>
+    <span class="kn">from</span> <span class="nn">general</span> <span class="kn">import</span> <span class="n">configure_lab1_p2</span>
+    <span class="n">configure_lab1_p2</span><span class="p">()</span>
 <span class="kn">from</span> <span class="nn">lab1</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="n">GRADER</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">part_2</span><span class="p">()</span>
 <span class="n">y</span> <span class="o">=</span> <span class="n">y</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="n">y</span><span class="p">),</span> <span class="mi">1</span><span class="p">)</span>
@@ -456,22 +459,23 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Ejercicio de Codigo</span>
-<span class="k">def</span> <span class="nf">clases_muestras_carac</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">carac_muestras_clases</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Esta funcion es encargada retornar el numero clases, muestras </span>
 <span class="sd">        y caracteristicas del conjunto de datos X y Y</span>
 
 <span class="sd">        X: matriz numpy con el conjunto de datos para entrenamiento</span>
 <span class="sd">        Y: matriz numpy con el conjunto de etiquetas</span>
 <span class="sd">        retorna:</span>
-<span class="sd">            numero de clases (int/float)</span>
-<span class="sd">            numero de muestras (int/float)</span>
 <span class="sd">            numero de caracteristicas (int/float)</span>
+<span class="sd">            numero de muestras (int/float)</span>
+<span class="sd">            numero de clases (int/float)</span>
+<span class="sd">            </span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="c1">##Pista: es de utilidad el metodo np.unique ?</span>
     <span class="n">N</span><span class="p">,</span><span class="n">nf</span> <span class="o">=</span> 
     <span class="n">clases</span> <span class="o">=</span> 
     
-    <span class="k">return</span> <span class="p">(</span><span class="n">clases</span><span class="p">,</span><span class="n">N</span><span class="p">,</span><span class="n">nf</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -479,58 +483,21 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## la funcion que prueba tu implementacion</span>
-<span class="n">GRADER</span><span class="o">.</span><span class="n">run_test</span><span class="p">(</span><span class="s2">&quot;ejercicio1&quot;</span><span class="p">,</span> <span class="n">clases_muestras_carac</span><span class="p">)</span>
+<span class="n">GRADER</span><span class="o">.</span><span class="n">run_test</span><span class="p">(</span><span class="s2">&quot;ejercicio1&quot;</span><span class="p">,</span> <span class="n">carac_muestras_clases</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p>En los problemas de clasificación, que lo permiten, es de utilidad visualizar los datos. De esta manera se puede determinar que modelos o algortimos pueden tener mejor rendimiento. En la siguiente función, se debe:</p>
-<ol class="simple">
-<li><p>graficar los datos usando la función <a class="reference external" href="https://matplotlib.org/gallery/shapes_and_collections/scatter.html">scatter</a> de matplotlib. <a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.scatter.html#matplotlib.pyplot.scatter">Recuerda consultar la documentación de la función</a></p></li>
-<li><p>Asginar un color Map diferente al de defecto. <a class="reference external" href="https://matplotlib.org/stable/tutorials/colors/colormaps.html">Aca pueder los valores posibles</a>.</p></li>
-</ol>
+<p>En los problemas de clasificación, que lo permiten, es de utilidad visualizar los datos. De esta manera se puede determinar que modelos o algortimos pueden tener mejor rendimiento. La función <a class="reference external" href="https://matplotlib.org/gallery/shapes_and_collections/scatter.html">scatter</a> nos permite realizar este tipo de graficas, explora la documentación y usa la siguiente celda para realizar la grafica y con lo aprendido responder la pregunta abierta.</p>
+<p>En este tipo de graficas tambien es util usar los <a class="reference external" href="https://matplotlib.org/3.5.0/tutorials/colors/colormaps.html">colorMaps</a>, que son basicamente paletas de colores que defines los posibles colores dentro de la grafica.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Ejercicio de Codigo</span>
-<span class="k">def</span> <span class="nf">scatter_plot</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Esta funcion es encargada de graficar usando un scatter plot</span>
-<span class="sd">       un problema de clasificacion.</span>
-
-<span class="sd">        X: matriz numpy con el conjunto de datos para entrenamiento.</span>
-<span class="sd">           esta debera ser usada para los ejes del grafico. puede asumir</span>
-<span class="sd">           que solo va tener dos columnas</span>
-<span class="sd">        Y: matriz numpy con el conjunto de etiquetas. Debera se usada</span>
-<span class="sd">           para mostrar en diferentes colores, las etiquetas de cada una</span>
-<span class="sd">           de las muestras</span>
-<span class="sd">        retorna:</span>
-<span class="sd">            No retorna nada, el grafico debe aparecer</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="c1">## puedes acceder con plt a la funcion adecuacada</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>    <span class="c1">## puedes acceder con plt a la funcion adecuacada</span>
     <span class="c1">## Pista: recuerda como indexar matrices</span>
     <span class="c1">## Consulta como pasar el Color Map</span>
     <span class="n">plt</span><span class="o">.</span>
     <span class="c1"># para mostrar el grafico</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-   
-    <span class="k">return</span> <span class="p">(</span><span class="kc">None</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## la funcion que prueba tu implementacion</span>
-<span class="c1"># ignora los graficos que se muestran </span>
-<span class="n">GRADER</span><span class="o">.</span><span class="n">run_test</span><span class="p">(</span><span class="s2">&quot;ejercicio2&quot;</span><span class="p">,</span> <span class="n">scatter_plot</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># usarla para ver el grafico</span>
-<span class="c1"># se debe ver dos nubes de puntos diferenciadas</span>
-<span class="n">scatter_plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -538,8 +505,38 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title Pregunta Abierta</span>
-<span class="c1">#@markdown  ¿El problema es linealmente separable? justifique su respuesta </span>
-<span class="n">respuesta_1</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span> <span class="c1">#@param {type:&quot;string&quot;}</span>
+<span class="c1">#@markdown Con la grafica creada ¿cual de las afirmaciones es mejor justificada?</span>
+
+<span class="c1">#@markdown A) `plt.scatter(x[:,0],x[:,1], c=y, cmap = &#39;seismic&#39;)` permite ver la primera caracteristica en el eje Y y la segunda caracteristica en el eje X. La etiqueta de la muestra es representada por el color mediante una paleta de colores divergente</span>
+
+<span class="c1">#@markdown B) `plt.scatter(c=y, x = x[:,1], y = x[:,0],  cmap = &#39;viridis&#39;)` permite ver la primera caracteristica en el eje X y la segunda caracteristica en el eje Y. La etiqueta de la muestra es representada por el color mediante una paleta de colores binaria</span>
+
+<span class="c1">#@markdown C) `plt.scatter(x, c=y, cmap = &#39;binary&#39;)`  permite ver una grafica para poder determinar si un modelo de clasificación puede ajustarse. La etiqueta de la muestra representa el color mediante una paleta de colores sequencial</span>
+
+<span class="c1">#@markdown D) `plt.scatter(x[:,0],x[:,1], c=y, cmap = &#39;seismic&#39;)` permite ver la primera caracteristica en el eje X y la segunda caracteristica en el eje Y. La etiqueta de la muestra representa el color mediante una paleta de colores divergente</span>
+
+<span class="c1">#@markdown Selecciona dentro las lista desplegable</span>
+<span class="n">respuesta_1</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span> <span class="c1">#@param [&quot;&quot;, &quot;A&quot;, &quot;B&quot;, &quot;C&quot;, &quot;D&quot;]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title Pregunta Abierta</span>
+<span class="c1">#@markdown Usando el resultado de la grafica, ¿cual de las opciones esta mejor justificada?</span>
+<span class="c1">#@markdown Recuerda usar la teoria como herramienta</span>
+
+<span class="c1">#@markdown A) En la grafica se observa claramente dos clases, esto es inidicio que el problema es linealmente separable</span>
+
+<span class="c1">#@markdown B) En la grafica se observa que existen dos clases, sin embargo el problema NO es linealmente separable</span>
+
+<span class="c1">#@markdown C) En la grafica se observa que las muestras de una clase estan rodeadas por muestras de la otra clase, es mejor usar una transformacion polinomica y un modelo de regresión</span>
+
+<span class="c1">#@markdown D) Mediante una transformación polinómica podemos aplicar el algoritmo de gradiente descendente</span>
+
+<span class="c1">#@markdown Selecciona dentro las lista desplegable</span>
+<span class="n">respuesta_2</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span> <span class="c1">#@param [&quot;&quot;, &quot;A&quot;, &quot;B&quot;, &quot;C&quot;, &quot;D&quot;]</span>
 </pre></div>
 </div>
 </div>
@@ -581,7 +578,7 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## la funcion que prueba tu implementacion</span>
-<span class="n">GRADER</span><span class="o">.</span><span class="n">run_test</span><span class="p">(</span><span class="s2">&quot;ejercicio3&quot;</span><span class="p">,</span> <span class="n">sigmoidal</span><span class="p">)</span>
+<span class="n">GRADER</span><span class="o">.</span><span class="n">run_test</span><span class="p">(</span><span class="s2">&quot;ejercicio2&quot;</span><span class="p">,</span> <span class="n">sigmoidal</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -657,7 +654,21 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ten en cuenta la salida de esta prueba para responder la pregunta abierta siguiente</span>
 <span class="n">vector</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">]])</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">vector</span><span class="p">)</span>
-<span class="n">potenciaPolinomio</span><span class="p">(</span><span class="n">vector</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="c1"># puedes cambiar el valor del grado</span>
+<span class="n">potenciaPolinomio</span><span class="p">(</span><span class="n">vector</span><span class="p">,</span> <span class="n">grado</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Verificar como influye la potencia de polinomio</span>
+<span class="n">x_pol</span> <span class="o">=</span> <span class="n">potenciaPolinomio</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">grado</span> <span class="o">=</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">g</span> <span class="p">,</span> <span class="p">(</span><span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span> <span class="p">)</span><span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Caracteristicas originales&quot;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">scatter</span> <span class="p">(</span><span class="n">c</span><span class="o">=</span><span class="n">y</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="n">x_pol</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">y</span> <span class="o">=</span> <span class="n">x_pol</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span>  <span class="n">cmap</span> <span class="o">=</span> <span class="s1">&#39;seismic&#39;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Caracteristicas adicionales de</span><span class="se">\n</span><span class="s2">transformacion polinomica&quot;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">c</span><span class="o">=</span><span class="n">y</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="n">x_pol</span><span class="p">[:,</span><span class="mi">2</span><span class="p">],</span> <span class="n">y</span> <span class="o">=</span> <span class="n">x_pol</span><span class="p">[:,</span><span class="mi">3</span><span class="p">],</span>  <span class="n">cmap</span> <span class="o">=</span> <span class="s1">&#39;seismic&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -665,8 +676,11 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title Pregunta Abierta</span>
-<span class="c1">#@markdown  Analizando lo anterior y asumiendo que el vector es representado como [x1, x2] ¿Cual seria la representación de `potenciaPolinomio(vector, 3)`? (usa ** para representar potencia, i.e x1**2 simboliza x1 elevado al cuadrado)</span>
-<span class="n">respuesta_2</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span> <span class="c1">#@param {type:&quot;string&quot;}</span>
+<span class="c1">#@markdown  Analizando lo anterior y asumiendo que el vector es representado como `[x1, x2]` ¿Cual seria la representación de `potenciaPolinomio(vector, grado=2)`? </span>
+<span class="c1">#@markdown (usa ** para representar potencia, i.e x1**2 simboliza x1 elevado al cuadrado)</span>
+<span class="c1">#@markdown Entendiendo esta transnformacion ¿Aplicar la `potenciaPolinomio(vector=x, grado=2)` hace que el problema se vuelva linealmente separable?</span>
+
+<span class="n">respuesta_3</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span> <span class="c1">#@param {type:&quot;string&quot;}</span>
 </pre></div>
 </div>
 </div>
@@ -757,7 +771,7 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## la funcion que prueba tu implementacion</span>
 <span class="c1"># ignorar los print que se ejecutan</span>
-<span class="n">GRADER</span><span class="o">.</span><span class="n">run_test</span><span class="p">(</span><span class="s2">&quot;ejercicio4&quot;</span><span class="p">,</span> <span class="n">gradiente_descendente_logistic_poly</span><span class="p">)</span>
+<span class="n">GRADER</span><span class="o">.</span><span class="n">run_test</span><span class="p">(</span><span class="s2">&quot;ejercicio3&quot;</span><span class="p">,</span> <span class="n">gradiente_descendente_logistic_poly</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -779,7 +793,7 @@ Vamos entrenar con 100 iteraciones y vamos a graficar el costo logistico y verif
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title Pregunta Abierta</span>
 <span class="c1">#@markdown  ¿con base a los resultados anteriores, qué efecto tiene el grado en el comportamiento del costo? justifique</span>
-<span class="n">respuesta_3</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span> <span class="c1">#@param {type:&quot;string&quot;}</span>
+<span class="n">respuesta_4</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span> <span class="c1">#@param {type:&quot;string&quot;}</span>
 </pre></div>
 </div>
 </div>
@@ -874,7 +888,7 @@ Vamos entrenar con 100 iteraciones y vamos a graficar el costo logistico y verif
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## la funcion que prueba tu implementacion</span>
 <span class="c1"># ignorar los prints de &quot;costo despues de finalizar&quot;!</span>
-<span class="n">GRADER</span><span class="o">.</span><span class="n">run_test</span><span class="p">(</span><span class="s2">&quot;ejercicio5&quot;</span><span class="p">,</span> <span class="n">experimentar</span><span class="p">)</span>
+<span class="n">GRADER</span><span class="o">.</span><span class="n">run_test</span><span class="p">(</span><span class="s2">&quot;ejercicio4&quot;</span><span class="p">,</span> <span class="n">experimentar</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -900,7 +914,7 @@ Vamos entrenar con 100 iteraciones y vamos a graficar el costo logistico y verif
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title Pregunta Abierta</span>
 <span class="c1">#@markdown  ¿con base a los resultados anteriores, qué efecto tiene la  tasa de aprendizaje en los errores de entrenamiento y de prueba? justifique</span>
-<span class="n">respuesta_4</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span> <span class="c1">#@param {type:&quot;string&quot;}</span>
+<span class="n">respuesta_5</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span> <span class="c1">#@param {type:&quot;string&quot;}</span>
 </pre></div>
 </div>
 </div>
@@ -911,15 +925,6 @@ Vamos entrenar con 100 iteraciones y vamos a graficar el costo logistico y verif
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># puedes usar el siguiente código para ordenar los resultados y ver los 3 primeros</span>
 <span class="c1"># resultados, usa esta salida, para ver cuales fueron los mejores parámetros</span>
 <span class="n">resultados</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;error_prueba&#39;</span><span class="p">,</span> <span class="s1">&#39;grado&#39;</span><span class="p">],</span> <span class="n">ascending</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title Pregunta Abierta</span>
-<span class="c1">#@markdown ¿por qué se uso el error de prueba para ordenar la tabla de resultados en lugar del error de entrenamiento?</span>
-<span class="n">respuesta_5</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span> <span class="c1">#@param {type:&quot;string&quot;}</span>
 </pre></div>
 </div>
 </div>
@@ -940,7 +945,7 @@ Vamos entrenar con 100 iteraciones y vamos a graficar el costo logistico y verif
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title Pregunta Abierta</span>
-<span class="c1">#@markdown Escribe el modelo completo con sus variables y coeficientes de f(**x**,**w**) con la mejor frontera de decisión que encontró. Recuerda tener presente el grado del polinomio.</span>
+<span class="c1">#@markdown Escribe el modelo completo con sus variables y coeficientes de f(**x**,**w**) con la mejor frontera de decisión encontrada. Recuerda tener presente el grado del polinomio.</span>
 <span class="n">respuesta_6</span> <span class="o">=</span> <span class="s2">&quot;0.0x1...&quot;</span> <span class="c1">#@param {type:&quot;string&quot;}</span>
 </pre></div>
 </div>
