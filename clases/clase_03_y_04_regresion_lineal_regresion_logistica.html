@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>REGRESIÓN LINEAL Y REGRESIÓN LOGÍSTICA &#8212; Modelos y Simulación de Sistemas II</title>
+    <title>Regresión lineal y regresión logística &#8212; Modelos y Simulación de Sistemas II</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
   <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -119,7 +119,7 @@ const thebe_selector_output = ".output, .cell_output"
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
      <strong>
-      REGRESIÓN LINEAL Y REGRESIÓN LOGÍSTICA
+      Regresión lineal y regresión logística
      </strong>
     </a>
    </li>
@@ -438,32 +438,26 @@ const thebe_selector_output = ".output, .cell_output"
       Regresión logística
      </strong>
     </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#observando-la-figura-anterior">
-       Observando la figura anterior:
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#veamos-el-mismo-proceso-en-el-espacio-de-busqueda">
-       Veamos el mismo proceso en el espacio de búsqueda
-      </a>
-     </li>
-    </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#zoom-al-optimo">
-     zoom al óptimo
+    <a class="reference internal nav-link" href="#funcion-sigmoide">
+     <strong>
+      Función sigmoide
+     </strong>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#funcion-de-entropia-cruzada-cross-entropy">
+     <strong>
+      Función de entropía cruzada (cross entropy)
+     </strong>
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#veamos-el-efecto-del-numero-de-iteraciones-y-de-la-tasa-de-aprendizaje">
-       Veamos el efecto del número de iteraciones y de la tasa de aprendizaje:
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#bibliografy">
-       Bibliografy
+       <strong>
+        Bibliografy
+       </strong>
       </a>
      </li>
     </ul>
@@ -480,7 +474,7 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>REGRESIÓN LINEAL Y REGRESIÓN LOGÍSTICA</h1>
+                <h1>Regresión lineal y regresión logística</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -562,32 +556,26 @@ const thebe_selector_output = ".output, .cell_output"
       Regresión logística
      </strong>
     </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#observando-la-figura-anterior">
-       Observando la figura anterior:
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#veamos-el-mismo-proceso-en-el-espacio-de-busqueda">
-       Veamos el mismo proceso en el espacio de búsqueda
-      </a>
-     </li>
-    </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#zoom-al-optimo">
-     zoom al óptimo
+    <a class="reference internal nav-link" href="#funcion-sigmoide">
+     <strong>
+      Función sigmoide
+     </strong>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#funcion-de-entropia-cruzada-cross-entropy">
+     <strong>
+      Función de entropía cruzada (cross entropy)
+     </strong>
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#veamos-el-efecto-del-numero-de-iteraciones-y-de-la-tasa-de-aprendizaje">
-       Veamos el efecto del número de iteraciones y de la tasa de aprendizaje:
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#bibliografy">
-       Bibliografy
+       <strong>
+        Bibliografy
+       </strong>
       </a>
      </li>
     </ul>
@@ -610,9 +598,14 @@ const thebe_selector_output = ".output, .cell_output"
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>replicating local resources
+</pre></div>
+</div>
+</div>
 </div>
 <div class="tex2jax_ignore mathjax_ignore section" id="regresion-lineal-y-regresion-logistica">
-<h1><strong>REGRESIÓN LINEAL Y REGRESIÓN LOGÍSTICA</strong><a class="headerlink" href="#regresion-lineal-y-regresion-logistica" title="Permalink to this headline">¶</a></h1>
+<h1><strong>Regresión lineal y regresión logística</strong><a class="headerlink" href="#regresion-lineal-y-regresion-logistica" title="Permalink to this headline">¶</a></h1>
 <p>clase 03: regresión lineal<br/>
 clase 04: regresión logística</p>
 <div class="section" id="font-color-blue-niveles-de-abstraccion-font">
@@ -645,6 +638,7 @@ ECM({\bf{w}}) = \frac{1}{N}\sum_{i=1}^{N} \left\lbrace f({\bf{x}}_i, {\bf{w}}) -
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">Image</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
 </pre></div>
 </div>
 </div>
@@ -715,7 +709,7 @@ y = 3*x_1 + 7*x_2 - 2
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/clase_03_y_04_regresion_lineal_regresion_logistica_10_0.png" src="../_images/clase_03_y_04_regresion_lineal_regresion_logistica_10_0.png" />
+<img alt="../_images/clase_03_y_04_regresion_lineal_regresion_logistica_11_0.png" src="../_images/clase_03_y_04_regresion_lineal_regresion_logistica_11_0.png" />
 </div>
 </div>
 </div>
@@ -743,7 +737,7 @@ y = 3*x_1 + 7*x_2 - 2
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[57.96178219]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[58.04224373]])
 </pre></div>
 </div>
 </div>
@@ -758,8 +752,8 @@ Recordemos que el Polinomio real es <span class="math notranslate nohighlight">\
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[3.16559379 7.01370291]]
-[-2.43148269]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[3.00047915 6.99720858]]
+[-0.94763241]
 </pre></div>
 </div>
 </div>
@@ -777,7 +771,7 @@ Recordemos que el Polinomio real es <span class="math notranslate nohighlight">\
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>38.839414257102
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>35.48520122924596
 </pre></div>
 </div>
 </div>
@@ -801,7 +795,7 @@ Recordemos que el Polinomio real es <span class="math notranslate nohighlight">\
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ 3.16559377,  7.01370291, -2.43148305])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ 3.00047918,  6.99720856, -0.94763176])
 </pre></div>
 </div>
 </div>
@@ -814,7 +808,7 @@ Recordemos que el Polinomio real es <span class="math notranslate nohighlight">\
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>38.83941425710214
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>35.48520122924636
 </pre></div>
 </div>
 </div>
@@ -827,7 +821,7 @@ Recordemos que el Polinomio real es <span class="math notranslate nohighlight">\
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>57.961781681232004
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>58.042244513094666
 </pre></div>
 </div>
 </div>
@@ -900,12 +894,12 @@ w_j(iter) = w_j(iter-1) - \frac{\eta}{N} \sum_{i=1}^{N}\left( \sum_{k=0}^{d} w_k
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[ 3.16559379]
- [ 7.01370291]
- [-2.43148269]]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[ 3.00047915]
+ [ 6.99720858]
+ [-0.94763241]]
 </pre></div>
 </div>
-<img alt="../_images/clase_03_y_04_regresion_lineal_regresion_logistica_29_1.png" src="../_images/clase_03_y_04_regresion_lineal_regresion_logistica_29_1.png" />
+<img alt="../_images/clase_03_y_04_regresion_lineal_regresion_logistica_30_1.png" src="../_images/clase_03_y_04_regresion_lineal_regresion_logistica_30_1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -915,7 +909,7 @@ w_j(iter) = w_j(iter-1) - \frac{\eta}{N} \sum_{i=1}^{N}\left( \sum_{k=0}^{d} w_k
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>38.83941425710202
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>35.485201229245995
 </pre></div>
 </div>
 </div>
@@ -927,7 +921,7 @@ w_j(iter) = w_j(iter-1) - \frac{\eta}{N} \sum_{i=1}^{N}\left( \sum_{k=0}^{d} w_k
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([57.96178219])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([58.04224373])
 </pre></div>
 </div>
 </div>
@@ -939,8 +933,9 @@ w_j(iter) = w_j(iter-1) - \frac{\eta}{N} \sum_{i=1}^{N}\left( \sum_{k=0}^{d} w_k
 <h2><strong><font color='blue'>  Problema de clasificación </font></strong><a class="headerlink" href="#font-color-blue-problema-de-clasificacion-font" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="regresion-logistica">
 <h3><strong>Regresión logística</strong><a class="headerlink" href="#regresion-logistica" title="Permalink to this headline">¶</a></h3>
-<p>Una forma alternativa de entender el problema de clasificación, es buscar una función que sea capaz de dividir el espacio de características y dejar los conjuntos de muestras de cada clase separados.</p>
-<p>La variable a predicir no es continua, sino que toma valores discretos.</p>
+<p>Una forma alternativa de entender el problema de clasificación, es buscar una función que sea capaz de dividir el espacio de características y dejar los conjuntos de muestras de cada clase separados. <em>La variable a predicir no es continua, sino que toma valores discretos.</em></p>
+<p>Cuando es posible dejar todas las muestras de una clase a un lado de la recta, y las muestras de la otra clase al otro, el problema se conoce como linealmente separable.</p>
+<p>Sin embargo eso no sucede en la gran mayoría de problemas reales. El problema de clasificación se puede entonces pensar como el problema de encontrar una función polinomial  f  que pueda dividir los conjuntos de datos de las diferentes clases.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">local.lib.util</span> <span class="kn">import</span> <span class="n">plot_frontera</span>
@@ -949,20 +944,15 @@ w_j(iter) = w_j(iter-1) - \frac{\eta}{N} \sum_{i=1}^{N}\left( \sum_{k=0}^{d} w_k
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/clase_03_y_04_regresion_lineal_regresion_logistica_34_0.png" src="../_images/clase_03_y_04_regresion_lineal_regresion_logistica_34_0.png" />
+<img alt="../_images/clase_03_y_04_regresion_lineal_regresion_logistica_35_0.png" src="../_images/clase_03_y_04_regresion_lineal_regresion_logistica_35_0.png" />
 </div>
 </div>
-<p>Cuando es posible dejar todas las muestras de una clase a un lado de la recta, y las muestras de la otra clase al otro, el problema se conoce como linealmente separable. Sin embargo eso no sucede en la gran mayoría de problemas reales. El problema de clasificación se puede entonces pensar como el problema de encontrar una función polinomial <span class="math notranslate nohighlight">\(f\)</span> que pueda dividir los conjuntos de datos de las diferentes clases.</p>
-<div class="section" id="observando-la-figura-anterior">
-<h4>Observando la figura anterior:<a class="headerlink" href="#observando-la-figura-anterior" title="Permalink to this headline">¶</a></h4>
-<p>Si se pudiese encontrar la función dada por la línea negra en la figura anterior, la cual sería de la forma <span class="math notranslate nohighlight">\(f({\bf{x}}) = w_1 x_1 + w_2 x_2 + w_0\)</span>, se podría utilizar como función de clasificación ya que cualquier muestra evaluada en la función obtendrá como resultado un valor positivo si se ubica a un lado y un valor negativo si se ubica al otro (los valores ubicados justo en la función obtendrían un valor de 0). Teniendo en cuenta que los valores de las etiquetas para el problema de clasificación (las variables a predecir <span class="math notranslate nohighlight">\(t_i\)</span>), solo pueden tomar dos valores <span class="math notranslate nohighlight">\({0,1}\)</span>, entonces una forma simple de usar la función <span class="math notranslate nohighlight">\(f\)</span> como clasificador sería asignar las muestras a la clase 1 cuando al ser evaluadas en la función <span class="math notranslate nohighlight">\(f\)</span> obtengan una valor positivo y asignar 0 cuando suceda lo contrario.</p>
+<p>Si se pudiese encontrar la función dada por la línea negra en la figura anterior, la cual sería de la forma:</p>
+<p><span class="math notranslate nohighlight">\(f({\bf{x}}) = w_1 x_1 + w_2 x_2 + w_0\)</span>.</p>
+<p>Teniendo en cuenta que los valores de las etiquetas para el problema de clasificación (las variables a predecir <span class="math notranslate nohighlight">\(t_i\)</span>), solo pueden tomar dos valores <span class="math notranslate nohighlight">\({0,1}\)</span>, entonces una forma simple de usar la función <span class="math notranslate nohighlight">\(f\)</span> como clasificador sería asignar las muestras a la clase 1 cuando al ser evaluadas en la función <span class="math notranslate nohighlight">\(f\)</span> obtengan una valor positivo y asignar 0 cuando suceda lo contrario.</p>
 <div class="math notranslate nohighlight">
-\[\begin{split}\text{Class} = \left\{
-                \begin{array}{ll}
-                  1\;\;\;{\rm{if}}\;\;\;w_0  + w_1 x_1  + w_2 x_2  +  \cdots  + w_d x_d  \geq 0\\
-                  0\;\;{\rm{\text{other wise}}}
-                \end{array}
-              \right. \end{split}\]</div>
+\[\begin{split}\text{Class} = \left\{\begin{array}{ll}1\;\;\;{\rm{if}}\;\;\;w_0  + w_1 x_1  + w_2 x_2  +  \cdots  + w_d x_d  \geq 0\\0\;\;{\rm{\text{other wise}}}\end{array}\right. \end{split}\]</div>
+<p><strong>Función signo (<span class="math notranslate nohighlight">\(sgn\)</span>)</strong></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Image</span><span class="p">(</span><span class="s2">&quot;local/imgs/funcionsigno.png&quot;</span><span class="p">,</span> <span class="n">width</span> <span class="o">=</span> <span class="mi">300</span><span class="p">)</span>
@@ -970,14 +960,19 @@ w_j(iter) = w_j(iter-1) - \frac{\eta}{N} \sum_{i=1}^{N}\left( \sum_{k=0}^{d} w_k
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/clase_03_y_04_regresion_lineal_regresion_logistica_37_0.png" src="../_images/clase_03_y_04_regresion_lineal_regresion_logistica_37_0.png" />
+<img alt="../_images/clase_03_y_04_regresion_lineal_regresion_logistica_38_0.png" src="../_images/clase_03_y_04_regresion_lineal_regresion_logistica_38_0.png" />
 </div>
 </div>
-<p>El problema con la función <span class="math notranslate nohighlight">\(sgn\)</span> es que es discontinua y no puede ser usada como criterio de optimización para ningún algoritmo basado en gradiente. Un alternativa es utilizar alguna función que tenga una comportamiento asintótico similar pero que sea continua y derivable, por lo que podemos usar la función sigmoide dada por:</p>
+<p>El problema con la función <span class="math notranslate nohighlight">\(sgn\)</span> es que es discontinua y no puede ser usada como criterio de optimización para ningún algoritmo basado en gradiente.</p>
+</div>
+<div class="section" id="funcion-sigmoide">
+<h3><strong>Función sigmoide</strong><a class="headerlink" href="#funcion-sigmoide" title="Permalink to this headline">¶</a></h3>
+<p>Es una función que tiene un comportamiento asintótico similar a la función <span class="math notranslate nohighlight">\(sgn\)</span> pero  es continua y derivable, dada por:</p>
 <div class="math notranslate nohighlight">
 \[
 g(u) = \frac{\exp(u)}{1 + \exp(u)}
 \]</div>
+<p>El método que utiliza la función sigmoidal para encontrar una frontera de separación polinomial se conoce como <b>Regresión Logística</b>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">u</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">100</span><span class="p">)</span>
@@ -990,20 +985,24 @@ g(u) = \frac{\exp(u)}{1 + \exp(u)}
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/clase_03_y_04_regresion_lineal_regresion_logistica_39_0.png" src="../_images/clase_03_y_04_regresion_lineal_regresion_logistica_39_0.png" />
+<img alt="../_images/clase_03_y_04_regresion_lineal_regresion_logistica_41_0.png" src="../_images/clase_03_y_04_regresion_lineal_regresion_logistica_41_0.png" />
 </div>
 </div>
-<p>El método que utiliza la función sigmoidal para encontrar una frontera de separación polinomial se conoce como <b>Regresión Logística</b>. La función objetivo (criterio de entrenamiento) está dada por:</p>
+</div>
+<div class="section" id="funcion-de-entropia-cruzada-cross-entropy">
+<h3><strong>Función de entropía cruzada (cross entropy)</strong><a class="headerlink" href="#funcion-de-entropia-cruzada-cross-entropy" title="Permalink to this headline">¶</a></h3>
+<p>Esta función <span class="math notranslate nohighlight">\(J\)</span> es el criterio de entrenamiento la cual minimiza el error de clasificación y está dada por:</p>
 <div class="math notranslate nohighlight">
 \[
-J({\bf{w}}) = \frac{1}{N} \sum_{i=1}^{N} -t_i \log(g(f({\bf{x}}))) - (1-t_i)\log(1 - g(f({\bf{x}})))
+J({\bf{w}}) = \frac{1}{N} \sum_{i=1}^{N} -y_i \log(g(f({\bf{x}}))) - (1-y_i)\log(1 - g(f({\bf{x}})))
 \]</div>
-<p>Si se analiza con detenimiento, la función criterio <span class="math notranslate nohighlight">\(J\)</span> minimiza el error de clasificación. Es necesario tener en cuenta que dicha función está definida para <span class="math notranslate nohighlight">\(t_i\)</span> que toman valores <span class="math notranslate nohighlight">\(\left\lbrace 0,1 \right\rbrace\)</span>. La ventaja del método de regresión logística es que la función para la actualización de los pesos <span class="math notranslate nohighlight">\(\bf{w}\)</span> es muy similar a la función para la regresión lineal. La derivada de <span class="math notranslate nohighlight">\(J\)</span> está dada por:</p>
+<p>Es necesario tener en cuenta que dicha función está definida para <span class="math notranslate nohighlight">\(y_i\)</span> que toman valores <span class="math notranslate nohighlight">\(\left\lbrace 0,1 \right\rbrace\)</span>; y su derivada está dada por:</p>
 <div class="math notranslate nohighlight">
 \[
-\frac{\partial J({\bf{w}})}{\partial w_j} = \frac{1}{N} \sum_{i=1}^{N}\left( g(f({\bf{x}}_i,{\bf{w}})) - t_i\right)x_{ij}
+\frac{\partial J({\bf{w}})}{\partial w_j} = \frac{1}{N} \sum_{i=1}^{N}\left( g(f({\bf{x}}_i,{\bf{w}})) - y_i\right)x_{ij}
 \]</div>
-<p>La única diferencia es la inclusión de la función sigmoidal <span class="math notranslate nohighlight">\(g\)</span>. Por esa razón podemos usar el mismo algoritmo con solo una pequeña modificación.</p>
+<p><br/> La única diferencia con el método de regresión lineal es la inclusión de la función sigmoidal <span class="math notranslate nohighlight">\(g\)</span>. Por esa razón podemos usar el mismo algoritmo de gradiente descendente con solo esa pequeña modificación para la actualización de los pesos <span class="math notranslate nohighlight">\(\bf{w}\)</span>.</p>
+<p><strong>Implementación función sigmoide</strong></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">sigmoide</span><span class="p">(</span><span class="n">u</span><span class="p">):</span>
@@ -1029,15 +1028,15 @@ J({\bf{w}}) = \frac{1}{N} \sum_{i=1}^{N} -t_i \log(g(f({\bf{x}}))) - (1-t_i)\log
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">datasets</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">datasets</span>
 <span class="kn">import</span> <span class="nn">time</span>
 <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">iris</span> <span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">load_iris</span><span class="p">()</span>
 <span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">iris</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">iris</span><span class="o">.</span><span class="n">target</span>
 <span class="n">X2</span> <span class="o">=</span> <span class="n">X</span><span class="p">[:</span><span class="mi">100</span><span class="p">][:,:</span><span class="mi">2</span><span class="p">]</span>
 <span class="n">y2</span> <span class="o">=</span> <span class="n">y</span><span class="p">[:</span><span class="mi">100</span><span class="p">]</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X2</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">X2</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="n">y2</span><span class="p">,</span><span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;Accent&quot;</span><span class="p">)</span>
-
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X2</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">X2</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="n">y2</span><span class="p">,</span><span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;Accent&quot;</span><span class="p">);</span>
 <span class="n">w</span><span class="p">,</span><span class="n">_</span> <span class="o">=</span> <span class="n">Gradiente</span><span class="p">(</span><span class="n">X2</span><span class="p">,</span><span class="n">y2</span><span class="p">,</span><span class="n">MaxIter</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
 <span class="n">x1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">20</span><span class="p">)</span>
 <span class="n">x2</span> <span class="o">=</span> <span class="o">-</span><span class="p">(</span><span class="n">w</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">/</span><span class="n">w</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span><span class="o">*</span><span class="n">x1</span> <span class="o">-</span> <span class="p">(</span><span class="n">w</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">/</span><span class="n">w</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
@@ -1047,23 +1046,23 @@ J({\bf{w}}) = \frac{1}{N} \sum_{i=1}^{N} -t_i \log(g(f({\bf{x}}))) - (1-t_i)\log
     <span class="n">w</span><span class="p">,</span><span class="n">_</span> <span class="o">=</span> <span class="n">Gradiente</span><span class="p">(</span><span class="n">X2</span><span class="p">,</span><span class="n">y2</span><span class="p">,</span><span class="n">MaxIter</span> <span class="o">=</span> <span class="n">i</span><span class="p">)</span>
     <span class="n">x2</span> <span class="o">=</span> <span class="o">-</span><span class="p">(</span><span class="n">w</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">/</span><span class="n">w</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span><span class="o">*</span><span class="n">x1</span> <span class="o">-</span> <span class="p">(</span><span class="n">w</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">/</span><span class="n">w</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
     <span class="n">line1</span><span class="o">.</span><span class="n">set_ydata</span><span class="p">(</span><span class="n">x2</span><span class="p">)</span>
+    
     <span class="k">if</span> <span class="n">i</span> <span class="o">&gt;</span> <span class="mi">1000</span><span class="p">:</span>
         <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="mf">1.8</span><span class="p">,</span><span class="mf">4.8</span><span class="p">])</span>
     
     <span class="n">fig</span><span class="o">.</span><span class="n">canvas</span><span class="o">.</span><span class="n">draw</span><span class="p">()</span>
     <span class="n">fig</span><span class="o">.</span><span class="n">canvas</span><span class="o">.</span><span class="n">flush_events</span><span class="p">()</span>
     <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">.300</span><span class="p">)</span>
+    
 <span class="n">line1</span><span class="p">,</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span><span class="n">x2</span><span class="p">,</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/clase_03_y_04_regresion_lineal_regresion_logistica_43_0.png" src="../_images/clase_03_y_04_regresion_lineal_regresion_logistica_43_0.png" />
+<img alt="../_images/clase_03_y_04_regresion_lineal_regresion_logistica_46_0.png" src="../_images/clase_03_y_04_regresion_lineal_regresion_logistica_46_0.png" />
 </div>
 </div>
-</div>
-<div class="section" id="veamos-el-mismo-proceso-en-el-espacio-de-busqueda">
-<h4>Veamos el mismo proceso en el espacio de búsqueda<a class="headerlink" href="#veamos-el-mismo-proceso-en-el-espacio-de-busqueda" title="Permalink to this headline">¶</a></h4>
+<p><strong>Implementación de la función cross entropy</strong></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">itertools</span>
@@ -1105,6 +1104,7 @@ J({\bf{w}}) = \frac{1}{N} \sum_{i=1}^{N} -t_i \log(g(f({\bf{x}}))) - (1-t_i)\log
 </div>
 </div>
 </div>
+<p><strong>Implementación de la función de optimización</strong></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.optimize</span> <span class="kn">import</span> <span class="n">minimize</span>
@@ -1122,23 +1122,27 @@ J({\bf{w}}) = \frac{1}{N} \sum_{i=1}^{N} -t_i \log(g(f({\bf{x}}))) - (1-t_i)\log
 </div>
 </div>
 </div>
+<p><strong>Espacio de características</strong></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">20</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="n">x1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">20</span><span class="p">)</span>
 <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X2</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">X2</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="n">y2</span><span class="p">,</span><span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;Accent&quot;</span><span class="p">);</span>
 <span class="n">x2</span> <span class="o">=</span> <span class="o">-</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">/</span><span class="n">r</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span><span class="o">*</span><span class="n">x1</span> <span class="o">-</span> <span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">/</span><span class="n">r</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
-<span class="n">line1</span><span class="p">,</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span><span class="n">x2</span><span class="p">,</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+<span class="n">line1</span><span class="p">,</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span><span class="n">x2</span><span class="p">,</span><span class="s1">&#39;k&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;frontera&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/clase_03_y_04_regresion_lineal_regresion_logistica_47_0.png" src="../_images/clase_03_y_04_regresion_lineal_regresion_logistica_47_0.png" />
+<img alt="../_images/clase_03_y_04_regresion_lineal_regresion_logistica_52_0.png" src="../_images/clase_03_y_04_regresion_lineal_regresion_logistica_52_0.png" />
 </div>
 </div>
+<p><strong>Espacio de búsqueda</strong></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">121</span><span class="p">)</span>
 <span class="n">plot_cost</span><span class="p">(</span><span class="n">loss</span><span class="p">,</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">99</span><span class="p">),</span> <span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span><span class="o">-</span><span class="mi">99</span><span class="p">),</span> <span class="n">vx</span><span class="o">=</span><span class="n">r</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">vy</span><span class="o">=</span><span class="n">r</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">vz</span><span class="o">=</span><span class="n">r</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
 <span class="n">g</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">r_</span><span class="p">[</span><span class="n">g</span><span class="p">]</span>
@@ -1165,33 +1169,32 @@ J({\bf{w}}) = \frac{1}{N} \sum_{i=1}^{N} -t_i \log(g(f({\bf{x}}))) - (1-t_i)\log
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/clase_03_y_04_regresion_lineal_regresion_logistica_48_0.png" src="../_images/clase_03_y_04_regresion_lineal_regresion_logistica_48_0.png" />
+<img alt="../_images/clase_03_y_04_regresion_lineal_regresion_logistica_54_0.png" src="../_images/clase_03_y_04_regresion_lineal_regresion_logistica_54_0.png" />
 </div>
 </div>
-</div>
-</div>
-<div class="section" id="zoom-al-optimo">
-<h3>zoom al óptimo<a class="headerlink" href="#zoom-al-optimo" title="Permalink to this headline">¶</a></h3>
+<p><strong>Zoom al óptimo</strong></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
 <span class="n">plot_cost</span><span class="p">(</span><span class="n">loss</span><span class="p">,</span> <span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span><span class="n">r</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">+</span><span class="mi">5</span><span class="p">),</span> <span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span><span class="n">r</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="mi">5</span><span class="p">),</span> <span class="n">vx</span><span class="o">=</span><span class="n">r</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">vy</span><span class="o">=</span><span class="n">r</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">vz</span><span class="o">=</span><span class="n">r</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">g</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="n">g</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span> <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;white&quot;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x7f1888933280&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x7f154d56cdd0&gt;
 </pre></div>
 </div>
-<img alt="../_images/clase_03_y_04_regresion_lineal_regresion_logistica_50_1.png" src="../_images/clase_03_y_04_regresion_lineal_regresion_logistica_50_1.png" />
+<img alt="../_images/clase_03_y_04_regresion_lineal_regresion_logistica_56_1.png" src="../_images/clase_03_y_04_regresion_lineal_regresion_logistica_56_1.png" />
 </div>
 </div>
-<div class="section" id="veamos-el-efecto-del-numero-de-iteraciones-y-de-la-tasa-de-aprendizaje">
-<h4>Veamos el efecto del número de iteraciones y de la tasa de aprendizaje:<a class="headerlink" href="#veamos-el-efecto-del-numero-de-iteraciones-y-de-la-tasa-de-aprendizaje" title="Permalink to this headline">¶</a></h4>
+<p><strong>Efecto del número de iteraciones y de la tasa de aprendizaje</strong></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">GradientSigmo</span><span class="p">(</span><span class="n">MaxIter</span><span class="o">=</span><span class="mi">10000</span><span class="p">,</span> <span class="n">eta</span> <span class="o">=</span> <span class="mf">0.001</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
+
+<span class="k">def</span> <span class="nf">GradientSigmo</span><span class="p">(</span><span class="n">MaxIter</span><span class="o">=</span><span class="mi">10000</span><span class="p">,</span> <span class="n">eta</span> <span class="o">=</span> <span class="mf">0.001</span><span class="p">):</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">clf</span><span class="p">()</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">([</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">])</span>
@@ -1229,23 +1232,20 @@ J({\bf{w}}) = \frac{1}{N} \sum_{i=1}^{N} -t_i \log(g(f({\bf{x}}))) - (1-t_i)\log
     <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span><span class="n">x2</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">MaxIter</span><span class="p">,</span><span class="n">eta</span><span class="p">)</span>
+
+
+   
+    
 </pre></div>
 </div>
 </div>
-</div>
-<p>Para poder interactuar con la funcion anterior, adicionar una celda de codigo y copiar las siguientes instrucciones.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">ipywidgets</span> <span class="kn">import</span> <span class="n">interact</span><span class="p">,</span> <span class="n">interactive</span><span class="p">,</span> <span class="n">fixed</span><span class="p">,</span> <span class="n">interact_manual</span>
-<span class="kn">import</span> <span class="nn">ipywidgets</span> <span class="k">as</span> <span class="nn">widgets</span>
-<span class="n">interact</span><span class="p">(</span><span class="n">GradientSigmo</span><span class="p">,</span><span class="n">MaxIter</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="mi">1000</span><span class="p">,</span><span class="mi">10000</span><span class="p">],</span> <span class="n">eta</span><span class="o">=</span><span class="p">[</span><span class="mf">0.0001</span><span class="p">,</span><span class="mf">0.001</span><span class="p">,</span><span class="mf">0.1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="p">]);</span>    
-</pre></div>
-</div>
-<p><strong>Nota</strong>
-<a class="reference external" href="https://jupyterbook.org/en/stable/interactive/interactive.html#ipywidgets">Actualmente los jupyter books no son compatibles con los widgets, es necesaria configuración adicional</a></p>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "4f2aeb1761094ffbb1b216d7e887b928", "version_major": 2, "version_minor": 0}
+</script></div>
 </div>
 <div class="section" id="bibliografy">
-<h4>Bibliografy<a class="headerlink" href="#bibliografy" title="Permalink to this headline">¶</a></h4>
-<p>[1] Bishop, C.M. Pattern Recognition and Machine Learning. Springer, 2006.</p>
-<p>[2] Murphy K.P., Machine Learning: A Probabilistic Perspective. The MIT Press, 2012.</p>
+<h4><strong>Bibliografy</strong><a class="headerlink" href="#bibliografy" title="Permalink to this headline">¶</a></h4>
 </div>
 </div>
 </div>
