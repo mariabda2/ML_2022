@@ -598,11 +598,6 @@ const thebe_selector_output = ".output, .cell_output"
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>replicating local resources
-</pre></div>
-</div>
-</div>
 </div>
 <div class="tex2jax_ignore mathjax_ignore section" id="regresion-lineal-y-regresion-logistica">
 <h1><strong>Regresión lineal y regresión logística</strong><a class="headerlink" href="#regresion-lineal-y-regresion-logistica" title="Permalink to this headline">¶</a></h1>
@@ -737,7 +732,7 @@ y = 3*x_1 + 7*x_2 - 2
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[58.04224373]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[57.98534192]])
 </pre></div>
 </div>
 </div>
@@ -752,8 +747,8 @@ Recordemos que el Polinomio real es <span class="math notranslate nohighlight">\
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[3.00047915 6.99720858]]
-[-0.94763241]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[3.05792418 6.97830872]]
+[-1.36959508]
 </pre></div>
 </div>
 </div>
@@ -771,7 +766,7 @@ Recordemos que el Polinomio real es <span class="math notranslate nohighlight">\
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>35.48520122924596
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>33.960953822171774
 </pre></div>
 </div>
 </div>
@@ -795,7 +790,7 @@ Recordemos que el Polinomio real es <span class="math notranslate nohighlight">\
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ 3.00047918,  6.99720856, -0.94763176])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ 3.05792418,  6.97830869, -1.36959408])
 </pre></div>
 </div>
 </div>
@@ -808,7 +803,7 @@ Recordemos que el Polinomio real es <span class="math notranslate nohighlight">\
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>35.48520122924636
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>33.9609538221724
 </pre></div>
 </div>
 </div>
@@ -821,7 +816,7 @@ Recordemos que el Polinomio real es <span class="math notranslate nohighlight">\
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>58.042244513094666
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>57.985342842003945
 </pre></div>
 </div>
 </div>
@@ -894,9 +889,9 @@ w_j(iter) = w_j(iter-1) - \frac{\eta}{N} \sum_{i=1}^{N}\left( \sum_{k=0}^{d} w_k
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[ 3.00047915]
- [ 6.99720858]
- [-0.94763241]]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[ 3.05792418]
+ [ 6.97830872]
+ [-1.36959508]]
 </pre></div>
 </div>
 <img alt="../_images/clase_03_y_04_regresion_lineal_regresion_logistica_30_1.png" src="../_images/clase_03_y_04_regresion_lineal_regresion_logistica_30_1.png" />
@@ -909,7 +904,7 @@ w_j(iter) = w_j(iter-1) - \frac{\eta}{N} \sum_{i=1}^{N}\left( \sum_{k=0}^{d} w_k
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>35.485201229245995
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>33.96095382217183
 </pre></div>
 </div>
 </div>
@@ -921,7 +916,7 @@ w_j(iter) = w_j(iter-1) - \frac{\eta}{N} \sum_{i=1}^{N}\left( \sum_{k=0}^{d} w_k
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([58.04224373])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([57.98534192])
 </pre></div>
 </div>
 </div>
@@ -1041,25 +1036,20 @@ J({\bf{w}}) = \frac{1}{N} \sum_{i=1}^{N} -y_i \log(g(f({\bf{x}}))) - (1-y_i)\log
 <span class="n">x1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">20</span><span class="p">)</span>
 <span class="n">x2</span> <span class="o">=</span> <span class="o">-</span><span class="p">(</span><span class="n">w</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">/</span><span class="n">w</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span><span class="o">*</span><span class="n">x1</span> <span class="o">-</span> <span class="p">(</span><span class="n">w</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">/</span><span class="n">w</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
 <span class="n">line1</span><span class="p">,</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span><span class="n">x2</span><span class="p">,</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
-
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">10000</span><span class="p">,</span><span class="mi">100</span><span class="p">):</span>
     <span class="n">w</span><span class="p">,</span><span class="n">_</span> <span class="o">=</span> <span class="n">Gradiente</span><span class="p">(</span><span class="n">X2</span><span class="p">,</span><span class="n">y2</span><span class="p">,</span><span class="n">MaxIter</span> <span class="o">=</span> <span class="n">i</span><span class="p">)</span>
     <span class="n">x2</span> <span class="o">=</span> <span class="o">-</span><span class="p">(</span><span class="n">w</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">/</span><span class="n">w</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span><span class="o">*</span><span class="n">x1</span> <span class="o">-</span> <span class="p">(</span><span class="n">w</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">/</span><span class="n">w</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
-    <span class="n">line1</span><span class="o">.</span><span class="n">set_ydata</span><span class="p">(</span><span class="n">x2</span><span class="p">)</span>
-    
+    <span class="n">line1</span><span class="o">.</span><span class="n">set_ydata</span><span class="p">(</span><span class="n">x2</span><span class="p">)</span>   
     <span class="k">if</span> <span class="n">i</span> <span class="o">&gt;</span> <span class="mi">1000</span><span class="p">:</span>
         <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="mf">1.8</span><span class="p">,</span><span class="mf">4.8</span><span class="p">])</span>
     
     <span class="n">fig</span><span class="o">.</span><span class="n">canvas</span><span class="o">.</span><span class="n">draw</span><span class="p">()</span>
     <span class="n">fig</span><span class="o">.</span><span class="n">canvas</span><span class="o">.</span><span class="n">flush_events</span><span class="p">()</span>
-    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">.300</span><span class="p">)</span>
-    
+    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">.05</span><span class="p">)</span>    
+
 <span class="n">line1</span><span class="p">,</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span><span class="n">x2</span><span class="p">,</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../_images/clase_03_y_04_regresion_lineal_regresion_logistica_46_0.png" src="../_images/clase_03_y_04_regresion_lineal_regresion_logistica_46_0.png" />
 </div>
 </div>
 <p><strong>Implementación de la función cross entropy</strong></p>
@@ -1183,7 +1173,7 @@ J({\bf{w}}) = \frac{1}{N} \sum_{i=1}^{N} -y_i \log(g(f({\bf{x}}))) - (1-y_i)\log
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x7f154d56cdd0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x7f03e9498a50&gt;
 </pre></div>
 </div>
 <img alt="../_images/clase_03_y_04_regresion_lineal_regresion_logistica_56_1.png" src="../_images/clase_03_y_04_regresion_lineal_regresion_logistica_56_1.png" />
@@ -1233,15 +1223,15 @@ J({\bf{w}}) = \frac{1}{N} \sum_{i=1}^{N} -y_i \log(g(f({\bf{x}}))) - (1-y_i)\log
     <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">MaxIter</span><span class="p">,</span><span class="n">eta</span><span class="p">)</span>
 
-
-   
-    
+<span class="kn">from</span> <span class="nn">ipywidgets</span> <span class="kn">import</span> <span class="n">interact</span><span class="p">,</span> <span class="n">interactive</span><span class="p">,</span> <span class="n">fixed</span><span class="p">,</span> <span class="n">interact_manual</span>
+<span class="kn">import</span> <span class="nn">ipywidgets</span> <span class="k">as</span> <span class="nn">widgets</span>
+<span class="n">interact</span><span class="p">(</span><span class="n">GradientSigmo</span><span class="p">,</span><span class="n">MaxIter</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="mi">1000</span><span class="p">,</span><span class="mi">10000</span><span class="p">],</span> <span class="n">eta</span><span class="o">=</span><span class="p">[</span><span class="mf">0.0001</span><span class="p">,</span><span class="mf">0.001</span><span class="p">,</span><span class="mf">0.1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="p">]);</span>  
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "4f2aeb1761094ffbb1b216d7e887b928", "version_major": 2, "version_minor": 0}
+{"model_id": "0cd763ec7ef84891b40c72e879df7b11", "version_major": 2, "version_minor": 0}
 </script></div>
 </div>
 <div class="section" id="bibliografy">
