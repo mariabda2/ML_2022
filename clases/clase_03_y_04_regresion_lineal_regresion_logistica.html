@@ -4,11 +4,13 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Regresión lineal y regresión logística &#8212; Modelos y Simulación de Sistemas II</title>
     
-  <link href="../_static/css/theme.css" rel="stylesheet">
-  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -18,20 +20,16 @@
   <link rel="preload" as="font" type="font/woff2" crossorigin
     href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
-    
-      
-
-    
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
     
-  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
@@ -39,12 +37,13 @@
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script src="../_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
 const thebe_selector_input = "pre"
@@ -64,7 +63,21 @@ const thebe_selector_output = ".output, .cell_output"
     <!-- Google Analytics -->
     
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
     
     <div class="container-fluid" id="banner"></div>
 
@@ -73,9 +86,10 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="container-xl">
       <div class="row">
           
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
-    
-        <div class="navbar-brand-box">
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="../index.html">
       
         <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
@@ -93,14 +107,15 @@ const thebe_selector_output = ".output, .cell_output"
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
-        <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../intro.html">
-   INFORMACIÓN DEL CURSO
-  </a>
- </li>
-</ul>
-<ul class="current nav bd-sidenav">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    INFORMACIÓN DEL CURSO
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../Labs/Intro/Intro.html">
    INTRODUCCIÓN AL LABORATORIO
@@ -289,90 +304,164 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 
     </div>
-</nav> <!-- To handle the deprecated key -->
-
-<div class="navbar_extra_footer">
-  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-</div>
-
-</div>
-
-
-          
-
-
-          
-<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
-    
-    <div class="topbar container-xl fixed-top">
-    <div class="topbar-contents row">
-        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
-        <div class="col pl-md-4 topbar-main">
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
             
-            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-                <i class="fas fa-bars"></i>
-                <i class="fas fa-arrow-left"></i>
-                <i class="fas fa-arrow-up"></i>
-            </button>
-            
-            
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
-            class="fas fa-download"></i></button>
-
-    <div class="dropdown-buttons">
-        <!-- ipynb file if we had a myst markdown file -->
-        
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/clases/clase_03_y_04_regresion_lineal_regresion_logistica.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.ipynb</button></a>
-        <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
-    </div>
-</div>
-
-            <!-- Source interaction buttons -->
-
-            <!-- Full screen (wrap in <a> to have style consistency -->
-
-<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-        title="Fullscreen mode"><i
-            class="fas fa-expand"></i></button></a>
-
-            <!-- Launch buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
-    <div class="dropdown-buttons">
-        
-        
-        
-        <a class="colab-button" href="https://colab.research.google.com/github/mariabda2/ML_2022/blob/master/clases/clase_03_y_04_regresion_lineal_regresion_logistica.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
-                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
-                    src="../_static/images/logo_colab.png"
-                    alt="Interact on Colab">Colab</button></a>
-        
-        
-    </div>
-</div>
-
-        </div>
-
-        <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
-            
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
             </div>
-            <nav id="bd-toc-nav" aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://colab.research.google.com/github/mariabda2/ML_2022/blob/master/clases/clase_03_y_04_regresion_lineal_regresion_logistica.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Colab"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_colab.png">
+  </span>
+<span class="headerbtn__text-container">Colab</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/clases/clase_03_y_04_regresion_lineal_regresion_logistica.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#font-color-blue-niveles-de-abstraccion-font">
    <font color="blue">
@@ -473,12 +562,11 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
 </ul>
 
-            </nav>
-        </div>
-    </div>
+    </nav>
 </div>
-    <div id="main-content" class="row">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
                 <h1>Regresión lineal y regresión logística</h1>
@@ -595,7 +683,8 @@ const thebe_selector_output = ".output, .cell_output"
                     </div>
                 </div>
             </div>
-            
+            <main id="main-content" role="main">
+                
               <div>
                 
   <div class="cell docutils container">
@@ -606,21 +695,21 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 </div>
-<div class="tex2jax_ignore mathjax_ignore section" id="regresion-lineal-y-regresion-logistica">
-<h1><strong>Regresión lineal y regresión logística</strong><a class="headerlink" href="#regresion-lineal-y-regresion-logistica" title="Permalink to this headline">¶</a></h1>
+<section class="tex2jax_ignore mathjax_ignore" id="regresion-lineal-y-regresion-logistica">
+<h1><strong>Regresión lineal y regresión logística</strong><a class="headerlink" href="#regresion-lineal-y-regresion-logistica" title="Permalink to this headline">#</a></h1>
 <p>clase 03: regresión lineal<br/>
 clase 04: regresión logística</p>
-<div class="section" id="font-color-blue-niveles-de-abstraccion-font">
-<h2><font color='blue'>Niveles de abstracción</font><a class="headerlink" href="#font-color-blue-niveles-de-abstraccion-font" title="Permalink to this headline">¶</a></h2>
+<section id="font-color-blue-niveles-de-abstraccion-font">
+<h2><font color='blue'>Niveles de abstracción</font><a class="headerlink" href="#font-color-blue-niveles-de-abstraccion-font" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p><strong>Alto nivel:</strong> Selecciono un modelo (plantilla) que encaja en el problema que quiero resolver y uso una librería que tiene definido ya un criterio e implementado un algoritmo de entrenamiento. Me enfoco en ajustar el modelo a los datos y realizar el proceso de validación.</p></li>
 <li><p><strong>Nivel intermedio:</strong> Selecciono un modelo pero quiero modificar la función de costo para el entrenamiento. Uso una librería de cálculo simbólico para la optimización de la nueva función.</p></li>
 <li><p><strong>Bajo nivel:</strong> Selecciono el modelo el modelo y decido cambiar la función criterio y/o el algoritmo de optimización, o incluso hacer cambios en la formulación del modelo.</p></li>
 </ul>
 <p>El último nivel es necesario sobre todo en casos en los que se abordan problemas avanzados en los que las soluciones predefinidas no son suficientes para alcanzar un solución satisfactoria.</p>
-</div>
-<div class="section" id="font-color-blue-modelos-basicos-de-aprendizaje-font">
-<h2><font color='blue'>Modelos básicos de aprendizaje</font><a class="headerlink" href="#font-color-blue-modelos-basicos-de-aprendizaje-font" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="font-color-blue-modelos-basicos-de-aprendizaje-font">
+<h2><font color='blue'>Modelos básicos de aprendizaje</font><a class="headerlink" href="#font-color-blue-modelos-basicos-de-aprendizaje-font" title="Permalink to this headline">#</a></h2>
 <p><strong>El modelo</strong>. Supongamos que queremos modelar un conjunto de datos empleando una función polinomial de la forma:</p>
 <div class="math notranslate nohighlight">
 \[
@@ -645,8 +734,8 @@ ECM({\bf{w}}) = \frac{1}{N}\sum_{i=1}^{N} \left\lbrace f({\bf{x}}_i, {\bf{w}}) -
 </div>
 </div>
 </div>
-<div class="section" id="ejemplo-tipico-de-regresion-lineal">
-<h3><strong>Ejemplo típico de regresión lineal</strong><a class="headerlink" href="#ejemplo-tipico-de-regresion-lineal" title="Permalink to this headline">¶</a></h3>
+<section id="ejemplo-tipico-de-regresion-lineal">
+<h3><strong>Ejemplo típico de regresión lineal</strong><a class="headerlink" href="#ejemplo-tipico-de-regresion-lineal" title="Permalink to this headline">#</a></h3>
 <p>Cada que corra el siguiente bloque de código tendrá una predicción diferente</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -667,9 +756,9 @@ ECM({\bf{w}}) = \frac{1}{N}\sum_{i=1}^{N} \left\lbrace f({\bf{x}}_i, {\bf{w}}) -
 <img alt="../_images/clase_03_y_04_regresion_lineal_regresion_logistica_7_0.png" src="../_images/clase_03_y_04_regresion_lineal_regresion_logistica_7_0.png" />
 </div>
 </div>
-</div>
-<div class="section" id="ejemplo-con-datos-generados-artificialmente">
-<h3><strong>Ejemplo con datos generados artificialmente</strong><a class="headerlink" href="#ejemplo-con-datos-generados-artificialmente" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="ejemplo-con-datos-generados-artificialmente">
+<h3><strong>Ejemplo con datos generados artificialmente</strong><a class="headerlink" href="#ejemplo-con-datos-generados-artificialmente" title="Permalink to this headline">#</a></h3>
 <p>A partir del conjunto de muestras obtenido con <span class="math notranslate nohighlight">\(y\)</span>, reconstruya el modelo dado.</p>
 <div class="math notranslate nohighlight">
 \[
@@ -714,9 +803,9 @@ y = 3*x_1 + 7*x_2 - 2
 <img alt="../_images/clase_03_y_04_regresion_lineal_regresion_logistica_11_0.png" src="../_images/clase_03_y_04_regresion_lineal_regresion_logistica_11_0.png" />
 </div>
 </div>
-</div>
-<div class="section" id="font-color-blue-estrategia-de-alto-nivel-caja-negra-font">
-<h3><strong><font color='blue'>  Estrategia de alto nivel (caja negra) </font></strong><a class="headerlink" href="#font-color-blue-estrategia-de-alto-nivel-caja-negra-font" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="font-color-blue-estrategia-de-alto-nivel-caja-negra-font">
+<h3><strong><font color='blue'>  Estrategia de alto nivel (caja negra) </font></strong><a class="headerlink" href="#font-color-blue-estrategia-de-alto-nivel-caja-negra-font" title="Permalink to this headline">#</a></h3>
 <p>Librería Sklearn dentro de las plantillas de modelos lineales tiene una para regresión lineal.</p>
 <ul class="simple">
 <li><p>[reg] es el objeto de regresión lineal</p></li>
@@ -778,9 +867,9 @@ Recordemos que el Polinomio real es <span class="math notranslate nohighlight">\
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="font-color-blue-estrategia-de-nivel-intermedio-font">
-<h3><strong><font color='blue'>  Estrategia de nivel intermedio </font></strong><a class="headerlink" href="#font-color-blue-estrategia-de-nivel-intermedio-font" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="font-color-blue-estrategia-de-nivel-intermedio-font">
+<h3><strong><font color='blue'>  Estrategia de nivel intermedio </font></strong><a class="headerlink" href="#font-color-blue-estrategia-de-nivel-intermedio-font" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>Sabemos que el problema que debemos resolver corresponde a un problema de minimización sin restricciones.</p></li>
 <li><p>Usaremos una librería llamada Scipy que tiene una función para realizar el proceso de optimización</p></li>
@@ -828,9 +917,9 @@ Recordemos que el Polinomio real es <span class="math notranslate nohighlight">\
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="font-color-blue-estrategia-de-mas-bajo-nivel-font">
-<h3><strong><font color='blue'>  Estrategia de más bajo nivel </font></strong><a class="headerlink" href="#font-color-blue-estrategia-de-mas-bajo-nivel-font" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="font-color-blue-estrategia-de-mas-bajo-nivel-font">
+<h3><strong><font color='blue'>  Estrategia de más bajo nivel </font></strong><a class="headerlink" href="#font-color-blue-estrategia-de-mas-bajo-nivel-font" title="Permalink to this headline">#</a></h3>
 <p><strong>Gradiente descendetente</strong></p>
 <p>Un algoritmo simple que nos permite solucionar el problema de optimización es el Algoritmo de <strong>Gradiente Descendente</strong>. Un problema de optimización puede tener múltiples formas o algoritmos para resolverse, cuando el problema de optimización es <b>convexo</b> podemos esperar que casi con cualquier método encontremos el valor del parámetro que hace la función óptima, sin embargo, es posible que el problema de optimización no sea convexo, en cuyo caso el algoritmo o método de optimización juega un rol más importante.</p>
 <p><br/> También es importante tener en cuenta la velocidad de convergencia del algoritmo o método de optimización, el costo computacional y el número de parámetros libres. El algoritmo de gradiente descendente consiste en aplicar iterativamente la siguiente regla:</p>
@@ -928,13 +1017,13 @@ w_j(iter) = w_j(iter-1) - \frac{\eta}{N} \sum_{i=1}^{N}\left( \sum_{k=0}^{d} w_k
 </div>
 </div>
 </div>
-</div>
-</div>
+</section>
+</section>
 <hr class="docutils" />
-<div class="section" id="font-color-blue-problema-de-clasificacion-font">
-<h2><strong><font color='blue'>  Problema de clasificación </font></strong><a class="headerlink" href="#font-color-blue-problema-de-clasificacion-font" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="regresion-logistica">
-<h3><strong>Regresión logística</strong><a class="headerlink" href="#regresion-logistica" title="Permalink to this headline">¶</a></h3>
+<section id="font-color-blue-problema-de-clasificacion-font">
+<h2><strong><font color='blue'>  Problema de clasificación </font></strong><a class="headerlink" href="#font-color-blue-problema-de-clasificacion-font" title="Permalink to this headline">#</a></h2>
+<section id="regresion-logistica">
+<h3><strong>Regresión logística</strong><a class="headerlink" href="#regresion-logistica" title="Permalink to this headline">#</a></h3>
 <p>Una forma alternativa de entender el problema de clasificación, es buscar una función que sea capaz de dividir el espacio de características y dejar los conjuntos de muestras de cada clase separados. <em>La variable a predicir no es continua, sino que toma valores discretos.</em></p>
 <p>Cuando es posible dejar todas las muestras de una clase a un lado de la recta, y las muestras de la otra clase al otro, el problema se conoce como linealmente separable.</p>
 <p>Sin embargo eso no sucede en la gran mayoría de problemas reales. El problema de clasificación se puede entonces pensar como el problema de encontrar una función polinomial  f  que pueda dividir los conjuntos de datos de las diferentes clases.</p>
@@ -966,9 +1055,9 @@ w_j(iter) = w_j(iter-1) - \frac{\eta}{N} \sum_{i=1}^{N}\left( \sum_{k=0}^{d} w_k
 </div>
 </div>
 <p>El problema con la función <span class="math notranslate nohighlight">\(sgn\)</span> es que es discontinua y no puede ser usada como criterio de optimización para ningún algoritmo basado en gradiente.</p>
-</div>
-<div class="section" id="funcion-sigmoide">
-<h3><strong>Función sigmoide</strong><a class="headerlink" href="#funcion-sigmoide" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="funcion-sigmoide">
+<h3><strong>Función sigmoide</strong><a class="headerlink" href="#funcion-sigmoide" title="Permalink to this headline">#</a></h3>
 <p>Es una función que tiene un comportamiento asintótico similar a la función <span class="math notranslate nohighlight">\(sgn\)</span> pero  es continua y derivable, dada por:</p>
 <div class="math notranslate nohighlight">
 \[
@@ -990,9 +1079,9 @@ g(u) = \frac{\exp(u)}{1 + \exp(u)}
 <img alt="../_images/clase_03_y_04_regresion_lineal_regresion_logistica_41_0.png" src="../_images/clase_03_y_04_regresion_lineal_regresion_logistica_41_0.png" />
 </div>
 </div>
-</div>
-<div class="section" id="funcion-de-entropia-cruzada-cross-entropy">
-<h3><strong>Función de entropía cruzada (cross entropy)</strong><a class="headerlink" href="#funcion-de-entropia-cruzada-cross-entropy" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="funcion-de-entropia-cruzada-cross-entropy">
+<h3><strong>Función de entropía cruzada (cross entropy)</strong><a class="headerlink" href="#funcion-de-entropia-cruzada-cross-entropy" title="Permalink to this headline">#</a></h3>
 <p>Esta función <span class="math notranslate nohighlight">\(J\)</span> es el criterio de entrenamiento la cual minimiza el error de clasificación y está dada por:</p>
 <div class="math notranslate nohighlight">
 \[
@@ -1241,12 +1330,12 @@ J({\bf{w}}) = \frac{1}{N} \sum_{i=1}^{N} -y_i \log(g(f({\bf{x}}))) - (1-y_i)\log
 {"model_id": "0cd763ec7ef84891b40c72e879df7b11", "version_major": 2, "version_minor": 0}
 </script></div>
 </div>
-<div class="section" id="bibliografy">
-<h4><strong>Bibliografy</strong><a class="headerlink" href="#bibliografy" title="Permalink to this headline">¶</a></h4>
-</div>
-</div>
-</div>
-</div>
+<section id="bibliografy">
+<h4><strong>Bibliografy</strong><a class="headerlink" href="#bibliografy" title="Permalink to this headline">#</a></h4>
+</section>
+</section>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -1270,9 +1359,11 @@ J({\bf{w}}) = \frac{1}{N} \sum_{i=1}^{N} -y_i \log(g(f({\bf{x}}))) - (1-y_i)\log
 
               </div>
               
-            
-                <!-- Previous / next buttons -->
-<div class='prev-next-area'> 
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
     <a class='left-prev' id="prev-link" href="../titles/U1_description.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
@@ -1288,24 +1379,28 @@ J({\bf{w}}) = \frac{1}{N} \sum_{i=1}^{N} -y_i \log(g(f({\bf{x}}))) - (1-y_i)\log
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-            
+            </footer>
         </div>
     </div>
-    <footer class="footer">
-  <p>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Profesora Maria Bernarda Salazar Sánchez -- Laboratorio por Germán E. Melo  -  Universidad de Antioquia<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
     
-      By Profesora Maria Bernarda Salazar Sánchez -- Laboratorio por Germán E. Melo  -  Universidad de Antioquia<br/>
-    
-        &copy; Copyright 2021.<br/>
-  </p>
-</footer>
-</main>
+</div>
 
 
       </div>
     </div>
   
-  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
 
   </body>
 </html>
