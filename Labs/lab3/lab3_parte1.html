@@ -539,13 +539,17 @@ title="Print to PDF"
 <span class="c1"># Ejecuta esta celda!</span>
 <span class="o">%</span><span class="k">load_ext</span> autoreload
 <span class="o">%</span><span class="k">autoreload</span> 2
-<span class="c1"># for local </span>
-<span class="c1"># import sys ; sys.path.append(&#39;../commons/utils/&#39;)</span>
-<span class="o">!</span>wget https://raw.githubusercontent.com/mariabda2/ML_2022/master/Labs/commons/utils/general.py -O general.py --no-cache
-<span class="kn">from</span> <span class="nn">general</span> <span class="kn">import</span> <span class="n">configure_lab3</span>
-<span class="n">configure_lab3</span><span class="p">()</span>
+<span class="n">in_colab</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="k">if</span> <span class="ow">not</span> <span class="n">in_colab</span><span class="p">:</span>
+    <span class="kn">import</span> <span class="nn">sys</span> <span class="p">;</span> <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;../commons/utils/&#39;</span><span class="p">);</span> <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;../commons/utils/data&#39;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span> 
+    <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s1">&#39;wget https://raw.githubusercontent.com/mariabda2/ML_2022/master/Labs/commons/utils/general.py -O general.py&#39;</span><span class="p">)</span>
+    <span class="kn">from</span> <span class="nn">general</span> <span class="kn">import</span> <span class="n">configure_lab3</span>
+    <span class="n">configure_lab3</span><span class="p">()</span>
 <span class="kn">from</span> <span class="nn">lab3</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="n">GRADER</span> <span class="o">=</span> <span class="n">part_1</span><span class="p">()</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">set_context</span><span class="p">(</span><span class="s1">&#39;talk&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -570,25 +574,57 @@ title="Print to PDF"
 </div>
 </div>
 </div>
-<p>Vamos realizar algunas pruebas para determinar que metodologia de validación es más adecuada. En el ejercicio de código, vamos usar las librerias de scikit-learn:</p>
+<p>Para los propósitos de nuestro laboratorio, la reducción de características funciona como una “caja negra”. Vamos a entender que realiza esta caja negra y cómo nos ayuda a representar nuestros datos con menos características.</p>
+<p>Por ejemplo, si escogemos una muestra observamos que tiene 64 características, estas 64 caracteristísticas las podemos graficar para representar un “Cero”.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;nuestra muestra, es un arreglo&quot;</span><span class="p">)</span>
+<span class="c1"># varia el indice para observar otros digitos</span>
+<span class="n">numero</span> <span class="o">=</span> <span class="n">digits</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">1</span><span class="p">,:]</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ravel</span><span class="p">(</span><span class="n">numero</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Que tiene &quot;</span><span class="p">,</span> <span class="n">numero</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="s2">&quot;caracteristicas&quot;</span><span class="p">)</span>
+<span class="n">plot_digit</span><span class="p">(</span><span class="n">numero</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Al usar nuestra caja negra de reducción, nuestra misma muestra ahora es presentada por 40 características, en lugar de las 64 originales.
+Sin embargo estas características no pueden ser graficadas en forma de imagen.</p>
+<p>También podríamos reducir aún más nuestras características. Ejemplo, podríamos representar ese cero, en un plano cartesiano, usando solo 2 de las características reducidas y así mismo con otras muestras, el siguiente gráfico muestra un “Cero” y un “Uno” usando las características reducidas, observa como las muestras están alejadas, por lo que representan número diferentes</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ravel</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">1</span><span class="p">,:],</span> <span class="mi">3</span><span class="p">))))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;el anterior vector representa el cero y tiene ***********&quot;</span><span class="p">,</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">1</span><span class="p">,:]</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="s2">&quot;caracteristicas*******&quot;</span><span class="p">,</span> <span class="s2">&quot;es decir menos de las 64 originales&quot;</span><span class="p">)</span>
+<span class="n">plot_digit_plano</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">numero_digitos</span> <span class="o">=</span> <span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Luego de entender un poco mejor nuestros datos. Vamos realizar algunas pruebas para determinar que metodologia de validación es más adecuada. En el ejercicio de código, vamos usar las librerias de scikit-learn:</p>
 <ol class="simple">
 <li><p><a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.StratifiedKFold.html?highlight=stratifiedkfold#sklearn.model_selection.StratifiedKFold">StratifiedKFold</a></p></li>
 <li><p><a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.ShuffleSplit.html">ShuffleSplit</a></p></li>
+<li><p><a class="reference external" href="http://scikit-learn.org/stable/modules/generated/sklearn.model_selection.LeaveOneOut.html">LeaveOneOut</a></p></li>
 </ol>
-<p>En la función debes seleccionar la función de sklearn adecuada para lograr el efecto deseado y completar el código donde es señalado</p>
+<p>En la función debes seleccionar la función de sklearn adecuada para lograr el efecto deseado y completar el código donde es señalado (<code class="docutils literal notranslate"><span class="pre">...</span></code>).
+Recuerda llamar los parámetros por su nombre.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#ejercicio de código</span>
-<span class="k">def</span> <span class="nf">get_muestras_by_cv</span> <span class="p">(</span><span class="n">method</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;función que devuelve el numero de muestras promedios</span>
+<span class="k">def</span> <span class="nf">get_muestras_by_validacion</span> <span class="p">(</span><span class="n">metodo</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;función que devuelve el numero de muestras promedio</span>
 <span class="sd">    dependiendo de la metodologia de validación (method).</span>
-<span class="sd">    los conjuntos de datos deben dividirse **3 veces**</span>
 
-<span class="sd">    method (int): solo puede tomar dos valores:</span>
-<span class="sd">        1: se debe usar el metodo de validación Bootstrapping</span>
-<span class="sd">        2: se debe usar el metodo valicacion cruzada estratificada</span>
-<span class="sd">    X: matriz numpy con los valores de las caracteristicas</span>
-<span class="sd">    Y: vector numpy con las etiquetas de con conjunto de caracteriticas X</span>
+<span class="sd">    Args: </span>
+<span class="sd">        metodo (int): solo puede tomar dos valores:</span>
+<span class="sd">            1: se debe usar el metodo de validación Bootstrapping</span>
+<span class="sd">                los conjuntos de datos deben dividirse **3 veces**</span>
+<span class="sd">            2: se debe usar el metodo valicación cruzada estratificada</span>
+<span class="sd">                los conjuntos de datos deben dividirse **3 veces**</span>
+<span class="sd">            3: se debe usar el metodo &quot;Dejar una muestra afuera&quot;</span>
+<span class="sd">        X: matriz numpy con los valores de las caracteristicas</span>
+<span class="sd">        Y: vector numpy con las etiquetas de con conjunto de caracteriticas X</span>
+<span class="sd">    </span>
 <span class="sd">    retorna: dataframe con las siguientes columnas:</span>
 <span class="sd">        - etiqueta de clase</span>
 <span class="sd">        - fold</span>
@@ -599,8 +635,8 @@ title="Print to PDF"
     
     <span class="k">if</span> <span class="n">method</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
         <span class="c1">#completa el codigo con el metodo adecuado</span>
-        <span class="n">cv</span> <span class="o">=</span> 
-        <span class="k">for</span> <span class="n">n</span><span class="p">,</span> <span class="p">(</span><span class="n">train_index</span><span class="p">,</span> <span class="n">test_index</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span> <span class="p">(</span><span class="n">cv</span><span class="o">.</span><span class="n">split</span><span class="p">()):</span>
+        <span class="n">validacion</span> <span class="o">=</span> <span class="o">...</span>
+        <span class="k">for</span> <span class="n">n</span><span class="p">,</span> <span class="p">(</span><span class="n">train_index</span><span class="p">,</span> <span class="n">test_index</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span> <span class="p">(</span><span class="n">validacion</span><span class="o">.</span><span class="n">split</span><span class="o">...</span><span class="p">)):</span>
             <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">Y</span><span class="p">[</span><span class="n">train_index</span><span class="p">],</span> <span class="n">Y</span><span class="p">[</span><span class="n">test_index</span><span class="p">]</span>
             
             <span class="c1"># iterar sobre las etiquetas</span>
@@ -612,8 +648,8 @@ title="Print to PDF"
         
     <span class="k">elif</span> <span class="n">method</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
         <span class="c1">#completa el codigo con el metodo adecuado</span>
-        <span class="n">cv</span> <span class="o">=</span> 
-        <span class="k">for</span> <span class="n">n</span><span class="p">,</span> <span class="p">(</span><span class="n">train_index</span><span class="p">,</span> <span class="n">test_index</span> <span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span> <span class="p">(</span><span class="n">cv</span><span class="o">.</span><span class="n">split</span><span class="p">()):</span>
+        <span class="n">validacion</span> <span class="o">=</span> <span class="o">...</span>
+        <span class="k">for</span> <span class="n">n</span><span class="p">,</span> <span class="p">(</span><span class="n">train_index</span><span class="p">,</span> <span class="n">test_index</span> <span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span> <span class="p">(</span><span class="n">validacion</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="o">...</span><span class="p">)):</span>
             <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">Y</span><span class="p">[</span><span class="n">train_index</span><span class="p">],</span> <span class="n">Y</span><span class="p">[</span><span class="n">test_index</span><span class="p">]</span>
             <span class="nb">len</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">y_train</span><span class="p">))</span>
             <span class="c1"># iterar sobre las etiquetas</span>
@@ -623,6 +659,19 @@ title="Print to PDF"
                 <span class="n">results</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">idx</span><span class="p">,</span> <span class="s1">&#39;folds&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">n</span>             
                 <span class="n">results</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">idx</span><span class="p">,</span> <span class="s1">&#39;numero de muestras entrenamiento&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">y_train</span> <span class="o">==</span> <span class="n">label</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
                 <span class="n">idx</span> <span class="o">=</span> <span class="n">idx</span><span class="o">+</span><span class="mi">1</span>
+    
+    <span class="k">elif</span> <span class="n">metodo</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
+        <span class="n">validacion</span> <span class="o">=</span> <span class="o">...</span>
+        <span class="k">for</span> <span class="n">n</span><span class="p">,</span> <span class="p">(</span><span class="n">train_index</span><span class="p">,</span> <span class="n">test_index</span> <span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span> <span class="p">(</span><span class="n">validacion</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="o">...</span><span class="p">)):</span>
+            <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">Y</span><span class="p">[</span><span class="n">train_index</span><span class="p">],</span> <span class="n">Y</span><span class="p">[</span><span class="n">test_index</span><span class="p">]</span>
+            <span class="c1"># iterar sobre las etiquetas</span>
+            <span class="k">for</span> <span class="n">label</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">y_train</span><span class="p">):</span>
+            
+                <span class="n">results</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">idx</span><span class="p">,</span> <span class="s1">&#39;etiqueta de clase&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">label</span>
+                <span class="n">results</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">idx</span><span class="p">,</span> <span class="s1">&#39;folds&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">n</span>             
+                <span class="n">results</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">idx</span><span class="p">,</span> <span class="s1">&#39;numero de muestras entrenamiento&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">y_train</span> <span class="o">==</span> <span class="n">label</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+                <span class="n">idx</span> <span class="o">=</span> <span class="n">idx</span><span class="o">+</span><span class="mi">1</span>
+
     <span class="k">else</span><span class="p">:</span>
         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;el metodo no es valido!&quot;</span><span class="p">)</span>
         
@@ -635,8 +684,7 @@ title="Print to PDF"
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## la funcion que prueba tu implementacion</span>
-<span class="c1">#ignora las graficas!!</span>
-<span class="n">GRADER</span><span class="o">.</span><span class="n">run_test</span><span class="p">(</span><span class="s2">&quot;ejercicio1&quot;</span><span class="p">,</span> <span class="n">get_muestras_by_cv</span><span class="p">)</span>
+<span class="n">GRADER</span><span class="o">.</span><span class="n">run_test</span><span class="p">(</span><span class="s2">&quot;ejercicio1&quot;</span><span class="p">,</span> <span class="n">get_muestras_by_validacion</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -644,32 +692,67 @@ title="Print to PDF"
 <p>Aca vamos a crear un dataframe para observar el numero de muestras de entrenamiento logradas por cada uno de los metodos.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cv1</span> <span class="o">=</span> <span class="n">get_muestras_by_cv</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
-<span class="n">cv1</span><span class="p">[</span><span class="s1">&#39;validación&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;Bootstrapping&#39;</span>
-<span class="n">cv2</span> <span class="o">=</span> <span class="n">get_muestras_by_cv</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
-<span class="n">cv2</span><span class="p">[</span><span class="s1">&#39;validación&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;Estratificada&#39;</span>
-<span class="n">cvs</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">cv1</span><span class="p">,</span> <span class="n">cv2</span><span class="p">],</span> <span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">cvs</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">res_validaciones</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">nombres</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Bootstrapping&#39;</span><span class="p">,</span> <span class="s1">&#39;Estratificada&#39;</span><span class="p">,</span> <span class="s1">&#39;LeaveOneOut&#39;</span><span class="p">]</span>
+<span class="c1">#interamos sobre indice</span>
+<span class="k">for</span> <span class="n">index</span><span class="p">,</span><span class="n">nombre</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">nombres</span><span class="p">):</span>
+    <span class="n">val</span> <span class="o">=</span> <span class="n">get_muestras_by_validacion</span><span class="p">(</span><span class="n">metodo</span> <span class="o">=</span> <span class="n">index</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="n">X</span><span class="o">=</span><span class="n">x</span><span class="p">,</span> <span class="n">Y</span><span class="o">=</span><span class="n">y</span><span class="p">)</span>
+    <span class="n">val</span><span class="p">[</span><span class="s1">&#39;validación&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">nombre</span>
+    <span class="n">res_validaciones</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">val</span><span class="p">)</span>
+
+<span class="n">todas_validaciones</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">res_validaciones</span><span class="p">,</span> <span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">todas_validaciones</span>
 </pre></div>
 </div>
 </div>
 </div>
 <p>En la tabla es dificil analizar que esta pasando. Para interpretar mejor los resultados vamos a usar una grafica llamada <a class="reference external" href="https://interactivechaos.com/es/manual/tutorial-de-seaborn/point-plot">PointPlot</a>. Esta grafica de la libreria <a class="reference external" href="https://seaborn.pydata.org/generated/seaborn.pointplot.html">Seaborn</a> nos permite ver la diferencia entre los metodos.</p>
-<p>Debemos entender que representan los puntos y las barras.</p>
+<p>En la grafica:</p>
+<ul class="simple">
+<li><p>las barras representan la variación del numero de muestras en cada fold/partición/repetición.</p></li>
+<li><p>El punto es el valor medio.</p></li>
+</ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">display</span><span class="p">(</span><span class="s2">&quot;distribución de clases&quot;</span><span class="p">)</span>
-<span class="n">sns</span><span class="o">.</span><span class="n">catplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span> <span class="n">cvs</span> <span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="s1">&#39;etiqueta de clase&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;numero de muestras entrenamiento&#39;</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s1">&#39;point&#39;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;validación&#39;</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">catplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span> <span class="n">todas_validaciones</span> <span class="p">,</span> 
+            <span class="n">x</span> <span class="o">=</span> <span class="s1">&#39;etiqueta de clase&#39;</span><span class="p">,</span> 
+            <span class="n">y</span><span class="o">=</span><span class="s1">&#39;numero de muestras entrenamiento&#39;</span><span class="p">,</span> 
+            <span class="n">kind</span><span class="o">=</span><span class="s1">&#39;point&#39;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;validación&#39;</span><span class="p">,</span> <span class="n">aspect</span> <span class="o">=</span> <span class="mi">2</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p>En la grafica, las barras representan la variación del numero de muestras en cada fold/partición. Y el punto es el valor medio.</p>
+<p>En la grafica:</p>
+<ul class="simple">
+<li><p>las barras representan la variación del numero de muestras en cada fold/partición/repetición.</p></li>
+<li><p>El punto es el valor medio.</p></li>
+</ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title Pregunta Abierta</span>
-<span class="c1">#@markdown En sus palabras, usando el grafico anterior y su conocimiento, ¿por qué Boostrapping no es la metodologia más adecuada?</span>
-<span class="n">respuesta_1</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span> <span class="c1">#@param {type:&quot;string&quot;}</span>
+<span class="c1">#@markdown usando el gráfico anterior y tu conocimiento, ¿por qué la validación estratificada es la metodología más adecuada?</span>
+<span class="c1">#@markdown ¿Cual de las opciones está mejor justificada?</span>
+ 
+<span class="c1">#@markdown A) `LeaveOneOut` y `Bootstrapping` son métodos muy aleatorios que generan alta variación en los resultados, la validación estratificada tiene menor variabilidad</span>
+ 
+<span class="c1">#@markdown B) La metodología `Estratificada` nos garantiza el aprovechamiento de todo el conjunto de entrenamiento</span>
+ 
+<span class="c1">#@markdown C) `LeaveOneOut` es un método con muchas particiones, `Bootstrapping` un método determinístico, por lo tanto la validación `Estratificada` es un buen punto medio</span>
+ 
+<span class="c1">#@markdown D) La metodología `Estratificada` nos garantiza que cada partición conserva la relación entre clases del conjunto original.</span>
+ 
+<span class="c1">#@markdown Selecciona dentro las lista desplegable</span>
+<span class="n">respuesta_1</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span> <span class="c1">#@param [&quot;&quot;, &quot;A&quot;, &quot;B&quot;, &quot;C&quot;, &quot;D&quot;]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title Pregunta Abierta</span>
+<span class="c1">#@markdown porque `LeaveOneOut`, puede ser implementar usando `KFold(n_splits=n)` siendo `n` el # total de muestras </span>
+<span class="n">respuesta_2</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span> <span class="c1">#@param {type:&quot;string&quot;}</span>
 </pre></div>
 </div>
 </div>
@@ -682,17 +765,29 @@ title="Print to PDF"
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.mixture</span> <span class="kn">import</span> <span class="n">GaussianMixture</span>
 </pre></div>
 </div>
+<p>Antes de desarrollar el ejercicio de código, responde la pregunta abierta y de acuerdo a tu respuesta completa el código.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title Pregunta Abierta</span>
+<span class="c1">#@markdown En tus palabras, ¿por qué debemos entrenar un modelo por cada clase?</span>
+<span class="n">respuesta_3</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span> <span class="c1">#@param {type:&quot;string&quot;}</span>
+</pre></div>
+</div>
+</div>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#ejercicio de código</span>
 <span class="k">def</span> <span class="nf">GMMClassifierTrain</span><span class="p">(</span><span class="n">M</span><span class="p">,</span><span class="n">tipo</span><span class="p">,</span><span class="n">X</span><span class="p">,</span><span class="n">Y</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;metodo para entrenar un modelo de mezclas de gausianas</span>
-<span class="sd">    M: Número de componentes</span>
-<span class="sd">    tipo (str): Tipo de matriz de covarianza (los parametros que se</span>
-<span class="sd">          aceptan son los nombres de la  misma libreria:</span>
-<span class="sd">          &#39;full&#39;, &#39;tied&#39;, &#39;diag&#39;, &#39;spherical&#39;)</span>
-<span class="sd">    X: Matriz de caracteristicas</span>
-<span class="sd">    Y : Matriz con las clases</span>
+
+<span class="sd">    Args: </span>
+<span class="sd">        M: Número de componentes</span>
+<span class="sd">        tipo (str): Tipo de matriz de covarianza (los parametros que se</span>
+<span class="sd">            aceptan son los nombres de la  misma libreria:</span>
+<span class="sd">            &#39;full&#39;, &#39;tied&#39;, &#39;diag&#39;, &#39;spherical&#39;)</span>
+<span class="sd">        X: Matriz de caracteristicas</span>
+<span class="sd">        Y : Matriz con las clases</span>
 <span class="sd">   </span>
 <span class="sd">    retorna: diccionario de con la estructura:</span>
 <span class="sd">        {etiqueta_clase: modelo_gmm_entrenado}</span>
@@ -716,15 +811,6 @@ title="Print to PDF"
 </div>
 </div>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title Pregunta Abierta</span>
-<span class="c1">#@markdown En sus palabras, ¿por qué debemos entrenar un modelo por cada clase?</span>
-<span class="n">respuesta_2</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span> <span class="c1">#@param {type:&quot;string&quot;}</span>
-</pre></div>
-</div>
-</div>
-</div>
 <p>Adicionalmente construya una función que use los modelos entrenados en la función anterior para hacer la clasificación de un conjunto nuevo de muestras.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -732,10 +818,12 @@ title="Print to PDF"
 <span class="k">def</span> <span class="nf">GMMClassfierVal</span><span class="p">(</span><span class="n">GMMs</span><span class="p">,</span><span class="n">Xtest</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;funcion que recibe los modelos GMM entrenados</span>
 <span class="sd">        y realiza predicciones con base a cada salida</span>
-<span class="sd">    GMMs: diccionario de con la estructura:</span>
-<span class="sd">        {etiqueta_clase: modelo_gmm_entrenado}</span>
-<span class="sd">    Xtest: matriz numpy con el cojunto de datos</span>
-<span class="sd">        de las caracteristicas de prueba/test</span>
+<span class="sd">    </span>
+<span class="sd">    Args:</span>
+<span class="sd">        GMMs: diccionario de con la estructura:</span>
+<span class="sd">            {etiqueta_clase: modelo_gmm_entrenado}</span>
+<span class="sd">        Xtest: matriz numpy con el cojunto de datos</span>
+<span class="sd">            de las caracteristicas de prueba/test</span>
 <span class="sd">    retorna: </span>
 <span class="sd">    - un numpy array con las estimaciones de de clase de cada </span>
 <span class="sd">        una de las muestras de Xtest</span>
@@ -780,10 +868,11 @@ title="Print to PDF"
 <span class="k">def</span> <span class="nf">experimentar</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">covariance_types</span><span class="p">,</span><span class="n">num_components</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;función que realiza experimentos del GMM</span>
 <span class="sd">    </span>
-<span class="sd">    X: matriz con las caractersiticas</span>
-<span class="sd">    Y: matriz de numpy con etiquetas</span>
-<span class="sd">    covariance_types: list[str] con las matrices de covarianza a probar</span>
-<span class="sd">    num_components: list[int] con el numero de componente a probar</span>
+<span class="sd">    Args:</span>
+<span class="sd">        X: matriz con las caractersiticas</span>
+<span class="sd">        Y: matriz de numpy con etiquetas</span>
+<span class="sd">        covariance_types: list[str] con las matrices de covarianza a probar</span>
+<span class="sd">        num_components: list[int] con el numero de componente a probar</span>
 <span class="sd">  </span>
 <span class="sd">    retorna: dataframe con:</span>
 <span class="sd">        - matriz de covarianza</span>
@@ -868,7 +957,7 @@ title="Print to PDF"
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title Pregunta Abierta</span>
 <span class="c1">#@markdown ¿a qué corresponde el parámetro init_params de la función GaussianMixture y cuál fue el valor usado en nuestros experimentos?</span>
-<span class="n">respuesta_3</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span> <span class="c1">#@param {type:&quot;string&quot;}</span>
+<span class="n">respuesta_4</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span> <span class="c1">#@param {type:&quot;string&quot;}</span>
 </pre></div>
 </div>
 </div>
@@ -966,13 +1055,13 @@ title="Print to PDF"
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title Pregunta Abierta</span>
 <span class="c1">#@markdown ¿Qué es el método elbow y por qué en nuestro caso no es útil? Pista: tiene sentido buscar un número de grupos != 5 ?</span>
-<span class="n">respuesta_4</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span> <span class="c1">#@param {type:&quot;string&quot;}</span>
+<span class="n">respuesta_5</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span> <span class="c1">#@param {type:&quot;string&quot;}</span>
 </pre></div>
 </div>
 </div>
 </div>
 <p>tener presente que tipo de entrenamiento realiza el kmeans: ¿supervisado o no supervisado?</p>
-<p>Vamos a realizar una grafica usando un metodo que vamos a ver en futuros laboratorios.</p>
+<p>De acuerdo a la explicacion inicial de nuestro laboratorio, estamos usando un metodo que nos ayuda a representar</p>
 <p>La grafica se pueden entender como una representación en 2 dimensiones de nuestra base de datos (que tiene 40 variables).</p>
 <p>Cada punto representa uno de nuestros ejemplos.</p>
 <p><strong>Recordar</strong>:</p>
@@ -986,35 +1075,41 @@ title="Print to PDF"
 
 <span class="n">x_std</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 
-<span class="c1">## Kmeans</span>
-<span class="n">numero_clusters</span> <span class="o">=</span> <span class="c1"># aca el numero de cluster con la mejor eficiencia</span>
+<span class="c1">### ATENCIÓN ###</span>
+<span class="c1">## Kmeans. Reemplaza el valor de acuerdo a tus experimentos</span>
+<span class="c1">### ATENCIÓN ###</span>
+<span class="n">predict_kmeans</span> <span class="o">=</span> <span class="n">KMeans</span><span class="p">(</span><span class="n">n_clusters</span><span class="o">=...</span><span class="p">,</span> <span class="n">init</span> <span class="o">=</span> <span class="s1">&#39;k-means++&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">fit_predict</span><span class="p">(</span><span class="n">x_std</span><span class="p">)</span>
 
-<span class="n">predict_kmeans</span> <span class="o">=</span> <span class="n">KMeans</span><span class="p">(</span><span class="n">n_clusters</span><span class="o">=</span><span class="n">numero_clusters</span><span class="p">,</span> <span class="n">init</span> <span class="o">=</span> <span class="s1">&#39;k-means++&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">fit_predict</span><span class="p">(</span><span class="n">x_std</span><span class="p">)</span>
-
+<span class="c1">### ATENCIÓN ###</span>
 <span class="c1">## GMM. Reemplaza los valores de acuerdo a tus experimentos</span>
+<span class="c1">### ATENCIÓN ###</span>
 <span class="n">gmms</span> <span class="o">=</span> <span class="n">GMMClassifierTrain</span><span class="p">(</span><span class="n">X</span><span class="o">=</span><span class="n">x_std</span><span class="p">,</span><span class="n">Y</span><span class="o">=</span><span class="n">y</span><span class="p">,</span><span class="n">M</span><span class="o">=</span><span class="p">,</span><span class="n">tipo</span><span class="o">=</span> <span class="p">)</span>
 <span class="c1"># ignoramos probabilidad</span>
 <span class="n">predict_gmm</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">GMMClassfierVal</span><span class="p">(</span><span class="n">gmms</span><span class="p">,</span> <span class="n">x_std</span><span class="p">)</span>
 
 <span class="c1">#adicionamos etiquetas reales</span>
-<span class="n">real</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">x</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">],</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;PC1&#39;</span><span class="p">,</span> <span class="s1">&#39;PC2&#39;</span><span class="p">])</span>
+<span class="n">real</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">x</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">],</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Variable reducida # 1&#39;</span><span class="p">,</span> <span class="s1">&#39;Variable reducida # 2&#39;</span><span class="p">])</span>
 <span class="n">real</span><span class="p">[</span><span class="s1">&#39;clase&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">y</span>
 <span class="n">real</span><span class="p">[</span><span class="s1">&#39;tipo de etiqueta&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;Real&#39;</span>
 
 <span class="c1">#adicionamos etiquetas de kmeans</span>
-<span class="n">kmeans</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">x</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">],</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;PC1&#39;</span><span class="p">,</span> <span class="s1">&#39;PC2&#39;</span><span class="p">])</span>
+<span class="n">kmeans</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">x</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">],</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Variable reducida # 1&#39;</span><span class="p">,</span> <span class="s1">&#39;Variable reducida # 2&#39;</span><span class="p">])</span>
 <span class="n">kmeans</span><span class="p">[</span><span class="s1">&#39;clase&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">predict_kmeans</span>
 <span class="n">kmeans</span><span class="p">[</span><span class="s1">&#39;tipo de etiqueta&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;Asignada por Kmeans&#39;</span>
 
 <span class="c1">#adicionamos etiquetas de gmms</span>
-<span class="n">gmm_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">x</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">],</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;PC1&#39;</span><span class="p">,</span> <span class="s1">&#39;PC2&#39;</span><span class="p">])</span>
+<span class="n">gmm_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">x</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">],</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Variable reducida # 1&#39;</span><span class="p">,</span> <span class="s1">&#39;Variable reducida # 2&#39;</span><span class="p">])</span>
 <span class="n">gmm_df</span><span class="p">[</span><span class="s1">&#39;clase&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">predict_gmm</span>
 <span class="n">gmm_df</span><span class="p">[</span><span class="s1">&#39;tipo de etiqueta&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;Asignada por gmm&#39;</span>
 
 <span class="c1"># unimos y graficamos</span>
 <span class="n">data_to_plot</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">real</span><span class="p">,</span> <span class="n">kmeans</span><span class="p">,</span> <span class="n">gmm_df</span><span class="p">],</span> <span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">data_to_plot</span><span class="p">[</span><span class="s1">&#39;clase&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data_to_plot</span><span class="p">[</span><span class="s1">&#39;clase&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;category&#39;</span><span class="p">)</span>
-<span class="n">g</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">relplot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">data_to_plot</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="s1">&#39;PC1&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;PC2&#39;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span> <span class="s1">&#39;clase&#39;</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="s1">&#39;tipo de etiqueta&#39;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span> <span class="s1">&#39;clase&#39;</span><span class="p">,</span>   <span class="n">markers</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;$0$&#39;</span><span class="p">,</span> <span class="s1">&#39;$1$&#39;</span><span class="p">,</span> <span class="s1">&#39;$2$&#39;</span><span class="p">,</span> <span class="s1">&#39;$3$&#39;</span><span class="p">,</span> <span class="s1">&#39;$4$&#39;</span><span class="p">],</span> <span class="n">s</span> <span class="o">=</span> <span class="mi">400</span><span class="p">,</span> <span class="n">height</span> <span class="o">=</span> <span class="mi">10</span><span class="p">)</span>
+<span class="n">g</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">relplot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">data_to_plot</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="s1">&#39;Variable reducida # 1&#39;</span><span class="p">,</span> 
+               <span class="n">y</span><span class="o">=</span><span class="s1">&#39;Variable reducida # 2&#39;</span><span class="p">,</span> 
+               <span class="n">hue</span><span class="o">=</span> <span class="s1">&#39;clase&#39;</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="s1">&#39;tipo de etiqueta&#39;</span><span class="p">,</span> 
+               <span class="n">style</span><span class="o">=</span> <span class="s1">&#39;clase&#39;</span><span class="p">,</span>   
+               <span class="n">markers</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;$0$&#39;</span><span class="p">,</span> <span class="s1">&#39;$1$&#39;</span><span class="p">,</span> <span class="s1">&#39;$2$&#39;</span><span class="p">,</span> <span class="s1">&#39;$3$&#39;</span><span class="p">,</span> <span class="s1">&#39;$4$&#39;</span><span class="p">],</span> <span class="n">s</span> <span class="o">=</span> <span class="mi">400</span><span class="p">,</span> <span class="n">height</span> <span class="o">=</span> <span class="mi">10</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1022,8 +1117,19 @@ title="Print to PDF"
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title Pregunta Abierta</span>
-<span class="c1">#@markdown ¿con base a los resultados que modelo es el más adecuado entre el k-means y el GMM? justifique.</span>
-<span class="n">respuesta_5</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span> <span class="c1">#@param {type:&quot;string&quot;}</span>
+<span class="c1">#@markdown ¿con base a los resultados que modelo es el más adecuado entre el k-means y el GMM?</span>
+<span class="c1">#@markdown ¿Cual de las opciones esta mejor justificada?</span>
+ 
+<span class="c1">#@markdown A) Partimos de un problema de clusterización, por lo tanto la unica justificación son los mejores resultados del GMM</span>
+ 
+<span class="c1">#@markdown B) Partimos de un problema de aprendizaje NO supervisado, por lo tanto el K-means, aunque no tenga buenos resultados es el más adecuado</span>
+ 
+<span class="c1">#@markdown C) Partimos de un problema de aprendizaje supervisado, K-means asume que no conocemos las etiquetas de nuestras muestras, en este caso GMM es el más adecuado</span>
+ 
+<span class="c1">#@markdown D) Partimos de un problema de aprendizaje supervisado, por lo tanto el K-means, aunque no tenga buenos resultados es el más adecuado</span>
+ 
+<span class="c1">#@markdown Selecciona dentro las lista desplegable</span>
+<span class="n">respuesta_6</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span> <span class="c1">#@param [&quot;&quot;, &quot;A&quot;, &quot;B&quot;, &quot;C&quot;, &quot;D&quot;]</span>
 </pre></div>
 </div>
 </div>
