@@ -539,7 +539,8 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="modelos-no-parametricos">
+  <p><a href="https://colab.research.google.com/github/mariabda2/ML_2022/blob/main/clases/clase_06_modelos_no_parametricos.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a></p>
+<section class="tex2jax_ignore mathjax_ignore" id="modelos-no-parametricos">
 <h1>Modelos no parámetricos<a class="headerlink" href="#modelos-no-parametricos" title="Permalink to this headline">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -593,7 +594,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/clase_06_modelos_no_parametricos_8_0.png" src="../_images/clase_06_modelos_no_parametricos_8_0.png" />
+<img alt="../_images/clase_06_modelos_no_parametricos_9_0.png" src="../_images/clase_06_modelos_no_parametricos_9_0.png" />
 </div>
 </div>
 <p>En el cual definimos un ancho para los intervalos y un número de intervalos y simplemente contamos el número de puntos que cayeron en cada intervalo. En una dimensión, si la línea real es dividida en un número de celdas iguales, la estimación de densidad para un punto <span class="math notranslate nohighlight">\(x\)</span> cualquiera será:</p>
@@ -626,7 +627,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/clase_06_modelos_no_parametricos_13_0.png" src="../_images/clase_06_modelos_no_parametricos_13_0.png" />
+<img alt="../_images/clase_06_modelos_no_parametricos_14_0.png" src="../_images/clase_06_modelos_no_parametricos_14_0.png" />
 </div>
 </div>
 <p>En este caso, tenemos 2 variables y cada una se divide en un número finito de celdas. Si todas las celdas son de igual tamaño, la estimación de probabilidad para una muestra <span class="math notranslate nohighlight">\(\bf{x}\)</span>, será:</p>
@@ -711,7 +712,7 @@ title="Print to PDF"
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.Axes3DSubplot at 0x7fa7bc5a4e10&gt;
 </pre></div>
 </div>
-<img alt="../_images/clase_06_modelos_no_parametricos_29_1.png" src="../_images/clase_06_modelos_no_parametricos_29_1.png" />
+<img alt="../_images/clase_06_modelos_no_parametricos_30_1.png" src="../_images/clase_06_modelos_no_parametricos_30_1.png" />
 </div>
 </div>
 <p>Como podemos observar la aproximación a los puntos no es muy buena. Veamos que sucede si utilizamos el método del histograma, recordemos que en este caso es necesario definir el tamaño de las celdas y el punto donde comienza la primera celda.</p>
@@ -722,7 +723,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/clase_06_modelos_no_parametricos_31_0.png" src="../_images/clase_06_modelos_no_parametricos_31_0.png" />
+<img alt="../_images/clase_06_modelos_no_parametricos_32_0.png" src="../_images/clase_06_modelos_no_parametricos_32_0.png" />
 </div>
 </div>
 <p>Podemos observar que la forma de la función es arbitraria, sin embargo como el conjunto de puntos con los que se cuenta para ajustar el sistemas es pequeño, la función tampoco se adapta muy bien. De manera general se puede decir que el método del histograma:</p>
@@ -798,7 +799,7 @@ title="Print to PDF"
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.Axes3DSubplot at 0x7f351d223b10&gt;
 </pre></div>
 </div>
-<img alt="../_images/clase_06_modelos_no_parametricos_49_1.png" src="../_images/clase_06_modelos_no_parametricos_49_1.png" />
+<img alt="../_images/clase_06_modelos_no_parametricos_50_1.png" src="../_images/clase_06_modelos_no_parametricos_50_1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -808,7 +809,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/clase_06_modelos_no_parametricos_50_0.png" src="../_images/clase_06_modelos_no_parametricos_50_0.png" />
+<img alt="../_images/clase_06_modelos_no_parametricos_51_0.png" src="../_images/clase_06_modelos_no_parametricos_51_0.png" />
 </div>
 </div>
 <p>Más allá de la forma que toma la función de salida es necesario que notemos algo importante. Si observamos con detenimiento las funciones obtenidas, veremos que una de las dos variables no es tenida en cuenta en la regresión, es decir el valor es constante siempre y cuando la otra no cambie. Este fecnómeno es debido a que una de las variables toma valores en el rango de 100 mil a 300 mil, mientras que la otra toma volres en el rango de 20 a 60. Como el método de  k -vecinos está basado en una medida de distancia, es claro que la distancia de la variable Hipoteca será mucho más grande en magnitud, que la distancia de la variable edad. Por esa razón una variable opaca la otra, aunque eso no significa que la variable Hipoteca sea más importante para la predicción.</p>
@@ -826,7 +827,7 @@ title="Print to PDF"
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.Axes3DSubplot at 0x7fdf4e95c210&gt;
 </pre></div>
 </div>
-<img alt="../_images/clase_06_modelos_no_parametricos_56_1.png" src="../_images/clase_06_modelos_no_parametricos_56_1.png" />
+<img alt="../_images/clase_06_modelos_no_parametricos_57_1.png" src="../_images/clase_06_modelos_no_parametricos_57_1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -839,7 +840,7 @@ title="Print to PDF"
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.Axes3DSubplot at 0x7fb200b09dd0&gt;
 </pre></div>
 </div>
-<img alt="../_images/clase_06_modelos_no_parametricos_57_1.png" src="../_images/clase_06_modelos_no_parametricos_57_1.png" />
+<img alt="../_images/clase_06_modelos_no_parametricos_58_1.png" src="../_images/clase_06_modelos_no_parametricos_58_1.png" />
 </div>
 </div>
 <hr class="docutils" />
@@ -931,7 +932,7 @@ title="Print to PDF"
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.Axes3DSubplot at 0x7f2073690f10&gt;
 </pre></div>
 </div>
-<img alt="../_images/clase_06_modelos_no_parametricos_73_1.png" src="../_images/clase_06_modelos_no_parametricos_73_1.png" />
+<img alt="../_images/clase_06_modelos_no_parametricos_74_1.png" src="../_images/clase_06_modelos_no_parametricos_74_1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -944,7 +945,7 @@ title="Print to PDF"
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.Axes3DSubplot at 0x7f20736a8650&gt;
 </pre></div>
 </div>
-<img alt="../_images/clase_06_modelos_no_parametricos_74_1.png" src="../_images/clase_06_modelos_no_parametricos_74_1.png" />
+<img alt="../_images/clase_06_modelos_no_parametricos_75_1.png" src="../_images/clase_06_modelos_no_parametricos_75_1.png" />
 </div>
 </div>
 <p>Si usamos el estimador de Nadaraya-Watson en el problema de predicción de HPI (<strong>previa</strong> normalización de variables) obtendremos:</p>
@@ -958,7 +959,7 @@ title="Print to PDF"
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.Axes3DSubplot at 0x7f94af442cd0&gt;
 </pre></div>
 </div>
-<img alt="../_images/clase_06_modelos_no_parametricos_76_1.png" src="../_images/clase_06_modelos_no_parametricos_76_1.png" />
+<img alt="../_images/clase_06_modelos_no_parametricos_77_1.png" src="../_images/clase_06_modelos_no_parametricos_77_1.png" />
 </div>
 </div>
 <p>Note que a diferencia de los métodos anteriores, en este caso se obtiene una función suave debido a que la medida de similitud (la función kernel), es una función suave.</p>
@@ -972,7 +973,7 @@ title="Print to PDF"
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.Axes3DSubplot at 0x7f20782fc350&gt;
 </pre></div>
 </div>
-<img alt="../_images/clase_06_modelos_no_parametricos_78_1.png" src="../_images/clase_06_modelos_no_parametricos_78_1.png" />
+<img alt="../_images/clase_06_modelos_no_parametricos_79_1.png" src="../_images/clase_06_modelos_no_parametricos_79_1.png" />
 </div>
 </div>
 <p>Sin embargo, si el valor de h se hace más pequeño, la función se hace más aguda en cada uno de los puntos del conjunto de entrenamiento, debido a que la similitud es más estricta, sólo muestras de entrenamiento muy cercanos a la muestra sobre la cual se quiere hacer la predicción, aportarán a la misma. Escoger el valor correcto para <span class="math notranslate nohighlight">\(h\)</span> puede no ser una tarea facil. Un estimador muy usado es el conocido como “Silverman bandwidth” (<mark>consultar</mark>)</p>
