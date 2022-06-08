@@ -54,8 +54,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Laboratorio 1 - Parte 1 Regresión polinomial múltiple" href="../Labs/lab1/lab1_parte1.html" />
-    <link rel="prev" title="Modelos de clasificación empleando funciones de densidad Gausianas" href="clase_05_Funciones_discriminantes_Gausianas.html" />
+    <link rel="next" title="Laboratorio 2 - Parte 1. KNN para un problema de clasificación" href="../Labs/lab2/lab2_parte1.html" />
+    <link rel="prev" title="MODELOS NO PARÁMETRICOS" href="../titles/U2_description.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -121,16 +121,16 @@ const thebe_selector_output = ".output, .cell_output"
    INTRODUCCIÓN AL LABORATORIO
   </a>
  </li>
- <li class="toctree-l1 current active has-children">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="../titles/U1_description.html">
    INTRODUCCIÓN AL MACHINE LEARNING
   </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
   <label for="toctree-checkbox-1">
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul class="current">
+  <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="clase_03_y_04_regresion_lineal_regresion_logistica.html">
      <strong>
@@ -145,11 +145,6 @@ const thebe_selector_output = ".output, .cell_output"
      </strong>
     </a>
    </li>
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
-     Modelos no parámetricos
-    </a>
-   </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../Labs/lab1/lab1_parte1.html">
      Laboratorio 1 - Parte 1 Regresión polinomial múltiple
@@ -162,16 +157,23 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
   </ul>
  </li>
- <li class="toctree-l1 has-children">
+ <li class="toctree-l1 current active has-children">
   <a class="reference internal" href="../titles/U2_description.html">
    MODELOS NO PARÁMETRICOS
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
   <label for="toctree-checkbox-2">
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul>
+  <ul class="current">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     <strong>
+      Modelos no parámetricos
+     </strong>
+    </a>
+   </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../Labs/lab2/lab2_parte1.html">
      Laboratorio 2 - Parte 1. KNN para un problema de clasificación
@@ -468,25 +470,31 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#modelos-de-aprendizaje-no-parametricos">
-   Modelos de aprendizaje no paramétricos
+  <a class="reference internal nav-link" href="#metodo-de-k-vecinos-mas-cercanos">
+   <strong>
+    Método de
+    <span class="math notranslate nohighlight">
+     \(k\)
+    </span>
+    -vecinos más cercanos
+   </strong>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#metodo-de-ventana-de-parzen">
+   <strong>
+    Método de ventana de Parzen
+   </strong>
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#metodo-del-histograma">
-     Método del histograma
+    <a class="reference internal nav-link" href="#estimador-de-nadaraya-watson">
+     <strong>
+      Estimador de Nadaraya-Watson:
+     </strong>
     </a>
    </li>
   </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#metodo-de-k-vecinos-mas-cercanos">
-   Método de
-   <span class="math notranslate nohighlight">
-    \(k\)
-   </span>
-   -vecinos más cercanos
-  </a>
  </li>
 </ul>
 
@@ -508,25 +516,31 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#modelos-de-aprendizaje-no-parametricos">
-   Modelos de aprendizaje no paramétricos
+  <a class="reference internal nav-link" href="#metodo-de-k-vecinos-mas-cercanos">
+   <strong>
+    Método de
+    <span class="math notranslate nohighlight">
+     \(k\)
+    </span>
+    -vecinos más cercanos
+   </strong>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#metodo-de-ventana-de-parzen">
+   <strong>
+    Método de ventana de Parzen
+   </strong>
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#metodo-del-histograma">
-     Método del histograma
+    <a class="reference internal nav-link" href="#estimador-de-nadaraya-watson">
+     <strong>
+      Estimador de Nadaraya-Watson:
+     </strong>
     </a>
    </li>
   </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#metodo-de-k-vecinos-mas-cercanos">
-   Método de
-   <span class="math notranslate nohighlight">
-    \(k\)
-   </span>
-   -vecinos más cercanos
-  </a>
  </li>
 </ul>
 
@@ -539,15 +553,26 @@ title="Print to PDF"
               <div>
                 
   <p><a href="https://colab.research.google.com/github/mariabda2/ML_2022/blob/main/clases/clase_06_modelos_no_parametricos.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a></p>
-<section class="tex2jax_ignore mathjax_ignore" id="modelos-no-parametricos">
-<h1>Modelos no parámetricos<a class="headerlink" href="#modelos-no-parametricos" title="Permalink to this headline">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">math</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>wget --no-cache -O init.py -q https://raw.githubusercontent.com/mariabda2/ML_2022/main/init.py
+<span class="kn">import</span> <span class="nn">init</span><span class="p">;</span> <span class="n">init</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="n">force_download</span><span class="o">=</span><span class="kc">False</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section class="tex2jax_ignore mathjax_ignore" id="modelos-no-parametricos">
+<h1><strong>Modelos no parámetricos</strong><a class="headerlink" href="#modelos-no-parametricos" title="Permalink to this headline">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="kn">import</span> <span class="nn">math</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">cm</span>
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">Image</span>
+
 
 <span class="kn">import</span> <span class="nn">scipy</span>
 <span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">datasets</span>
@@ -572,16 +597,18 @@ title="Print to PDF"
 </div>
 </div>
 </div>
-<p>Con lo visto hasta ahora podemos establecer que el aprendizaje de máquina se puede ver como el ajuste de un modelo <span class="math notranslate nohighlight">\(p(y/{\bf{x}})\)</span> o <span class="math notranslate nohighlight">\(p({\bf{x}})\)</span>. El primer caso corresponde a un problema de aprendizaje supervisado (regresión o clasifiación) y en el segundo caso a uno no supervisado. Por consiguiente, los problemas de aprendizaje están muy relacionados con seleccionar y ajustar un modelo que describa la densidad de probabilidad de un conjunto de puntos, ese problema se conoce como <b>estimación de densidad</b>.</p>
-<p>Pueden existir varias formas de clasificar los modelos de estimación, pero tal vez la más importante es:</p>
-<li><b>Modelos de aprendizaje paramétricos</b>. </li><p>En los modelos paramétricos se hace una suposición sobre la forma que tiene la función de densidad, es decir se asume que los datos siguen un modelo predefinido. El modelo está descrito por una serie de parámetros que son ajustados al problema particular durante la etapa de entrenamiento. El número de parámetros es constante y de manera general son computacionalmente muy eficientes, pero pueden dar lugar a errores si las suposiciones hechas sobre el conjunto de datos no se cumplen.</p>
-<p><img alt="alt text" src="clases/Images/MParametricos.png" /></p>
-<p>La figura anterior nos muestra dos ejemplos de modelos paramétricos. Asumir que un conjunto de datos sigue una función de densidad Gausiana (2 parámetros) o asumir que el comportamiento de un conjunto de datos se puede representar usando un polinomio de segundo orden (3 parámetros). Esto quiere decir que los modelos de aprendizaje vistos hasta ahora corresponde a la clase de modelos paramétricos.</p>
-<section id="modelos-de-aprendizaje-no-parametricos">
-<h2>Modelos de aprendizaje no paramétricos<a class="headerlink" href="#modelos-de-aprendizaje-no-parametricos" title="Permalink to this headline">#</a></h2>
-<section id="metodo-del-histograma">
-<h3>Método del histograma<a class="headerlink" href="#metodo-del-histograma" title="Permalink to this headline">#</a></h3>
-<p>Los modelos no paramétrios por el contrario no realizan suposiciones sobre la forma de la función que mejor representa los datos. El ejemplo más básico de un modelo no paramétrico es el histograma:</p>
+<p><strong>Modelos de aprendizaje paramétricos.</strong> En los modelos paramétricos se hace una suposición sobre la forma que tiene la función de densidad, es decir se asume que los datos siguen un modelo predefinido. El modelo está descrito por una serie de parámetros que son ajustados al problema particular durante la etapa de entrenamiento. El número de parámetros es constante y de manera general son computacionalmente muy eficientes, pero pueden dar lugar a errores si las suposiciones hechas sobre el conjunto de datos no se cumplen.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Image</span><span class="p">(</span><span class="s2">&quot;local/imgs/MParametricos.png&quot;</span><span class="p">,</span> <span class="n">width</span> <span class="o">=</span> <span class="mi">600</span><span class="p">,</span> <span class="n">height</span> <span class="o">=</span> <span class="mi">200</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/clase_06_modelos_no_parametricos_5_0.png" src="../_images/clase_06_modelos_no_parametricos_5_0.png" />
+</div>
+</div>
+<p><strong>Método del histograma.</strong> Los modelos no paramétrios por el contrario no realizan suposiciones sobre la forma de la función que mejor representa los datos. En el cual definimos un ancho para los intervalos y un número de intervalos y simplemente contamos el número de puntos que cayeron en cada intervalo.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">v</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span><span class="mi">100</span><span class="p">)</span>
@@ -592,13 +619,28 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/clase_06_modelos_no_parametricos_12_0.png" src="../_images/clase_06_modelos_no_parametricos_12_0.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(array([  0.,   0.,   0.,   0.,   2.,   5.,  11.,  21.,  43.,  71., 109.,
+        141., 162., 131., 116.,  95.,  50.,  32.,   9.,   2.,   0.,   0.,
+          0.,   0.,   0.,   0.,   0.,   0.,   0.,   1.,   2.,   8.,  23.,
+         44.,  76., 112., 141., 163., 151., 113.,  85.,  49.,  20.,   7.,
+          2.,   2.,   1.,   0.,   0.,   0.]),
+ array([-20. , -19.2, -18.4, -17.6, -16.8, -16. , -15.2, -14.4, -13.6,
+        -12.8, -12. , -11.2, -10.4,  -9.6,  -8.8,  -8. ,  -7.2,  -6.4,
+         -5.6,  -4.8,  -4. ,  -3.2,  -2.4,  -1.6,  -0.8,   0. ,   0.8,
+          1.6,   2.4,   3.2,   4. ,   4.8,   5.6,   6.4,   7.2,   8. ,
+          8.8,   9.6,  10.4,  11.2,  12. ,  12.8,  13.6,  14.4,  15.2,
+         16. ,  16.8,  17.6,  18.4,  19.2,  20. ]),
+ &lt;a list of 50 Patch objects&gt;)
+</pre></div>
+</div>
+<img alt="../_images/clase_06_modelos_no_parametricos_7_1.png" src="../_images/clase_06_modelos_no_parametricos_7_1.png" />
 </div>
 </div>
-<p>En el cual definimos un ancho para los intervalos y un número de intervalos y simplemente contamos el número de puntos que cayeron en cada intervalo. En una dimensión, si la línea real es dividida en un número de celdas iguales, la estimación de densidad para un punto <span class="math notranslate nohighlight">\(x\)</span> cualquiera será:</p>
+<p>En una dimensión, si la línea real es dividida en un número de celdas iguales, la estimación de densidad para un punto <span class="math notranslate nohighlight">\(x\)</span> cualquiera será:</p>
 <div class="math notranslate nohighlight">
 \[\hat{p}(x) = \frac{n_j}{\sum_{j}^{N_c}n_j dx}\]</div>
-<p>donde <span class="math notranslate nohighlight">\(n_j\)</span> es el número de muestras en la celda de ancho <span class="math notranslate nohighlight">\(dx\)</span> que contiene a <span class="math notranslate nohighlight">\(x\)</span>. <span class="math notranslate nohighlight">\(N_c\)</span> es el número de celdas. El histograma también puede ser construido en 2 o más dimensiones, tal como se muestra en la siguiente figura.</p>
+<p>donde <span class="math notranslate nohighlight">\(n_j\)</span> es el número de muestras en la celda de ancho <span class="math notranslate nohighlight">\(dx\)</span> que contiene a <span class="math notranslate nohighlight">\(x\)</span>. <span class="math notranslate nohighlight">\(N_c\)</span> es el número de celdas. El histograma también puede ser construido en 2 o más dimensiones.</p>
+<p><strong>Histograma de dos variables</strong></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">mpl_toolkits.mplot3d</span> <span class="kn">import</span> <span class="n">Axes3D</span>
@@ -624,31 +666,21 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/clase_06_modelos_no_parametricos_16_0.png" src="../_images/clase_06_modelos_no_parametricos_16_0.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;mpl_toolkits.mplot3d.art3d.Poly3DCollection at 0x7f13aa48a2d0&gt;
+</pre></div>
+</div>
+<img alt="../_images/clase_06_modelos_no_parametricos_12_1.png" src="../_images/clase_06_modelos_no_parametricos_12_1.png" />
 </div>
 </div>
 <p>En este caso, tenemos 2 variables y cada una se divide en un número finito de celdas. Si todas las celdas son de igual tamaño, la estimación de probabilidad para una muestra <span class="math notranslate nohighlight">\(\bf{x}\)</span>, será:</p>
 <div class="math notranslate nohighlight">
 \[\hat{p}(x) = \frac{n_j}{N}\]</div>
-<p>donde <span class="math notranslate nohighlight">\(N\)</span> es el número total de muestras. ¿Cómo se puede llevar a cabo una predicción empleando el método del histograma?</p>
-<p>Para el caso de un problema de clasificación es muy simple, y se parece mucho al problema abordado en la clase anterior. Construimos un histograma diferente para cada clase (una fdp por cada clase), usando los mismos intervalos y el mismo número de bins para todas las clases. Cuando al sistema llegue una nueva muestras, evaluamos la probabilidad de pertenecer a cada clase de acuerdo con el histograma y asignamos la muestra a la clase que proporcione mayor probabilidad.</p>
-<p>Para el caso de regresión es un poco más complejo. El modelo de regresión se puede ver como el valor esperado de la función de probabilidad condicional <span class="math notranslate nohighlight">\(p(y|{\bf{x}})\)</span>, es decir:</p>
-<div class="math notranslate nohighlight">
-\[y = f({\bf{x}}) = E[p(y|{\bf{x}})]\]</div>
-<p>Teniendo en cuenta que <span class="math notranslate nohighlight">\(p(y,{\bf{x}}) = p(y|{\bf{x}})p({\bf{x}})\)</span> y que:</p>
-<div class="math notranslate nohighlight">
-\[E[p(y|{\bf{x}})] = \sum yp(y|{\bf{x}}) = \sum y \frac{p(y,{\bf{x}})}{p({\bf{x}})}\]</div>
-<p><b>Algoritmo</b></p>
-<li>Construir un histograma con las muestras de entrenamiento que incluya tanto las variables en el vector $\bf{x}$, como la variable de salida $y$. Es decir si el vector $\bf{x}$ es de dimensión $d$, el histograma debe contener $d + 1$ variables.</li>
-<li>Cuando ingrese una nueva muestra ${\bf{x}}^*$ encontrar el conjunto de celdas para las cuales la probabilidad de esa muestra es diferente de cero. Si cada variable fue dividida en $L$ diferentes celdas, entonces deben exitir $L$ celdas para las cuales $p({\bf{x}}^{ *},y) \neq 0$</li>
-<li>Determinar los diferentes valores de $y_k$ que representan cada una de las $L$ celdas que cumplen la condición anterior. El valor que representa cada celda puede ser el valor medio.</li>
-<li>El valor de salida del sistema corresponderá a la suma de los valores de $y_k$ multiplicados por la probabilidad de cada uno de ellos, es decir:</li><div class="math notranslate nohighlight">
-\[y^* = \sum_{k=1}^{L} y_k \frac{p({\bf{x}}^{ *},y)}{p({\bf{x}}^{ *})}\]</div>
-<p>Ej: Supongamos que queremos predecir el índice de precio de vivienda (House Price Index or HPI) con base en dos variables: la edad del inmueble y el valor de la hipoteca.</p>
+<p>donde <span class="math notranslate nohighlight">\(N\)</span> es el número total de muestras.</p>
+<p><strong>Predicción del índice de precio de vivienda (House Price Index or HPI).</strong> Si bien hay muchas variables que afectan la medición del HPI, en este caso se ejemplificará la predicción con base en dos variables: la edad del inmueble y el valor de la hipoteca (Data tomada de: <a class="reference external" href="https://archive.ics.uci.edu/ml/index.php">https://archive.ics.uci.edu/ml/index.php</a>)</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
-<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;./library/&#39;</span><span class="p">)</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;./local/lib/&#39;</span><span class="p">)</span>
 <span class="kn">import</span> <span class="nn">plotHPI</span> <span class="k">as</span> <span class="nn">plothpi</span>
 
 
@@ -657,13 +689,13 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;module &#39;matplotlib.pyplot&#39; from &#39;/home/julian/.local/lib/python3.7/site-packages/matplotlib/pyplot.py&#39;&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;module &#39;matplotlib.pyplot&#39; from &#39;/usr/local/lib/python3.7/dist-packages/matplotlib/pyplot.py&#39;&gt;
 </pre></div>
 </div>
-<img alt="../_images/clase_06_modelos_no_parametricos_29_1.png" src="../_images/clase_06_modelos_no_parametricos_29_1.png" />
+<img alt="../_images/clase_06_modelos_no_parametricos_17_1.png" src="../_images/clase_06_modelos_no_parametricos_17_1.png" />
 </div>
 </div>
-<p>Veamos que sucede si utilizamos algún modelo paramétrico como una regresión de órden uno u órden dos.</p>
+<p><strong>Modelo paramétrico como una regresión de órden uno</strong></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plothpi</span><span class="o">.</span><span class="n">Poli1</span><span class="p">()</span>
@@ -671,12 +703,14 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.Axes3DSubplot at 0x7fa782831d30&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.Axes3DSubplot at 0x7f13aa6653d0&gt;
 </pre></div>
 </div>
-<img alt="../_images/clase_06_modelos_no_parametricos_31_1.png" src="../_images/clase_06_modelos_no_parametricos_31_1.png" />
+<img alt="../_images/clase_06_modelos_no_parametricos_19_1.png" src="../_images/clase_06_modelos_no_parametricos_19_1.png" />
 </div>
 </div>
+<p><strong>Modelo paramétrico como una regresión de órden dos</strong>
+<br> El resultado de la aproximación a los puntos no es muy buena.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plothpi</span><span class="o">.</span><span class="n">Poli2</span><span class="p">()</span>
@@ -684,13 +718,15 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.Axes3DSubplot at 0x7fa7bc5a4e10&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.Axes3DSubplot at 0x7f13aa9de110&gt;
 </pre></div>
 </div>
-<img alt="../_images/clase_06_modelos_no_parametricos_32_1.png" src="../_images/clase_06_modelos_no_parametricos_32_1.png" />
+<img alt="../_images/clase_06_modelos_no_parametricos_21_1.png" src="../_images/clase_06_modelos_no_parametricos_21_1.png" />
 </div>
 </div>
-<p>Como podemos observar la aproximación a los puntos no es muy buena. Veamos que sucede si utilizamos el método del histograma, recordemos que en este caso es necesario definir el tamaño de las celdas y el punto donde comienza la primera celda.</p>
+<p><strong>Solución utilizando el método del histograma</strong>
+<br> En este caso es necesario definir el tamaño de las celdas y el punto donde comienza la primera celda.
+<br> La forma de la función es arbitraria, la función tampoco se adapta muy bien.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plothpi</span><span class="o">.</span><span class="n">HisPlot</span><span class="p">()</span>
@@ -698,32 +734,40 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/clase_06_modelos_no_parametricos_34_0.png" src="../_images/clase_06_modelos_no_parametricos_34_0.png" />
+<img alt="../_images/clase_06_modelos_no_parametricos_23_0.png" src="../_images/clase_06_modelos_no_parametricos_23_0.png" />
 </div>
 </div>
-<p>Podemos observar que la forma de la función es arbitraria, sin embargo como el conjunto de puntos con los que se cuenta para ajustar el sistemas es pequeño, la función tampoco se adapta muy bien. De manera general se puede decir que el método del histograma:</p>
+<p>De manera general se puede decir que el método del histograma:</p>
 <li>Es muy simple de implementar y no requiere almacenar las muestras de entrenamiento </li>
 <li>El número de celdas crece exponencialmente con la dimensión del espacio. Por consiguiente se requiere un número muy grande de muestras.</li>
 <li>Presenta cambios muy fuertes y valores de probabilidad cero.</li><hr class="docutils" />
-</section>
-</section>
 <section id="metodo-de-k-vecinos-mas-cercanos">
-<h2>Método de <span class="math notranslate nohighlight">\(k\)</span>-vecinos más cercanos<a class="headerlink" href="#metodo-de-k-vecinos-mas-cercanos" title="Permalink to this headline">#</a></h2>
+<h2><strong>Método de <span class="math notranslate nohighlight">\(k\)</span>-vecinos más cercanos</strong><a class="headerlink" href="#metodo-de-k-vecinos-mas-cercanos" title="Permalink to this headline">#</a></h2>
 <p>Los <span class="math notranslate nohighlight">\(k\)</span> vecinos más cercanos es un algoritmo simple que almacena todos las muestras disponibles y predice un valor objetivo con base en alguna medida de similaridad. La suposición fundamental de este tipo de métodos es que los cambios de la función (modelo) que describe el comportamiento son suaves. Por consiguiente, se asume que el comportamiento de un punto puede ser estimado como el promedio del comportamiento de sus <span class="math notranslate nohighlight">\(k\)</span>-vecinos.</p>
-<p>Por consiguiente este método requiere de la selección de 2 elementos:</p>
-<li>El número de vecinos $k$</li>
-<li>La medida de distancia con base en la cual se definirá la vecindad</li><p>El valor de <span class="math notranslate nohighlight">\(k\)</span> juega un papel muy importante, un valor grande puede ayudar a eliminar ruido en los datos, pero un valor demasiado grande puede hacer perder exactitud al modelo. Por lo tanto es necesario aplicar alguna estrategia para seleccionar el mejor valor de <span class="math notranslate nohighlight">\(k\)</span> para cada problema particular. En la próxima clase veremos cómo abordar este problema.</p>
-<p>Por otro lado las medidas de distancia más usadas son (suponiendo que queremos medir la distancia entre un vector <span class="math notranslate nohighlight">\(\bf{x}\)</span> y un vector <span class="math notranslate nohighlight">\(\bf{z}\)</span>, ambos de dimensión <span class="math notranslate nohighlight">\(d\)</span>):</p>
-<li>Euclidiana: $d({\bf{x}},{\bf{z}}) = \sqrt{\sum_{j=1}^{d} (x_j-z_j)^2}$</li>
-<li>Manhattan: $d({\bf{x}},{\bf{z}}) =  \sum_{j=1}^d |x_j - z_j|$</li>
-<li>Minkowski: $d({\bf{x}},{\bf{z}}) =  \left( \sum_{j=1}^ d (|x_j - z_j|)^q \right)^{1/q}$</li><p>Para el caso de un problema de clasificación el método de <span class="math notranslate nohighlight">\(k\)</span>-vecinos se puede usar de la siguiente manera:</p>
+<p>Por consiguiente este método requiere de la selección de <strong>dos elementos</strong>:</p>
+<ol class="simple">
+<li><p><strong>El número de vecinos <span class="math notranslate nohighlight">\(k\)</span></strong>
+<br> El valor de <span class="math notranslate nohighlight">\(k\)</span> juega un papel muy importante, un valor grande puede ayudar a eliminar ruido en los datos, pero un valor demasiado grande puede hacer perder exactitud al modelo. Por lo tanto es necesario aplicar alguna estrategia para seleccionar el mejor valor de <span class="math notranslate nohighlight">\(k\)</span> para cada problema particular. En la próxima clase veremos cómo abordar este problema.</p></li>
+</ol>
+<ol class="simple">
+<li><p><strong>La medida de distancia con base en la cual se definirá la vecindad</strong>
+<br>Por otro lado las medidas de distancia más usadas son (suponiendo que queremos medir la distancia entre un vector <span class="math notranslate nohighlight">\(\bf{x}\)</span> y un vector <span class="math notranslate nohighlight">\(\bf{z}\)</span>, ambos de dimensión <span class="math notranslate nohighlight">\(d\)</span>):
+<br></p></li>
+</ol>
+<ul class="simple">
+<li><p>Euclidiana:
+$<span class="math notranslate nohighlight">\(d({\bf{x}},{\bf{z}}) = \sqrt{\sum_{j=1}^{d} (x_j-z_j)^2}\)</span>$</li></p></li>
+</ul>
+<li>Manhattan: $$d({\bf{x}},{\bf{z}}) =  \sum_{j=1}^d |x_j - z_j|$$</li>
+<li>Minkowski: $$d({\bf{x}},{\bf{z}}) =  \left( \sum_{j=1}^ d (|x_j - z_j|)^q \right)^{1/q}$$</li><p><strong>Problema de clasificación:</strong></p>
 <li>Se selecciona un número de vecinos $k$ y una medida de distancia</li>
-<li>Almacenamos el conjunto de entrenamiento, es decir las parejas $({\bf{x}}_i,y_i)_{i=1}^{N}$ </li>
-<li>Cuando ingresa al sistema una nueva muestra ${\bf{x}}^*$, medimos la distancia entre la nueva muestra y todas las muestras almacenadas en el entrenamiento, es decir obtenemos los valores $v_i = d({\bf{x}}^*,{\bf{x}}_i)$</li>
-<li>Encontramos los vecinos más cercanos, es decir las $k$ muestras almacenadas para las cuales dieron los menores valores $v_i$.</li>
-<li>Del conjunto de muestras seleccionadas como vecinos cercanos, extraigo el valor $y_i$ asociado. Lo que tengo en este momento son las clases a las cuales pertenecen los vecinos más cercanos al punto ${\bf{x}}^*$, la clase asignada a la muestra sera la clase que más se presente en el conjunto de vecinos más cercanos, es decir la moda. Si por ejemplo 3 de los 5 vecinos más cercanos pertenecen a la clase 1 y los otros dos a la clase 2, entonces la muestra será asignada a la clase 1.</li><p>Para el caso de un problema de clasificación, el procedimiento es muy similar exceptuando que la decisión final con respecto al valor de la variable de salida se toma como el promedio de los <span class="math notranslate nohighlight">\(y_i^v\)</span> pertenecientes a los <span class="math notranslate nohighlight">\(k\)</span>-vecinos más cercanos (la <span class="math notranslate nohighlight">\(v\)</span> es un indicador de que pertence a uno de los vecinos más cercanos).</p>
-<li>Clasificación: $y^* = \text{moda}\left(\left\lbrace y_j^{v}\right\rbrace_{j=1}^{k}\right)$</li>
-<li>Regresion: $y^* = \frac{1}{k}\sum_{j=1}^{k} y_j^v$</li><div class="cell docutils container">
+<li>Almacenamos el conjunto de entrenamiento, es decir las parejas $$({\bf{x}}_i,y_i)_{i=1}^{N}$$ </li>
+<li>Cuando ingresa al sistema una nueva muestra ${\bf{x}}^*$, medimos la distancia entre la nueva muestra y todas las muestras almacenadas en el entrenamiento, es decir obtenemos los valores $$v_i = d({\bf{x}}^*,{\bf{x}}_i)$$</li>
+<li>Encontramos los vecinos más cercanos, es decir, las $k$ muestras almacenadas para las cuales dieron los menores valores $v_i$.</li>
+<li>Del conjunto de muestras seleccionadas como vecinos cercanos, extraigo el valor $y_i$ asociado así:
+<p><em>Clasificación:</em>  $<span class="math notranslate nohighlight">\(y^* = \text{moda}\left(\left\lbrace y_j^{v}\right\rbrace_{j=1}^{k}\right) \)</span>$</p>
+<p><em>Regresion:</em>  $<span class="math notranslate nohighlight">\(y^* = \frac{1}{k}\sum_{j=1}^{k} y_j^v\)</span>$</p>
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Datos de Iris</span>
 <span class="n">iris</span> <span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">load_iris</span><span class="p">()</span>
@@ -762,7 +806,7 @@ title="Print to PDF"
 </div>
 <div class="cell_output docutils container">
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "1f8b1fb2f49c46248ebad10f8f6dd0d0", "version_major": 2, "version_minor": 0}
+{"model_id": "7424548dd4414f66ac5449d936bcc219", "version_major": 2, "version_minor": 0}
 </script></div>
 </div>
 <p>Si aplicamos el método de <span class="math notranslate nohighlight">\(k\)</span>-vecinos al problema de predicción de HPI, obtendremos lo siguiente:</p>
@@ -773,26 +817,17 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.Axes3DSubplot at 0x7f351d223b10&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.Axes3DSubplot at 0x7f13aa9ffdd0&gt;
 </pre></div>
 </div>
-<img alt="../_images/clase_06_modelos_no_parametricos_52_1.png" src="../_images/clase_06_modelos_no_parametricos_52_1.png" />
+<img alt="../_images/clase_06_modelos_no_parametricos_36_1.png" src="../_images/clase_06_modelos_no_parametricos_36_1.png" />
 </div>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plothpi</span><span class="o">.</span><span class="n">knn_un</span><span class="p">(</span><span class="n">n_neighbors</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../_images/clase_06_modelos_no_parametricos_53_0.png" src="../_images/clase_06_modelos_no_parametricos_53_0.png" />
-</div>
-</div>
-<p>Más allá de la forma que toma la función de salida es necesario que notemos algo importante. Si observamos con detenimiento las funciones obtenidas, veremos que una de las dos variables no es tenida en cuenta en la regresión, es decir el valor es constante siempre y cuando la otra no cambie. Este fecnómeno es debido a que una de las variables toma valores en el rango de 100 mil a 300 mil, mientras que la otra toma volres en el rango de 20 a 60. Como el método de  k -vecinos está basado en una medida de distancia, es claro que la distancia de la variable Hipoteca será mucho más grande en magnitud, que la distancia de la variable edad. Por esa razón una variable opaca la otra, aunque eso no significa que la variable Hipoteca sea más importante para la predicción.</p>
-<p>La forma en la que podemos evitar ese problema es escalando o normalizando las variables de entrada <span class="math notranslate nohighlight">\(\bf{x}\)</span>, para que todas tengan rango similares y no opaquen u oculten la información contenida en las demás. Existen varios tipos de normalización, unos de los más usados son:</p>
- <li>max-min: ${\bf{x}}_n = \frac{{\bf{x}}-\min({\bf{X}})}{\max({\bf{X}}) - \min({\bf{X}})}$. Todas las variables quedan en el rango $[0,1]$
-    <li>zscore: ${\bf{x}}_n = \frac{{\bf{x}}-mean({\bf{X}})}{std({\bf{X}})}$. Todas las variables quedan con media 0 y varianza 1.</li><p>Las formulas anteriores están planteadas en términos del vector de entrada <span class="math notranslate nohighlight">\(\bf{x}\)</span>, pero es necesario comprender que las normalizaciones se aplican de manera independiente por cada una de las variables en el vector. La letra mayúscula <span class="math notranslate nohighlight">\(\bf{X}\)</span> representa el conjunto completo de muestras de entrenamiento.</p>
+<p>Se requiere escalar o normalizar las variables de entrada <span class="math notranslate nohighlight">\(\bf{x}\)</span>, para que todas tengan rango similares y no opaquen u oculten la información contenida en las demás. Existen varios tipos de normalización, unos de los más usados son:</p>
+ <li> Todas las variables quedan en el rango $[0,1]$
+  $$max-min: ${\bf{x}}_n = \frac{{\bf{x}}-\min({\bf{X}})}{\max({\bf{X}}) - \min({\bf{X}})}$$ 
+ <li> Todas las variables quedan con media 0 y varianza 1. 
+    $$ zscore: ${\bf{x}}_n = \frac{{\bf{x}}-mean({\bf{X}})}{std({\bf{X}})}$$ <p>Las formulas anteriores están planteadas en términos del vector de entrada <span class="math notranslate nohighlight">\(\bf{x}\)</span>, pero es necesario comprender que las normalizaciones se aplican de manera independiente por cada una de las variables en el vector. La letra mayúscula <span class="math notranslate nohighlight">\(\bf{X}\)</span> representa el conjunto completo de muestras de entrenamiento.</p>
 <p>Si aplicamos la normalización max-min a las variables Hipoteca y Edad, y posteriormente realizamos la predicción usando el método de <span class="math notranslate nohighlight">\(k\)</span>-vecinos obtendremos:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -801,35 +836,22 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.Axes3DSubplot at 0x7fdf4e95c210&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.Axes3DSubplot at 0x7f13aa1671d0&gt;
 </pre></div>
 </div>
-<img alt="../_images/clase_06_modelos_no_parametricos_59_1.png" src="../_images/clase_06_modelos_no_parametricos_59_1.png" />
+<img alt="../_images/clase_06_modelos_no_parametricos_41_1.png" src="../_images/clase_06_modelos_no_parametricos_41_1.png" />
 </div>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plothpi</span><span class="o">.</span><span class="n">knn_n</span><span class="p">(</span><span class="n">n_neighbors</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.Axes3DSubplot at 0x7fb200b09dd0&gt;
-</pre></div>
-</div>
-<img alt="../_images/clase_06_modelos_no_parametricos_60_1.png" src="../_images/clase_06_modelos_no_parametricos_60_1.png" />
-</div>
-</div>
-<hr class="docutils" />
-<p><b>Método de ventana de Parzen</b></p>
-<p>La diferencia fundamental entre el método de <span class="math notranslate nohighlight">\(k\)</span>-vecinos y el método del histograma es la definición de “vecindad”. En la primer caso la vecindad era un espacio definido por la celda en la cual se ubicaba un punto. Por el contrario en el método de <span class="math notranslate nohighlight">\(k\)</span>-vecinos la vecindad era un área variable definida por los punto más cercanos a la muestra en cuestión. Es decir que la vecindad podría ser grande si los puntos más cercanos están de todas maneras muy alejados o pequeña si los vecinos más cercanos están realmente cerca. El método de ventana de Parzen es en esencia un método similar a los dos anteriores, pero no define una vecindad, sino que por el contrario toma en cuenta todos los puntos del conjunto de entrenamiento para realizar la predicción. El método de ventana de Parzen le da un peso a cada una de las muestras de entrenamiento con base en la distancia a la muestra objetivo, si la distancia es corta esa muestra de entrenamiento tendrá mucho peso en el valor asignado a la variable a predecir y si la distancia es muy grande el peso de dicha muestra será mucho menor.</p>
+</section>
+<section id="metodo-de-ventana-de-parzen">
+<h2><strong>Método de ventana de Parzen</strong><a class="headerlink" href="#metodo-de-ventana-de-parzen" title="Permalink to this headline">#</a></h2>
+<p>El método de ventana de Parzen no define una vecindad, sino que por el contrario toma en cuenta todos los puntos del conjunto de entrenamiento para realizar la <a class="reference external" href="http://predicci%C3%B3n.Se">predicción.Se</a> le da un peso a cada una de las muestras de entrenamiento con base en la distancia a la muestra objetivo, si la distancia es corta esa muestra de entrenamiento tendrá mucho peso en el valor asignado a la variable a predecir y si la distancia es muy grande el peso de dicha muestra será mucho menor.</p>
+<p>Existen muchas funciones kernel que se pueden usar, la más empleada es la función de kernel Gausiano dada por:
+$<span class="math notranslate nohighlight">\(K(u)=\exp(-\frac{1}{2}u^2)\)</span>$</p>
 <p>La función de densidad de probabilidad utilizando el método de ventana de Parzen está dado por:</p>
 <div class="math notranslate nohighlight">
 \[f({\bf{x}}^*) = \frac{1}{N h^d} \sum_{i=1}^{N} K(u_i), \;\; u_i = \frac{dist({\bf{x}}^*,{\bf{x}}_i)}{h}\;\;\;\;\;\; (1)\]</div>
 <p>donde <span class="math notranslate nohighlight">\(K\)</span> se conoce como función kernel y es la función encargada de dar un peso a cada una de las muestras de entrenamiento <span class="math notranslate nohighlight">\(i\)</span>, con base en la distancia a la muestra nueva <span class="math notranslate nohighlight">\({\bf{x}}^*\)</span>. <span class="math notranslate nohighlight">\(h\)</span> es un parámetro de la ventana que regula su ancho, es decir si le da mayor o menor peso a los puntos alejados. Si usamos <span class="math notranslate nohighlight">\(K\)</span> igual a una ventana cuadrada, tendríamos un resultado parecido al del método del histograma.</p>
-<p>Existen muchas funciones kernel que se pueden usar, la más empleada es la función de kernel Gausiano dada por:</p>
-<div class="math notranslate nohighlight">
-\[K(u)=\exp(-\frac{1}{2}u^2)\]</div>
 <p>En este caso la función es similar a una ventana Gaussiana con media cero, es decir que le dará mayor peso a los puntos cuya distancia sea cercana a cero y menor peso a los puntos distantes. El valor de h en este caso se puede asemejar a la desviación de la función Gausiana, es decir que controla su ancho.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -850,8 +872,8 @@ title="Print to PDF"
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)):</span>
         <span class="n">pred</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">plothpi</span><span class="o">.</span><span class="n">parzenW</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="n">h</span><span class="p">))</span>
     <span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">pred</span><span class="p">,</span><span class="s1">&#39;-o&#39;</span><span class="p">)</span>
-    <span class="n">ax1</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">Normal1</span><span class="p">,</span><span class="n">normed</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;steelblue&#39;</span><span class="p">)</span>
-    <span class="n">ax1</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">Normal2</span><span class="p">,</span><span class="n">normed</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;steelblue&#39;</span><span class="p">)</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">Normal1</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;steelblue&#39;</span><span class="p">)</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">Normal2</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;steelblue&#39;</span><span class="p">)</span>
     <span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 <span class="n">interact</span><span class="p">(</span><span class="n">DistributionPW</span><span class="p">,</span> <span class="n">h</span><span class="o">=</span><span class="p">[</span><span class="mf">0.01</span><span class="p">,</span><span class="mf">0.05</span><span class="p">,</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">0.5</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">]);</span> 
 </pre></div>
@@ -859,7 +881,7 @@ title="Print to PDF"
 </div>
 <div class="cell_output docutils container">
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "a13622d01abc4aee91d7e7678d8a0d8f", "version_major": 2, "version_minor": 0}
+{"model_id": "18a61efffa2a49f2ac1f89920f4a3075", "version_major": 2, "version_minor": 0}
 </script></div>
 </div>
 <p>Como el valor entregado por la función de ventana de Parzen corresponde a una estimación de la función de densidad de probabilidad, para problemas de clasificación debemos dividir las muestras de entrenamiento en cada una de las clases y estimar la probabilidad de una muestra nueva en cada una de ellas usando la ecuación (1). Es decir, es el mismo procedimiento descrito en la clase anterior pero cambiando la función que estima la fdp.</p>
@@ -893,39 +915,14 @@ title="Print to PDF"
 </div>
 <div class="cell_output docutils container">
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "a9d229e82f254c1d86a12d4410dbe85d", "version_major": 2, "version_minor": 0}
+{"model_id": "7aa8c34d8e714c1e8c938667bf80ce90", "version_major": 2, "version_minor": 0}
 </script></div>
 </div>
+<section id="estimador-de-nadaraya-watson">
+<h3><strong>Estimador de Nadaraya-Watson:</strong><a class="headerlink" href="#estimador-de-nadaraya-watson" title="Permalink to this headline">#</a></h3>
 <p>Para el caso de <strong>regresión</strong>, es necesario estimar el valor esperado de la distribución condicional. La formulación del modelo puede hacerse de maneras difirentes, el modelo más usado es:</p>
-<li>Estimador de Nadaraya-Watson: $$y^* = \frac{\sum_{i=1}^N K(u_i)y_i}{\sum_{i=1}^N K(u_i)}, \;\; u_i = \frac{dist({\bf{x}}^*,{\bf{x}}_i)}{h}$$
-</li><p>Si usamos el estimador de Nadaraya-Watson en el problema de predicción de HPI (<strong>sin</strong> normalización de variables) obtendremos:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plothpi</span><span class="o">.</span><span class="n">ParzenPlot_un</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.Axes3DSubplot at 0x7f2073690f10&gt;
-</pre></div>
-</div>
-<img alt="../_images/clase_06_modelos_no_parametricos_76_1.png" src="../_images/clase_06_modelos_no_parametricos_76_1.png" />
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plothpi</span><span class="o">.</span><span class="n">ParzenPlot_un</span><span class="p">(</span><span class="mf">1e5</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.Axes3DSubplot at 0x7f20736a8650&gt;
-</pre></div>
-</div>
-<img alt="../_images/clase_06_modelos_no_parametricos_77_1.png" src="../_images/clase_06_modelos_no_parametricos_77_1.png" />
-</div>
-</div>
-<p>Si usamos el estimador de Nadaraya-Watson en el problema de predicción de HPI (<strong>previa</strong> normalización de variables) obtendremos:</p>
+<p><br> $<span class="math notranslate nohighlight">\(y^* = \frac{\sum_{i=1}^N K(u_i)y_i}{\sum_{i=1}^N K(u_i)}, \;\; u_i = \frac{dist({\bf{x}}^*,{\bf{x}}_i)}{h}\)</span>$</p>
+<p>Si usamos el estimador de Nadaraya-Watson en el problema de predicción de HPI obtendremos:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plothpi</span><span class="o">.</span><span class="n">ParzenPlot_n</span><span class="p">(</span><span class="mf">0.3</span><span class="p">)</span>
@@ -933,26 +930,13 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.Axes3DSubplot at 0x7f94af442cd0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.Axes3DSubplot at 0x7f13aa3e5a10&gt;
 </pre></div>
 </div>
-<img alt="../_images/clase_06_modelos_no_parametricos_79_1.png" src="../_images/clase_06_modelos_no_parametricos_79_1.png" />
+<img alt="../_images/clase_06_modelos_no_parametricos_54_1.png" src="../_images/clase_06_modelos_no_parametricos_54_1.png" />
 </div>
 </div>
 <p>Note que a diferencia de los métodos anteriores, en este caso se obtiene una función suave debido a que la medida de similitud (la función kernel), es una función suave.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plothpi</span><span class="o">.</span><span class="n">ParzenPlot_n</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.Axes3DSubplot at 0x7f20782fc350&gt;
-</pre></div>
-</div>
-<img alt="../_images/clase_06_modelos_no_parametricos_81_1.png" src="../_images/clase_06_modelos_no_parametricos_81_1.png" />
-</div>
-</div>
 <p>Sin embargo, si el valor de h se hace más pequeño, la función se hace más aguda en cada uno de los puntos del conjunto de entrenamiento, debido a que la similitud es más estricta, sólo muestras de entrenamiento muy cercanos a la muestra sobre la cual se quiere hacer la predicción, aportarán a la misma. Escoger el valor correcto para <span class="math notranslate nohighlight">\(h\)</span> puede no ser una tarea facil. Un estimador muy usado es el conocido como “Silverman bandwidth” (<mark>consultar</mark>)</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -976,11 +960,12 @@ title="Print to PDF"
 </div>
 <div class="cell_output docutils container">
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "bccaa7f0a0c34a5fadb20242bcf14b8d", "version_major": 2, "version_minor": 0}
+{"model_id": "10637cf2d1ae4ad1bcb1b7f69de8a47b", "version_major": 2, "version_minor": 0}
 </script></div>
 </div>
 <hr class="docutils" />
-<p>Los modelos no paramétricos son muy flexibles porque permiten construir fronteras de decisión o funciones de regresión muy variadas, pero son computacionalmente muy ineficientes para conjuntos de datos muy grandes debido a que como hemos visto, para la mayoría, es necesario almacenar todas las muestras de entrenamiento y realizar cáculos de distancia con respecto a todas las muetras de entrenamiento cada vez que necesitemos realizar una nueva predicción. Por esta razón se han propuesto muchas variantes para trabajar con conjuntos de datos masivos.</p>
+<p>Los modelos <strong>no paramétricos</strong> son muy flexibles porque permiten construir fronteras de decisión o funciones de regresión muy variadas, pero son computacionalmente muy ineficientes para conjuntos de datos muy grandes debido a que como hemos visto, para la mayoría, es necesario almacenar todas las muestras de entrenamiento y realizar cáculos de distancia con respecto a todas las muetras de entrenamiento cada vez que necesitemos realizar una nueva predicción. Por esta razón se han propuesto muchas variantes para trabajar con conjuntos de datos masivos.</p>
+</section>
 </section>
 </section>
 
@@ -1011,17 +996,17 @@ title="Print to PDF"
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="clase_05_Funciones_discriminantes_Gausianas.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="../titles/U2_description.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title"><strong>Modelos de clasificación empleando funciones de densidad Gausianas</strong></p>
+            <p class="prev-next-title">MODELOS NO PARÁMETRICOS</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="../Labs/lab1/lab1_parte1.html" title="next page">
+    <a class='right-next' id="next-link" href="../Labs/lab2/lab2_parte1.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Laboratorio 1 - Parte 1 Regresión polinomial múltiple</p>
+        <p class="prev-next-title">Laboratorio 2 - Parte 1. KNN para un problema de clasificación</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

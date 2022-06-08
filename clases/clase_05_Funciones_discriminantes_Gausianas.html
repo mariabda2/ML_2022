@@ -54,7 +54,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Modelos no parámetricos" href="clase_06_modelos_no_parametricos.html" />
+    <link rel="next" title="Laboratorio 1 - Parte 1 Regresión polinomial múltiple" href="../Labs/lab1/lab1_parte1.html" />
     <link rel="prev" title="Regresión lineal y regresión logística" href="clase_03_y_04_regresion_lineal_regresion_logistica.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -146,11 +146,6 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="clase_06_modelos_no_parametricos.html">
-     Modelos no parámetricos
-    </a>
-   </li>
-   <li class="toctree-l2">
     <a class="reference internal" href="../Labs/lab1/lab1_parte1.html">
      Laboratorio 1 - Parte 1 Regresión polinomial múltiple
     </a>
@@ -172,6 +167,13 @@ const thebe_selector_output = ".output, .cell_output"
    </i>
   </label>
   <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="clase_06_modelos_no_parametricos.html">
+     <strong>
+      Modelos no parámetricos
+     </strong>
+    </a>
+   </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../Labs/lab2/lab2_parte1.html">
      Laboratorio 2 - Parte 1. KNN para un problema de clasificación
@@ -580,12 +582,18 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="modelos-de-clasificacion-empleando-funciones-de-densidad-gausianas">
+  <p><a href="https://colab.research.google.com/github/mariabda2/ML_2022/blob/main/clases/clase_05_Funciones_discriminantes_Gausianas.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a></p>
+<section class="tex2jax_ignore mathjax_ignore" id="modelos-de-clasificacion-empleando-funciones-de-densidad-gausianas">
 <h1><strong>Modelos de clasificación empleando funciones de densidad Gausianas</strong><a class="headerlink" href="#modelos-de-clasificacion-empleando-funciones-de-densidad-gausianas" title="Permalink to this headline">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>wget --no-cache -O init.py -q https://raw.githubusercontent.com/mariabda2/ML_2022/main/init.py
 <span class="kn">import</span> <span class="nn">init</span><span class="p">;</span> <span class="n">init</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="n">force_download</span><span class="o">=</span><span class="kc">False</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>replicating local resources
 </pre></div>
 </div>
 </div>
@@ -624,7 +632,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/clase_05_Funciones_discriminantes_Gausianas_4_0.png" src="../_images/clase_05_Funciones_discriminantes_Gausianas_4_0.png" />
+<img alt="../_images/clase_05_Funciones_discriminantes_Gausianas_5_0.png" src="../_images/clase_05_Funciones_discriminantes_Gausianas_5_0.png" />
 </div>
 </div>
 <p>Si asumimos por ejemplo que la fdp de cada clase en la figura anterior la vamos a modelar usando funciones de probabilidad Gausianas, entonces la fdp de cada una estará dada por la función:</p>
@@ -656,6 +664,12 @@ title="Print to PDF"
 <li>Evaluar ${\bf{x}}^*$ en cada una de las funciones $p_j$, para cada una las clases, $j=1,...,C$. Con esto vamos a establecer la probabilidad de que la muestra nueva pertenezca a cada una de las clases, de acuerdo con el modelo que hemos asumido (Gausiano)</li>
 <li>La clase asignada a la muestra ${\bf{x}}^*$, será la clase para la cual la probabilidad sea mayor.</li><div class="math notranslate nohighlight">
 \[C* = \mathop {\arg \max }\limits_k p_k({\bf{x}}^*)\]</div>
+<p><strong>Criterio máxima verosimilitud</strong>
+<br> Sea <span class="math notranslate nohighlight">\(X_1,...,X_n\)</span> independientes e
+idénticamente distribuidas con función de densidad de probabilidad <span class="math notranslate nohighlight">\(p(x;\theta)\)</span>, entonces la <strong>función de verosimilitud</strong> se define como:
+$<span class="math notranslate nohighlight">\(\mathcal{L}(\theta) = \prod_{í=1}^n p(x_i;\theta).\)</span>$</p>
+<p>y la <strong>log-verosimilitud</strong> se define como
+$<span class="math notranslate nohighlight">\(\mathcal{l}(\theta)=\log \mathcal{L}(\theta)=\sum_{i=1}^n \log p(x_i; \theta)\)</span>$</p>
 <p>Si aplicamos este método al conjunto de muestras de la primera figura obtendremos la siguiente frontera de clasificación:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -731,7 +745,7 @@ title="Print to PDF"
 </div>
 <div class="cell_output docutils container">
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "acc07130f1ce45c29674e3057f4ca26e", "version_major": 2, "version_minor": 0}
+{"model_id": "c1fbd909389a49fbb4207c801f8f88af", "version_major": 2, "version_minor": 0}
 </script><div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;function __main__.FuncionDiscriminanteGaussiana&gt;
 </pre></div>
 </div>
@@ -785,7 +799,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/clase_05_Funciones_discriminantes_Gausianas_26_0.png" src="../_images/clase_05_Funciones_discriminantes_Gausianas_26_0.png" />
+<img alt="../_images/clase_05_Funciones_discriminantes_Gausianas_28_0.png" src="../_images/clase_05_Funciones_discriminantes_Gausianas_28_0.png" />
 </div>
 </div>
 </section>
@@ -815,7 +829,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/clase_05_Funciones_discriminantes_Gausianas_29_0.png" src="../_images/clase_05_Funciones_discriminantes_Gausianas_29_0.png" />
+<img alt="../_images/clase_05_Funciones_discriminantes_Gausianas_31_0.png" src="../_images/clase_05_Funciones_discriminantes_Gausianas_31_0.png" />
 </div>
 </div>
 <p>Los tres casos anteriores corresponden a:</p>
@@ -866,7 +880,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/clase_05_Funciones_discriminantes_Gausianas_31_0.png" src="../_images/clase_05_Funciones_discriminantes_Gausianas_31_0.png" />
+<img alt="../_images/clase_05_Funciones_discriminantes_Gausianas_33_0.png" src="../_images/clase_05_Funciones_discriminantes_Gausianas_33_0.png" />
 </div>
 </div>
 <hr class="docutils" />
@@ -914,10 +928,10 @@ title="Print to PDF"
             <p class="prev-next-title"><strong>Regresión lineal y regresión logística</strong></p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="clase_06_modelos_no_parametricos.html" title="next page">
+    <a class='right-next' id="next-link" href="../Labs/lab1/lab1_parte1.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Modelos no parámetricos</p>
+        <p class="prev-next-title">Laboratorio 1 - Parte 1 Regresión polinomial múltiple</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
