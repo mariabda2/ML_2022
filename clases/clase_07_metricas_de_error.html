@@ -544,19 +544,9 @@ title="Print to PDF"
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#roc-curve">
-     ROC Curve
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#grafiquemos-la-curva-roc-del-modelo-entrenado-antes">
-       Grafiquemos la curva ROC del modelo entrenado antes
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#veamos-el-efecto-de-la-distribucion-de-scores-en-la-curva-roc">
-     Veamos el efecto de la distribución de scores en la Curva ROC
+     <strong>
+      ROC Curve
+     </strong>
     </a>
    </li>
   </ul>
@@ -656,19 +646,9 @@ title="Print to PDF"
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#roc-curve">
-     ROC Curve
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#grafiquemos-la-curva-roc-del-modelo-entrenado-antes">
-       Grafiquemos la curva ROC del modelo entrenado antes
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#veamos-el-efecto-de-la-distribucion-de-scores-en-la-curva-roc">
-     Veamos el efecto de la distribución de scores en la Curva ROC
+     <strong>
+      ROC Curve
+     </strong>
     </a>
    </li>
   </ul>
@@ -1026,7 +1006,7 @@ BACC = 0.8
 </section>
 </section>
 <section id="roc-curve">
-<h3>ROC Curve<a class="headerlink" href="#roc-curve" title="Permalink to this headline">#</a></h3>
+<h3><strong>ROC Curve</strong><a class="headerlink" href="#roc-curve" title="Permalink to this headline">#</a></h3>
 <p>La curva ROC (Receiver Operator Characteristic) se utiliza como una medida de desempeño esperado de un sistema de clasificación. La grafica muestra el desempeño en términos de Sensibilidad vs 1 - Especificidad, para diferentes umbrales de decisión. El área bajo la curva ROC (AUC) se usa como medida de desempeño en varias aplicaciones.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1038,8 +1018,7 @@ BACC = 0.8
 <img alt="../_images/clase_07_metricas_de_error_35_0.jpg" src="../_images/clase_07_metricas_de_error_35_0.jpg" />
 </div>
 </div>
-<section id="grafiquemos-la-curva-roc-del-modelo-entrenado-antes">
-<h4>Grafiquemos la curva ROC del modelo entrenado antes<a class="headerlink" href="#grafiquemos-la-curva-roc-del-modelo-entrenado-antes" title="Permalink to this headline">#</a></h4>
+<p><strong>Grafiquemos la curva ROC del modelo entrenado antes</strong></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">roc_curve</span><span class="p">,</span> <span class="n">auc</span>
@@ -1070,10 +1049,7 @@ BACC = 0.8
 <img alt="../_images/clase_07_metricas_de_error_37_0.png" src="../_images/clase_07_metricas_de_error_37_0.png" />
 </div>
 </div>
-</section>
-</section>
-<section id="veamos-el-efecto-de-la-distribucion-de-scores-en-la-curva-roc">
-<h3>Veamos el efecto de la distribución de scores en la Curva ROC<a class="headerlink" href="#veamos-el-efecto-de-la-distribucion-de-scores-en-la-curva-roc" title="Permalink to this headline">#</a></h3>
+<p><strong>Veamos el efecto de la distribución de scores en la Curva ROC</strong></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mean</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mf">0.5</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">]</span>
