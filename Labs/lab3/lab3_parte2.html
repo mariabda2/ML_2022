@@ -553,29 +553,29 @@ title="Print to PDF"
 <span class="c1"># Ejecuta esta celda!</span>
 <span class="o">%</span><span class="k">load_ext</span> autoreload
 <span class="o">%</span><span class="k">autoreload</span> 2
-<span class="c1">#for local </span>
-<span class="c1">#import sys ; sys.path.append(&#39;../commons/utils/&#39;)</span>
-<span class="o">!</span>wget https://raw.githubusercontent.com/mariabda2/ML_2022/master/Labs/commons/utils/general.py -O general.py --no-cache
-<span class="kn">from</span> <span class="nn">general</span> <span class="kn">import</span> <span class="n">configure_lab3</span>
-<span class="n">configure_lab3</span><span class="p">()</span>
+<span class="n">in_colab</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="k">if</span> <span class="ow">not</span> <span class="n">in_colab</span><span class="p">:</span>
+    <span class="kn">import</span> <span class="nn">sys</span> <span class="p">;</span> <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;../commons/utils/&#39;</span><span class="p">);</span> <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;../commons/utils/data&#39;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span> 
+    <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s1">&#39;wget https://raw.githubusercontent.com/mariabda2/ML_2022/master/Labs/commons/utils/general.py -O general.py&#39;</span><span class="p">)</span>
+    <span class="kn">from</span> <span class="nn">general</span> <span class="kn">import</span> <span class="n">configure_lab3</span>
+    <span class="n">configure_lab3</span><span class="p">()</span>
 <span class="kn">from</span> <span class="nn">lab3</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="n">GRADER</span> <span class="o">=</span> <span class="n">part_2</span><span class="p">()</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">set_context</span><span class="p">(</span><span class="s1">&#39;talk&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <section class="tex2jax_ignore mathjax_ignore" id="laboratorio-3-parte-2-comparacion-de-metodos-basados-en-arboles">
 <h1>Laboratorio 3 - Parte 2. Comparación de metodos basados en árboles<a class="headerlink" href="#laboratorio-3-parte-2-comparacion-de-metodos-basados-en-arboles" title="Permalink to this headline">#</a></h1>
-<p>A continuación se leen los datos de un problema de clasificación. El problema corresponde a la clasifiación de dígitos escritos a mano, el cual fue abordado en el laboratorio anterior. Usaremos únicamente 4 de las 10 clases disponibles, usando solo los números pares. Los datos fueron preprocesados para reducir el número de características. La técnica usada será analizada más adelante en el curso.</p>
+<p>A continuación se leen los datos de un problema de clasificación, usando los datos de analisis quimico de diferentes vinos. Como siempre <a class="reference external" href="https://archive.ics.uci.edu/ml/datasets/wine">explora un poco el contenido y caracteristicas de nuestro conjunto de datos</a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">digits</span> <span class="o">=</span> <span class="n">load_digits</span><span class="p">(</span><span class="n">n_class</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
-<span class="c1">#--------- preprocesamiento usando solo los pares--------------------</span>
-<span class="n">pca</span> <span class="o">=</span> <span class="n">PCA</span><span class="p">(</span><span class="mf">0.99</span><span class="p">,</span> <span class="n">whiten</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">data</span> <span class="o">=</span> <span class="n">pca</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">digits</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">digits</span><span class="o">.</span><span class="n">target</span><span class="p">,</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">10</span><span class="p">])])</span>
-<span class="c1">#---------- Datos a usar ----------------------</span>
-<span class="n">x</span> <span class="o">=</span> <span class="n">data</span>
-<span class="n">y</span> <span class="o">=</span>  <span class="n">digits</span><span class="o">.</span><span class="n">target</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">digits</span><span class="o">.</span><span class="n">target</span><span class="p">,</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">10</span><span class="p">])]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span>  <span class="n">load_wine</span><span class="p">(</span><span class="n">return_X_y</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">3</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">3</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
@@ -591,8 +591,19 @@ title="Print to PDF"
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title Pregunta Abierta</span>
-<span class="c1">#@markdown  Entre el parametro max_features y max_depth definidos en la librería, ¿cual es un criterio de parada de crecimiento de los arboles? Explique en sus palabras</span>
-<span class="n">respuesta_1</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span> <span class="c1">#@param {type:&quot;string&quot;}</span>
+<span class="c1">#@markdown ¿Cuáles de los parámetros en la librería pueden ayudar a controlar el crecimiento del árbol de decisión (DT-Decision Tree)?</span>
+<span class="c1">#@markdown ¿Cual de las opciones está mejor justificada?</span>
+ 
+<span class="c1">#@markdown A) `criterion` es el parámetro que tiene más influencia ya que es el que decide medida para ganancia de información</span>
+ 
+<span class="c1">#@markdown B) `max_depth` es el que tiene mayor influencia, controlando el número total de nodos del DT el resto de parámetros pueden influenciar pero no de manera directa.</span>
+ 
+<span class="c1">#@markdown C) `max_depth`, `min_samples_split y `min_samples_leaf son importantes ya influencia en la creación de splits, aunque hay otros. `max_depth` es el que tiene mayor influencia, controlando el número total de nodos del DT.</span>
+ 
+<span class="c1">#@markdown D) `max_depth` es el que tiene mayor influencia, controlando el número total de nodos del DT, luego  `max_features` que nos indica el máximo de características usadas.</span>
+ 
+<span class="c1">#@markdown Selecciona dentro las lista desplegable</span>
+<span class="n">respuesta_1</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span> <span class="c1">#@param [&quot;&quot;, &quot;A&quot;, &quot;B&quot;, &quot;C&quot;, &quot;D&quot;]</span>
 </pre></div>
 </div>
 </div>
@@ -600,7 +611,7 @@ title="Print to PDF"
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title Pregunta Abierta</span>
-<span class="c1">#@markdown ¿Cuál es la diferencia entre min_samples_leaf y min_samples_split? Y explique la diferencia fundamental de estos dos con respecto a min_impurity_decrease.</span>
+<span class="c1">#@markdown ¿Cuál es la diferencia principal entre `min_impurity_decrease` y `min_samples_split`? ¿cual tiene influencia en el número de nodos?</span>
 <span class="n">respuesta_2</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span> <span class="c1">#@param {type:&quot;string&quot;}</span>
 </pre></div>
 </div>
@@ -612,19 +623,25 @@ title="Print to PDF"
 <p>Vamos a tener en cuenta lo siguiente:</p>
 <ol class="simple">
 <li><p>dentro del código, ya se encuentra sugerida la metodologia de validación</p></li>
-<li><p>la función va aceptar un parametro booleano, dependiendo del valor de esta parametro, se ejecutara normalización de los datos.</p></li>
+<li><p>la función va aceptar un parametro <code class="docutils literal notranslate"><span class="pre">str</span></code>, para seleccionar tipo de normalización.</p>
+<ol class="simple">
+<li><p>Estandar</p></li>
+<li><p>Minimo y maximos</p></li>
+</ol>
+</li>
 <li><p><strong>hacer uso explicito del nombre del parametro que se va usar</strong>, por ejemplo, si se requeire asignar el parametro <code class="docutils literal notranslate"><span class="pre">max_features</span></code>  debemos llamar la libreria de esta manera: <code class="docutils literal notranslate"><span class="pre">DecisionTreeClassifier(max_features</span> <span class="pre">=</span> <span class="pre">'auto')</span></code></p></li>
-<li><p>Vamos a configurar el arbol con la medida de impureza Gini</p></li>
+<li><p>Vamos a configurar el arbol con la medida de impureza Entropia</p></li>
 </ol>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#ejercicio de código</span>
 <span class="k">def</span> <span class="nf">experimentar_dt</span><span class="p">(</span> <span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">depths</span><span class="p">,</span><span class="n">normalize</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;funcion que realiza experimentos de arboles de decision</span>
-<span class="sd">    X: matriz con las caractersiticas</span>
-<span class="sd">    Y: matriz de numpy con etiquetas</span>
-<span class="sd">    depths: list[int] lista con la profundidad de arboles a experimentar</span>
-<span class="sd">    normalize bool: indica si se aplica normalización a los datos</span>
+<span class="sd">    Args:</span>
+<span class="sd">        X: matriz con las caractersiticas</span>
+<span class="sd">        Y: matriz de numpy con etiquetas</span>
+<span class="sd">        depths: list[int] lista con la profundidad de arboles a experimentar</span>
+<span class="sd">    normalize str: None, significa nignuna normalización. &#39;estandar&#39;. &#39;min-max&#39; los otros dos tipos</span>
 <span class="sd">    retorna: dataframe con:</span>
 <span class="sd">        - profunidad de los arboles</span>
 <span class="sd">        - eficiencia de entrenamiento</span>
@@ -647,27 +664,43 @@ title="Print to PDF"
             <span class="n">Ytest</span> <span class="o">=</span> <span class="n">Y</span><span class="p">[</span><span class="n">test</span><span class="p">]</span>
             <span class="c1">#Normalizamos los datos</span>
             <span class="c1"># si la bandera esta en True</span>
-            <span class="k">if</span> <span class="n">normalize</span><span class="p">:</span>
-                <span class="n">scaler</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span>
+            <span class="n">scaler</span> <span class="o">=</span> <span class="kc">None</span>
+            <span class="k">if</span> <span class="n">normalize</span> <span class="o">==</span> <span class="s1">&#39;estandar&#39;</span><span class="p">:</span>
+                <span class="c1"># usa la clase adecuada</span>
+                <span class="n">scaler</span> <span class="o">=</span> <span class="o">...</span><span class="p">()</span>
+                <span class="n">scaler</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">Xtrain</span><span class="p">)</span>
+
+            <span class="k">elif</span> <span class="n">normalize</span> <span class="o">==</span> <span class="s1">&#39;min-max&#39;</span><span class="p">:</span>
+                <span class="c1"># usa la clase adecuada</span>
+                <span class="n">scaler</span> <span class="o">=</span> <span class="o">...</span><span class="p">()</span>
+            
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">idx</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">:</span>
+                    <span class="c1"># solo imprimir la advertencia una vez POR FOLD</span>
+                    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;No se ejecuta niguna normalizacion/estandarizacion&quot;</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="n">scaler</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
                 <span class="n">scaler</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">Xtrain</span><span class="p">)</span>
                 <span class="n">Xtrain</span><span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">Xtrain</span><span class="p">)</span>
                 <span class="n">Xtest</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">Xtest</span><span class="p">)</span>
+    
+
             <span class="c1">#Haga el llamado a la función para crear y entrenar el modelo usando los datos de entrenamiento</span>
-            <span class="n">modelo</span> <span class="o">=</span> 
-            <span class="n">modelo</span>
+            <span class="n">modelo</span> <span class="o">=</span> <span class="o">...</span><span class="p">(</span><span class="n">max_depth</span><span class="o">=</span><span class="n">depth</span><span class="p">,</span> <span class="n">criterion</span><span class="o">=</span><span class="s2">&quot;entropy&quot;</span><span class="p">)</span>
+            <span class="n">modelo</span><span class="o">...</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
             <span class="c1">#predecir muestras de entrenamiento</span>
-            <span class="n">Ytrain_pred</span> <span class="o">=</span> <span class="n">modelo</span>
+            <span class="n">Ytrain_pred</span> <span class="o">=</span> <span class="n">modelo</span><span class="o">...</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
             <span class="c1">#predecir muestras de pruebas</span>
-            <span class="n">Yest</span> <span class="o">=</span> <span class="n">modelo</span>
+            <span class="n">Ytest_pred</span> <span class="o">=</span> <span class="n">modelo</span><span class="o">...</span><span class="p">(</span><span class="n">X</span><span class="o">=...</span><span class="p">)</span>
             <span class="c1">#Evaluamos las predicciones del modelo con los datos de test</span>
             <span class="n">EficienciaTrain</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">Ytrain_pred</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span> <span class="o">==</span> <span class="n">Ytrain</span><span class="o">.</span><span class="n">ravel</span><span class="p">()))</span>
-            <span class="n">EficienciaVal</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">Yest</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span> <span class="o">==</span> <span class="n">Ytest</span><span class="o">.</span><span class="n">ravel</span><span class="p">()))</span>
+            <span class="n">EficienciaVal</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">Ytest_pred</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span> <span class="o">==</span> <span class="n">Ytest</span><span class="o">.</span><span class="n">ravel</span><span class="p">()))</span>
 
         <span class="n">resultados</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">idx</span><span class="p">,</span><span class="s1">&#39;profunidad del arbol&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">depth</span>
-        <span class="n">resultados</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">idx</span><span class="p">,</span><span class="s1">&#39;eficiencia de entrenamiento&#39;</span><span class="p">]</span> <span class="o">=</span> 
-        <span class="n">resultados</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">idx</span><span class="p">,</span><span class="s1">&#39;desviacion estandar entrenamiento&#39;</span><span class="p">]</span> <span class="o">=</span> 
-        <span class="n">resultados</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">idx</span><span class="p">,</span><span class="s1">&#39;eficiencia de prueba&#39;</span><span class="p">]</span> <span class="o">=</span>
-        <span class="n">resultados</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">idx</span><span class="p">,</span><span class="s1">&#39;desviacion estandar prueba&#39;</span><span class="p">]</span> <span class="o">=</span> 
+        <span class="n">resultados</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">idx</span><span class="p">,</span><span class="s1">&#39;eficiencia de entrenamiento&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">EficienciaTrain</span><span class="p">)</span>
+        <span class="n">resultados</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">idx</span><span class="p">,</span><span class="s1">&#39;desviacion estandar entrenamiento&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">EficienciaTrain</span><span class="p">)</span>
+        <span class="n">resultados</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">idx</span><span class="p">,</span><span class="s1">&#39;eficiencia de prueba&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">EficienciaVal</span><span class="p">)</span>
+        <span class="n">resultados</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">idx</span><span class="p">,</span><span class="s1">&#39;desviacion estandar prueba&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">EficienciaVal</span><span class="p">)</span>
         <span class="n">idx</span><span class="o">=</span> <span class="n">idx</span> <span class="o">+</span><span class="mi">1</span>
         
     <span class="k">return</span> <span class="p">(</span><span class="n">resultados</span><span class="p">)</span>
@@ -685,20 +718,26 @@ title="Print to PDF"
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Realiza los experimentos sin normalizacion</span>
-<span class="n">depths</span> <span class="o">=</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="mi">30</span><span class="p">,</span><span class="mi">50</span><span class="p">]</span>
-<span class="n">resultados_dt_no_norm</span> <span class="o">=</span> <span class="n">experimentar_dt</span><span class="p">(</span><span class="n">X</span> <span class="o">=</span> <span class="n">x</span> <span class="p">,</span> <span class="n">Y</span> <span class="o">=</span> <span class="n">y</span><span class="p">,</span> <span class="n">depths</span> <span class="o">=</span> <span class="p">,</span> <span class="n">normalize</span><span class="o">=</span><span class="p">)</span>
-<span class="n">resultados_dt_no_norm</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Realiza los experimentos con normalizacion</span>
-<span class="n">depths</span> <span class="o">=</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="mi">30</span><span class="p">,</span><span class="mi">50</span><span class="p">]</span>
-<span class="n">resultados_dt_no_norm</span> <span class="o">=</span> <span class="n">experimentar_dt</span><span class="p">(</span><span class="n">X</span> <span class="o">=</span> <span class="n">x</span> <span class="p">,</span> <span class="n">Y</span> <span class="o">=</span> <span class="n">y</span><span class="p">,</span> <span class="n">depths</span> <span class="o">=</span> <span class="p">,</span> <span class="n">normalize</span><span class="o">=</span><span class="p">)</span>
-<span class="n">resultados_dt_no_norm</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Realiza los experimentos para observar los efectos</span>
+
+<span class="n">resultados_dt</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">depths</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="mi">30</span><span class="p">,</span><span class="mi">50</span><span class="p">]</span>
+<span class="n">normalizaciones</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;ninguna&#39;</span><span class="p">,</span> <span class="s1">&#39;estandar&#39;</span><span class="p">,</span> <span class="s1">&#39;min-max&#39;</span><span class="p">]</span>
+
+<span class="k">for</span> <span class="n">normalize</span> <span class="ow">in</span> <span class="n">normalizaciones</span><span class="p">:</span>
+    <span class="c1"># usa tu funcion</span>
+    <span class="n">resultados_parciales</span> <span class="o">=</span> <span class="o">...</span> <span class="p">(</span><span class="n">X</span> <span class="o">=</span> <span class="n">x</span> <span class="p">,</span> <span class="n">Y</span> <span class="o">=</span> <span class="n">y</span><span class="p">,</span> <span class="n">depths</span> <span class="o">=</span> <span class="n">depths</span><span class="p">,</span> <span class="n">normalize</span><span class="o">=</span><span class="n">normalize</span><span class="p">)</span>
+    <span class="n">resultados_parciales</span><span class="p">[</span><span class="s1">&#39;normalizacion&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">normalize</span>
+    <span class="n">resultados_dt</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">resultados_parciales</span><span class="p">)</span>
+
+<span class="n">resultados_dt</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">resultados_dt</span><span class="p">,</span> <span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">sns</span><span class="o">.</span><span class="n">catplot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">resultados_dt</span><span class="p">,</span> 
+            <span class="n">x</span> <span class="o">=</span> <span class="s1">&#39;profunidad del arbol&#39;</span><span class="p">,</span> 
+            <span class="n">y</span> <span class="o">=</span> <span class="s1">&#39;eficiencia de prueba&#39;</span><span class="p">,</span> 
+            <span class="n">hue</span> <span class="o">=</span> <span class="s1">&#39;normalizacion&#39;</span> <span class="p">,</span>
+            <span class="n">kind</span> <span class="o">=</span> <span class="s1">&#39;point&#39;</span><span class="p">,</span> 
+            <span class="n">aspect</span> <span class="o">=</span> <span class="mi">2</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -706,8 +745,56 @@ title="Print to PDF"
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title Pregunta Abierta</span>
-<span class="c1">#@markdown  ¿Tiene algún efecto la normalización o estándarización de las variables en el desempeño del modelo de árboles de decisión? Justifique.   </span>
-<span class="n">respuesta_3</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span> <span class="c1">#@param {type:&quot;string&quot;}</span>
+<span class="c1">#@markdown ¿Tiene algún efecto la normalización o estandarización de las variables en el desempeño del modelo de árboles de decisión?</span>
+<span class="c1">#@markdown ¿Cual de las opciones está mejor justificada? Puedes volver a ejecutar experimentos</span>
+ 
+<span class="c1">#@markdown A) Se observan que las diferencias no son muy grandes pero no hay patrón claro, si se vuelve a ejecutar los experimentos los efectos pueden variar, la normalización debe ser tratada como un parámetro más</span>
+ 
+<span class="c1">#@markdown B) Se observan que las diferencias son grandes pero hay un patrón claro, si se vuelve a ejecutar los experimentos los efectos no varían, la normalización no tiene influencia ya que los DT no son sensibles a los diferentes rangos entre características</span>
+ 
+<span class="c1">#@markdown C) Se observan que las diferencias no son muy grandes, si se vuelve a ejecutar los experimentos los efectos pueden variar, eso se debe a que no estamos configurando un `random_state`, sin embargo la normalización en los DT no tiene tanta influencia porque las comparaciones se hacen entre valores de una misma característica</span>
+ 
+<span class="c1">#@markdown D) Se observan que la diferencias son pequeñas y hay un patrón claro, si se vuelve a ejecutar los experimentos los efectos pueden variar, eso se debe a que no estamos configurando un `random_state`, pero sabemos que la normalización en los DT no tiene influencia por que las comparaciones se hacen entre valores de una misma característica</span>
+ 
+<span class="c1">#@markdown Selecciona dentro las lista desplegable</span>
+<span class="n">respuesta_3</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span> <span class="c1">#@param [&quot;&quot;, &quot;A&quot;, &quot;B&quot;, &quot;C&quot;, &quot;D&quot;]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Vamos a explorar un poco la visualización de los arboles, reemplaza los mejores valores de parametros encontrados.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># se usa para visualizar el DT</span>
+<span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">tree</span>
+<span class="c1"># reemplaza el valor</span>
+<span class="n">mejor_profundidad</span> <span class="o">=</span> <span class="o">...</span>
+<span class="n">modelo</span> <span class="o">=</span> <span class="n">DecisionTreeClassifier</span><span class="p">(</span><span class="n">max_depth</span><span class="o">=</span><span class="n">mejor_profundidad</span><span class="p">,</span> <span class="n">criterion</span><span class="o">=</span><span class="s2">&quot;entropy&quot;</span><span class="p">,</span> <span class="n">ccp_alpha</span> <span class="o">=...</span><span class="p">)</span> <span class="c1"># reemplaza el valor</span>
+<span class="n">modelo</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="n">tree</span><span class="o">.</span><span class="n">plot_tree</span><span class="p">(</span><span class="n">modelo</span><span class="p">,</span><span class="n">filled</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span><span class="n">class_names</span> <span class="o">=</span> <span class="n">classes_wines</span><span class="p">(),</span> <span class="n">feature_names</span><span class="o">=</span> <span class="n">features_wines</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;ccp_alpha = 0.0&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># se usa para visualizar el DT</span>
+<span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">tree</span>
+<span class="n">modelo</span> <span class="o">=</span> <span class="n">DecisionTreeClassifier</span><span class="p">(</span><span class="n">max_depth</span><span class="o">=</span><span class="n">mejor_profundidad</span><span class="p">,</span> <span class="n">criterion</span><span class="o">=</span><span class="s2">&quot;entropy&quot;</span><span class="p">,</span> <span class="n">ccp_alpha</span> <span class="o">=...</span><span class="p">)</span> <span class="c1"># reemplaza el valor</span>
+<span class="n">modelo</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="n">tree</span><span class="o">.</span><span class="n">plot_tree</span><span class="p">(</span><span class="n">modelo</span><span class="p">,</span><span class="n">filled</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span><span class="n">class_names</span> <span class="o">=</span> <span class="n">classes_wines</span><span class="p">(),</span> <span class="n">feature_names</span><span class="o">=</span><span class="n">features_wines</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;ccp_alpha = 0.5&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Observa la influencia de el parámetro <code class="docutils literal notranslate"><span class="pre">ccp_alpha</span></code>.  Investiga un poco acerca del concepto de “Poda” / Prunning en los DT.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title Pregunta Abierta</span>
+<span class="c1">#@markdown  ¿que relación tiene el parámetro `ccp_alpha` y el concepto de &quot;poda&quot; de arboles? ¿que efectos practicos tiene el podado de los arboles?</span>
+<span class="n">respuesta_4</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span> <span class="c1">#@param {type:&quot;string&quot;}</span>
 </pre></div>
 </div>
 </div>
@@ -756,22 +843,22 @@ title="Print to PDF"
                 <span class="n">Xtest</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="n">test</span><span class="p">,:]</span>
                 <span class="n">Ytest</span> <span class="o">=</span> <span class="n">Y</span><span class="p">[</span><span class="n">test</span><span class="p">]</span>
                 <span class="c1">#Haga el llamado a la función para crear y entrenar el modelo usando los datos de entrenamiento</span>
-                <span class="n">modelo</span> <span class="o">=</span>
-                <span class="n">modelo</span>
+                <span class="n">modelo</span> <span class="o">=</span> <span class="o">...</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+                <span class="n">modelo</span><span class="o">...</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
                 <span class="c1">#predecir muestras de entrenamiento</span>
-                <span class="n">Ytrain_pred</span> <span class="o">=</span> <span class="n">modelo</span>
+                <span class="n">Ytrain_pred</span> <span class="o">=</span> <span class="n">modelo</span><span class="o">...</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
                 <span class="c1">#predecir muestras de pruebas</span>
-                <span class="n">Yest</span> <span class="o">=</span> <span class="n">modelo</span>
+                <span class="n">YtestPred</span> <span class="o">=</span> <span class="n">modelo</span><span class="o">...</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
                 <span class="c1">#Evaluamos las predicciones del modelo con los datos de test</span>
                 <span class="n">EficienciaTrain</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">Ytrain_pred</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span> <span class="o">==</span> <span class="n">Ytrain</span><span class="o">.</span><span class="n">ravel</span><span class="p">()))</span>
-                <span class="n">EficienciaVal</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">Yest</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span> <span class="o">==</span> <span class="n">Ytest</span><span class="o">.</span><span class="n">ravel</span><span class="p">()))</span>
+                <span class="n">EficienciaVal</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">YtestPred</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span> <span class="o">==</span> <span class="n">Ytest</span><span class="o">.</span><span class="n">ravel</span><span class="p">()))</span>
 
             <span class="n">resultados</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">idx</span><span class="p">,</span><span class="s1">&#39;número de arboles&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">trees</span>
             <span class="n">resultados</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">idx</span><span class="p">,</span><span class="s1">&#39;variables para la selección del mejor umbral&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">num_variables</span>
-            <span class="n">resultados</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">idx</span><span class="p">,</span><span class="s1">&#39;eficiencia de entrenamiento&#39;</span><span class="p">]</span> <span class="o">=</span> 
-            <span class="n">resultados</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">idx</span><span class="p">,</span><span class="s1">&#39;desviacion estandar entrenamiento&#39;</span><span class="p">]</span> <span class="o">=</span>
-            <span class="n">resultados</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">idx</span><span class="p">,</span><span class="s1">&#39;eficiencia de prueba&#39;</span><span class="p">]</span> <span class="o">=</span>
-            <span class="n">resultados</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">idx</span><span class="p">,</span><span class="s1">&#39;desviacion estandar prueba&#39;</span><span class="p">]</span> <span class="o">=</span> 
+            <span class="n">resultados</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">idx</span><span class="p">,</span><span class="s1">&#39;eficiencia de entrenamiento&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">EficienciaTrain</span><span class="p">)</span>
+            <span class="n">resultados</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">idx</span><span class="p">,</span><span class="s1">&#39;desviacion estandar entrenamiento&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">EficienciaTrain</span><span class="p">)</span>
+            <span class="n">resultados</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">idx</span><span class="p">,</span><span class="s1">&#39;eficiencia de prueba&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">EficienciaVal</span><span class="p">)</span>
+            <span class="n">resultados</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">idx</span><span class="p">,</span><span class="s1">&#39;desviacion estandar prueba&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">EficienciaVal</span><span class="p">)</span>
             <span class="n">idx</span><span class="o">=</span> <span class="n">idx</span> <span class="o">+</span><span class="mi">1</span>
         <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;termina para </span><span class="si">{</span><span class="n">trees</span><span class="si">}</span><span class="s2"> arboles&quot;</span><span class="p">)</span>
         
@@ -791,9 +878,10 @@ title="Print to PDF"
 <p>Una vez completado el código realice los experimentos necesarios para llenar la siguiente tabla:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">arboles</span> <span class="o">=</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="mi">50</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span> <span class="mi">150</span><span class="p">]</span>
-<span class="n">variables_seleccion</span> <span class="o">=</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="mi">40</span><span class="p">]</span>
-<span class="n">resultados_rf</span> <span class="o">=</span> <span class="n">experimentar_rf</span><span class="p">(</span><span class="n">X</span><span class="o">=</span><span class="n">x</span><span class="p">,</span> <span class="n">Y</span><span class="o">=</span><span class="n">y</span><span class="p">,</span> <span class="n">num_trees</span> <span class="o">=</span>  <span class="p">,</span><span class="n">numero_de_variables</span> <span class="o">=</span> <span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">arboles</span> <span class="o">=</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="mi">50</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span> <span class="mi">150</span><span class="p">]</span>
+<span class="n">variables_seleccion</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span> <span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span>
+<span class="c1"># reemplaza por la funcion</span>
+<span class="n">resultados_rf</span> <span class="o">=</span> <span class="o">...</span> <span class="p">(</span><span class="n">X</span><span class="o">=</span><span class="n">x</span><span class="p">,</span> <span class="n">Y</span><span class="o">=</span><span class="n">y</span><span class="p">,</span> <span class="n">num_trees</span> <span class="o">=</span> <span class="n">arboles</span> <span class="p">,</span><span class="n">numero_de_variables</span> <span class="o">=</span> <span class="n">variables_seleccion</span><span class="p">)</span>
 <span class="n">resultados_rf</span>
 </pre></div>
 </div>
@@ -802,8 +890,8 @@ title="Print to PDF"
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title Pregunta Abierta</span>
-<span class="c1">#@markdown ¿qué caractersitica tiene en especial los Random forest entrenados cuando la cantidad de variables para la selección del mejor umbral es igual a 40?  *desde el punto de vista teorico no de los resultados**</span>
-<span class="n">respuesta_4</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span> <span class="c1">#@param {type:&quot;string&quot;}</span>
+<span class="c1">#@markdown ¿qué relación tiene `sklearn.ensemble.BaggingClassifier`cuando los son Random forest entrenados con el parametro `max_features=13`?</span>
+<span class="n">respuesta_5</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span> <span class="c1">#@param {type:&quot;string&quot;}</span>
 </pre></div>
 </div>
 </div>
@@ -812,7 +900,7 @@ title="Print to PDF"
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;diferencia promedio entre entrenamiento y prueba del DT&quot;</span><span class="p">,</span> 
-      <span class="n">resultados_dt_norm</span><span class="p">[</span><span class="s1">&#39;eficiencia de entrenamiento&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">-</span><span class="n">resultados_dt_norm</span><span class="p">[</span><span class="s1">&#39;eficiencia de prueba&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
+      <span class="n">resultados_dt</span><span class="p">[</span><span class="s1">&#39;eficiencia de entrenamiento&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span> <span class="o">-</span> <span class="n">resultados_dt</span><span class="p">[</span><span class="s1">&#39;eficiencia de prueba&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;diferencia promedio entre entrenamiento y prueba del RF&quot;</span><span class="p">,</span> 
       <span class="n">resultados_rf</span><span class="p">[</span><span class="s1">&#39;eficiencia de entrenamiento&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">-</span><span class="n">resultados_rf</span><span class="p">[</span><span class="s1">&#39;eficiencia de prueba&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
@@ -825,7 +913,7 @@ title="Print to PDF"
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title Pregunta Abierta</span>
 <span class="c1">#@markdown ¿esperaba la diferencia que se observa entre las eficiencias entre entrenamiento y pruebas para el Random forest y el arbol de decisón? justifique </span>
-<span class="n">respuesta_5</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span> <span class="c1">#@param {type:&quot;string&quot;}</span>
+<span class="n">respuesta_6</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span> <span class="c1">#@param {type:&quot;string&quot;}</span>
 </pre></div>
 </div>
 </div>
@@ -842,15 +930,6 @@ title="Print to PDF"
 <p>Debemos configurar el árbol con un mínimo de tres (3) muestras para considerar una división de un nodo.</p>
 <p><b>Note</b> que al igual que en el caso anterior, existe una clase para modelos de clasificación y otra para modelos de regresión: <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.GradientBoostingRegressor.html#sklearn.ensemble.GradientBoostingRegressor">https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.GradientBoostingRegressor.html#sklearn.ensemble.GradientBoostingRegressor</a></p>
 <p><strong>Recordar hacer uso explicito del nombre del parametro que se va usar</strong>, por ejemplo, si se requeire asignar el parametro <code class="docutils literal notranslate"> <span class="pre">loss</span></code>  debemos llamar la libreria  de esta manera: <code class="docutils literal notranslate"><span class="pre">GradientBoostingClassifier(loss</span> <span class="pre">=</span> <span class="pre">'deviance')</span></code></p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title Pregunta Abierta</span>
-<span class="c1">#@markdown ¿qué diferencia existe entre el entrenamiento de un Random Forest y el gradient boosting de árboles?</span>
-<span class="n">respuesta_6</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span> <span class="c1">#@param {type:&quot;string&quot;}</span>
-</pre></div>
-</div>
-</div>
-</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#ejercicio de código</span>
@@ -880,21 +959,21 @@ title="Print to PDF"
             <span class="n">Xtest</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="n">test</span><span class="p">,:]</span>
             <span class="n">Ytest</span> <span class="o">=</span> <span class="n">Y</span><span class="p">[</span><span class="n">test</span><span class="p">]</span>
             <span class="c1">#Haga el llamado a la función para crear y entrenar el modelo usando los datos de entrenamiento</span>
-            <span class="n">modelo</span><span class="o">=</span>
-            <span class="n">modelo</span>
+            <span class="n">modelo</span> <span class="o">=</span> <span class="o">...</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+            <span class="n">modelo</span><span class="o">...</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
             <span class="c1">#predecir muestras de entrenamiento</span>
-            <span class="n">Ytrain_pred</span> <span class="o">=</span>  
+            <span class="n">Ytrain_pred</span> <span class="o">=</span> <span class="o">...</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
             <span class="c1">#predecir muestras de pruebas</span>
-            <span class="n">Yest</span> <span class="o">=</span> 
+            <span class="n">Ytest_pred</span> <span class="o">=</span> <span class="n">modelo</span><span class="o">...</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
             <span class="c1">#Evaluamos las predicciones del modelo con los datos de test</span>
             <span class="n">EficienciaTrain</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">Ytrain_pred</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span> <span class="o">==</span> <span class="n">Ytrain</span><span class="o">.</span><span class="n">ravel</span><span class="p">()))</span>
-            <span class="n">EficienciaVal</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">Yest</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span> <span class="o">==</span> <span class="n">Ytest</span><span class="o">.</span><span class="n">ravel</span><span class="p">()))</span>
+            <span class="n">EficienciaVal</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">Ytest_pred</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span> <span class="o">==</span> <span class="n">Ytest</span><span class="o">.</span><span class="n">ravel</span><span class="p">()))</span>
 
         <span class="n">resultados</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">idx</span><span class="p">,</span><span class="s1">&#39;número de arboles&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">trees</span>
-        <span class="n">resultados</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">idx</span><span class="p">,</span><span class="s1">&#39;eficiencia de entrenamiento&#39;</span><span class="p">]</span> <span class="o">=</span> 
-        <span class="n">resultados</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">idx</span><span class="p">,</span><span class="s1">&#39;desviacion estandar entrenamiento&#39;</span><span class="p">]</span> <span class="o">=</span> 
-        <span class="n">resultados</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">idx</span><span class="p">,</span><span class="s1">&#39;eficiencia de prueba&#39;</span><span class="p">]</span> <span class="o">=</span>
-        <span class="n">resultados</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">idx</span><span class="p">,</span><span class="s1">&#39;desviacion estandar prueba&#39;</span><span class="p">]</span> <span class="o">=</span> 
+        <span class="n">resultados</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">idx</span><span class="p">,</span><span class="s1">&#39;eficiencia de entrenamiento&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">EficienciaTrain</span><span class="p">)</span>
+        <span class="n">resultados</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">idx</span><span class="p">,</span><span class="s1">&#39;desviacion estandar entrenamiento&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">EficienciaTrain</span><span class="p">)</span>
+        <span class="n">resultados</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">idx</span><span class="p">,</span><span class="s1">&#39;eficiencia de prueba&#39;</span><span class="p">]</span> <span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">EficienciaVal</span><span class="p">)</span>
+        <span class="n">resultados</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">idx</span><span class="p">,</span><span class="s1">&#39;desviacion estandar prueba&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">EficienciaVal</span><span class="p">)</span>
         <span class="n">idx</span><span class="o">=</span> <span class="n">idx</span> <span class="o">+</span><span class="mi">1</span>
         
     <span class="k">return</span> <span class="p">(</span><span class="n">resultados</span><span class="p">)</span>
@@ -913,7 +992,6 @@ title="Print to PDF"
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ejecuta para realizar los experimentos</span>
-<span class="n">arboles</span> <span class="o">=</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="mi">50</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span> <span class="mi">150</span><span class="p">]</span>
 <span class="n">resultados_gbt</span> <span class="o">=</span> <span class="n">experimentar_gbt</span><span class="p">(</span><span class="n">arboles</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 <span class="n">resultados_gbt</span>
 </pre></div>
@@ -962,11 +1040,10 @@ title="Print to PDF"
 <span class="sd">    Y: conjunto de etiquetas de clase</span>
 <span class="sd">    num_trees: List[int] lista con el número de arboles a evaluar</span>
 <span class="sd">    num_variables: List[int] lista con el número variables a evaluar</span>
-<span class="sd">    metodo: &#39;rf&#39; o &#39;gbt&#39;, de acuerdo a esto se verifica cual modelo a evaluar.</span>
 <span class="sd">    retorna: dataframe con:</span>
 <span class="sd">    - número de arboles</span>
 <span class="sd">    - variables para la selección del mejor umbral</span>
-<span class="sd">    - tiempo de entrenamiento (promedio)</span>
+<span class="sd">    - tiempo de entrenamiento</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">resultados</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
     <span class="n">idx</span> <span class="o">=</span> <span class="mi">0</span>
@@ -977,23 +1054,21 @@ title="Print to PDF"
             <span class="c1">## para llegar a un tiempo más adecuado</span>
             <span class="n">tiempos</span> <span class="o">=</span> <span class="p">[]</span>
             <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
-            <span class="c1">## llamar la funcion para inicar el conteo</span>
-                <span class="n">start</span> 
+            <span class="c1">## llamar la </span>
+                <span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">process_time</span><span class="p">()</span>
                 <span class="k">if</span> <span class="n">metodo</span> <span class="o">==</span> <span class="s1">&#39;rf&#39;</span><span class="p">:</span>
                 
-                    <span class="n">modelo</span> <span class="o">=</span> 
+                    <span class="n">modelo</span> <span class="o">...</span>
                 <span class="k">else</span><span class="p">:</span>
-                    <span class="n">modelo</span> <span class="o">=</span> 
-                
-                <span class="n">modelo</span>
+                    <span class="n">modelo</span> <span class="o">=</span> <span class="o">...</span> 
+                <span class="n">modelo</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="o">=</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">Y</span><span class="p">)</span>
                 <span class="c1">## obtener tiempo </span>
-                <span class="n">end</span>
+                <span class="n">end</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">process_time</span><span class="p">()</span>
                 <span class="c1"># append de la resta de fin y end</span>
-                <span class="n">tiempos</span><span class="o">.</span><span class="n">append</span><span class="p">()</span>
+                <span class="n">tiempos</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="o">...</span> <span class="p">)</span>
             <span class="n">resultados</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">idx</span><span class="p">,</span><span class="s1">&#39;número de arboles&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">trees</span>
             <span class="n">resultados</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">idx</span><span class="p">,</span><span class="s1">&#39;variables para la selección del mejor umbral&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">variables</span>
-            <span class="c1"># obtenga el promedio</span>
-            <span class="n">resultados</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">idx</span><span class="p">,</span><span class="s1">&#39;tiempo de entrenamiento&#39;</span><span class="p">]</span> <span class="o">=</span> 
+            <span class="n">resultados</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">idx</span><span class="p">,</span><span class="s1">&#39;tiempo de entrenamiento&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">...</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
             <span class="n">resultados</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">idx</span><span class="p">,</span><span class="s1">&#39;metodo&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">metodo</span>
             <span class="n">idx</span> <span class="o">=</span> <span class="n">idx</span> <span class="o">+</span><span class="mi">1</span>
     <span class="k">return</span><span class="p">(</span><span class="n">resultados</span><span class="p">)</span>
@@ -1012,8 +1087,8 @@ title="Print to PDF"
 <p>Vamos a dejar fijo el número de variables en 20 y variar los árboles en: [5,10,15,25, 50], completa el código para ver la grafica</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">resultados_rf_time1</span> <span class="o">=</span> <span class="n">time_rf_gbt_training</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="p">[],</span> <span class="p">[],</span> <span class="n">metodo</span> <span class="o">=</span> <span class="s1">&#39;rf&#39;</span><span class="p">)</span>
-<span class="n">resultados_gbt_time1</span> <span class="o">=</span> <span class="n">time_rf_gbt_training</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="p">[],</span> <span class="p">[],</span> <span class="n">metodo</span> <span class="o">=</span> <span class="s1">&#39;gbt&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">resultados_rf_time1</span> <span class="o">=</span> <span class="n">time_rf_gbt_training</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">15</span><span class="p">,</span><span class="mi">25</span><span class="p">,</span><span class="mi">50</span><span class="p">],</span> <span class="p">[</span><span class="mi">20</span><span class="p">],</span> <span class="n">metodo</span> <span class="o">=</span> <span class="s1">&#39;rf&#39;</span><span class="p">)</span>
+<span class="n">resultados_gbt_time1</span> <span class="o">=</span> <span class="n">time_rf_gbt_training</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">15</span><span class="p">,</span><span class="mi">25</span><span class="p">,</span><span class="mi">50</span><span class="p">],</span> <span class="p">[</span><span class="mi">20</span><span class="p">],</span> <span class="n">metodo</span> <span class="o">=</span> <span class="s1">&#39;gbt&#39;</span><span class="p">)</span>
 
 <span class="n">resultados_time</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">resultados_rf_time1</span><span class="p">,</span> <span class="n">resultados_gbt_time1</span><span class="p">],</span> <span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
@@ -1025,8 +1100,8 @@ title="Print to PDF"
 <p>Y por ultimo Vamos a dejar fijo el número de árboles en 20 y el número de varaibles [5,10,15,20,40], completa el código para ver la grafica</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">resultados_rf_time1</span> <span class="o">=</span> <span class="n">time_rf_gbt_training</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="p">[],</span> <span class="p">[],</span> <span class="n">metodo</span> <span class="o">=</span> <span class="s1">&#39;rf&#39;</span><span class="p">)</span>
-<span class="n">resultados_gbt_time1</span> <span class="o">=</span> <span class="n">time_rf_gbt_training</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="p">[],</span> <span class="p">[],</span> <span class="n">metodo</span> <span class="o">=</span> <span class="s1">&#39;gbt&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">resultados_rf_time1</span> <span class="o">=</span> <span class="n">time_rf_gbt_training</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="p">[</span><span class="mi">20</span><span class="p">],</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">15</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="mi">40</span><span class="p">],</span> <span class="n">metodo</span> <span class="o">=</span> <span class="s1">&#39;rf&#39;</span><span class="p">)</span>
+<span class="n">resultados_gbt_time1</span> <span class="o">=</span> <span class="n">time_rf_gbt_training</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="p">[</span><span class="mi">20</span><span class="p">],</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">15</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="mi">40</span><span class="p">],</span> <span class="n">metodo</span> <span class="o">=</span> <span class="s1">&#39;gbt&#39;</span><span class="p">)</span>
 
 <span class="n">resultados_time</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">resultados_rf_time1</span><span class="p">,</span> <span class="n">resultados_gbt_time1</span><span class="p">],</span> <span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
