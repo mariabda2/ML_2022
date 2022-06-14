@@ -576,16 +576,9 @@ title="Print to PDF"
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#probemos-asumiendo-independencia">
-       Probemos asumiendo independencia
+      <a class="reference internal nav-link" href="#noten-la-gran-diferencia-entre-el-desempeno-en-validacion-y-el-desempeno-en-test">
+       Noten la gran diferencia entre el desempeño en validación y el desempeño en test!
       </a>
-      <ul class="nav section-nav flex-column">
-       <li class="toc-h4 nav-item toc-entry">
-        <a class="reference internal nav-link" href="#noten-la-gran-diferencia-entre-el-desempeno-en-validacion-y-el-desempeno-en-test">
-         Noten la gran diferencia entre el desempeño en validación y el desempeño en test!
-        </a>
-       </li>
-      </ul>
      </li>
      <li class="toc-h3 nav-item toc-entry">
       <a class="reference internal nav-link" href="#ahora-probemos-teniendo-en-cuenta-los-pacientes">
@@ -701,16 +694,9 @@ title="Print to PDF"
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#probemos-asumiendo-independencia">
-       Probemos asumiendo independencia
+      <a class="reference internal nav-link" href="#noten-la-gran-diferencia-entre-el-desempeno-en-validacion-y-el-desempeno-en-test">
+       Noten la gran diferencia entre el desempeño en validación y el desempeño en test!
       </a>
-      <ul class="nav section-nav flex-column">
-       <li class="toc-h4 nav-item toc-entry">
-        <a class="reference internal nav-link" href="#noten-la-gran-diferencia-entre-el-desempeno-en-validacion-y-el-desempeno-en-test">
-         Noten la gran diferencia entre el desempeño en validación y el desempeño en test!
-        </a>
-       </li>
-      </ul>
      </li>
      <li class="toc-h3 nav-item toc-entry">
       <a class="reference internal nav-link" href="#ahora-probemos-teniendo-en-cuenta-los-pacientes">
@@ -745,7 +731,8 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="font-color-black-complejidad-de-modelos-font">
+  <p><a href="https://colab.research.google.com/github/mariabda2/ML_2022/blob/main/clases/clase_08_complejidad_modelos_sobreajuste.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a></p>
+<section class="tex2jax_ignore mathjax_ignore" id="font-color-black-complejidad-de-modelos-font">
 <h1><strong><font color='black'>Complejidad de modelos </font></strong><a class="headerlink" href="#font-color-black-complejidad-de-modelos-font" title="Permalink to this headline">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -769,71 +756,9 @@ title="Print to PDF"
 </div>
 </div>
 </div>
-<p><strong>Problema de clasificación</strong>
-<br> Conjunto de muestras generadas con funciones de distribución normal</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">local.lib.regularization</span> <span class="kn">import</span> <span class="n">plot_ellipse</span>
-<span class="n">Cov</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">identity</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="mf">1.1</span>
-<span class="n">Cov2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">1.1</span><span class="p">,</span><span class="mf">0.5</span><span class="p">],[</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">1.1</span><span class="p">]])</span>
-<span class="n">Mean</span> <span class="o">=</span> <span class="p">[</span><span class="mf">1.1</span><span class="p">,</span><span class="mf">2.1</span><span class="p">]</span>
-<span class="n">Mean2</span> <span class="o">=</span> <span class="p">[</span><span class="mf">4.1</span><span class="p">,</span><span class="mf">4.1</span><span class="p">]</span>
-<span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">)</span>
-<span class="n">x</span><span class="p">,</span> <span class="n">y</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">multivariate_normal</span><span class="p">(</span><span class="n">Mean</span><span class="p">,</span> <span class="n">Cov</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
-<span class="n">x2</span><span class="p">,</span> <span class="n">y2</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">multivariate_normal</span><span class="p">(</span><span class="n">Mean2</span><span class="p">,</span> <span class="n">Cov2</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="s1">&#39;o&#39;</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span> <span class="mf">0.5</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x2</span><span class="p">,</span><span class="n">y2</span><span class="p">,</span><span class="s1">&#39;o&#39;</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span> <span class="mf">0.5</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;equal&#39;</span><span class="p">)</span>
-
-<span class="n">plot_ellipse</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span><span class="n">Mean</span><span class="p">,</span><span class="n">Cov</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">)</span>
-<span class="n">plot_ellipse</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span><span class="n">Mean2</span><span class="p">,</span><span class="n">Cov2</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../_images/clase_08_complejidad_modelos_sobreajuste_4_0.png" src="../_images/clase_08_complejidad_modelos_sobreajuste_4_0.png" />
-</div>
-</div>
 <p><strong>Frontera de clasificación usando una función discriminante Guasiana</strong>
 <br> Utilizando la variante de análisis discriminante cuadrático (diferente matriz de cov para cada clase)</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.discriminant_analysis</span> <span class="kn">import</span> <span class="n">QuadraticDiscriminantAnalysis</span>
-<span class="n">N</span> <span class="o">=</span> <span class="mi">100</span>
-<span class="n">x</span><span class="p">,</span> <span class="n">y</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">multivariate_normal</span><span class="p">(</span><span class="n">Mean</span><span class="p">,</span> <span class="n">Cov</span><span class="p">,</span> <span class="n">N</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
-<span class="n">x2</span><span class="p">,</span> <span class="n">y2</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">multivariate_normal</span><span class="p">(</span><span class="n">Mean2</span><span class="p">,</span> <span class="n">Cov2</span><span class="p">,</span> <span class="n">N</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
-<span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">r_</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">c_</span><span class="p">[</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">],</span><span class="n">np</span><span class="o">.</span><span class="n">c_</span><span class="p">[</span><span class="n">x2</span><span class="p">,</span><span class="n">y2</span><span class="p">]]</span>
-<span class="n">Y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">r_</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="n">N</span><span class="p">,</span><span class="mi">1</span><span class="p">)),</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">N</span><span class="p">,</span><span class="mi">1</span><span class="p">))]</span>
-<span class="n">clf</span> <span class="o">=</span> <span class="n">QuadraticDiscriminantAnalysis</span><span class="p">()</span>
-<span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">Y</span><span class="o">.</span><span class="n">flatten</span><span class="p">())</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span><span class="n">X</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span><span class="n">c</span><span class="o">=</span><span class="n">Y</span><span class="o">.</span><span class="n">flatten</span><span class="p">(),</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;Set2&#39;</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
-
-<span class="n">h</span> <span class="o">=</span> <span class="mf">.02</span>  <span class="c1"># step size in the mesh</span>
-<span class="c1"># create a mesh to plot in</span>
-<span class="n">x_min</span><span class="p">,</span> <span class="n">x_max</span> <span class="o">=</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">()</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">+</span> <span class="mi">1</span>
-<span class="n">y_min</span><span class="p">,</span> <span class="n">y_max</span> <span class="o">=</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">()</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">+</span> <span class="mi">1</span>
-<span class="n">xx</span><span class="p">,</span> <span class="n">yy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">x_min</span><span class="p">,</span> <span class="n">x_max</span><span class="p">,</span> <span class="n">h</span><span class="p">),</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">y_min</span><span class="p">,</span> <span class="n">y_max</span><span class="p">,</span> <span class="n">h</span><span class="p">))</span>
-
-<span class="c1"># Plot the decision boundary. For that, we will assign a color to each</span>
-<span class="c1"># point in the mesh [x_min, m_max]x[y_min, y_max].</span>
-<span class="n">Z</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">c_</span><span class="p">[</span><span class="n">xx</span><span class="o">.</span><span class="n">ravel</span><span class="p">(),</span> <span class="n">yy</span><span class="o">.</span><span class="n">ravel</span><span class="p">()])</span>
-
-<span class="c1"># Put the result into a color plot</span>
-<span class="n">Z</span> <span class="o">=</span> <span class="n">Z</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">xx</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">contour</span><span class="p">(</span><span class="n">xx</span><span class="p">,</span> <span class="n">yy</span><span class="p">,</span> <span class="n">Z</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">Blues</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;$x_1$&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;$x_2$&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../_images/clase_08_complejidad_modelos_sobreajuste_6_0.png" src="../_images/clase_08_complejidad_modelos_sobreajuste_6_0.png" />
-</div>
-</div>
-<p><strong>Fronteras de decisión</strong>
-<br> N: número de muestras. n: 10 número de entrenamiento.</p>
+<p><br> N: número de muestras. n: 10 número de entrenamiento.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">local.lib.regularization</span> <span class="kn">import</span> <span class="n">Fronteras</span>
@@ -843,7 +768,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/clase_08_complejidad_modelos_sobreajuste_8_0.png" src="../_images/clase_08_complejidad_modelos_sobreajuste_8_0.png" />
+<img alt="../_images/clase_08_complejidad_modelos_sobreajuste_6_0.png" src="../_images/clase_08_complejidad_modelos_sobreajuste_6_0.png" />
 </div>
 </div>
 <p><strong>Modelo de ventana de Parzen</strong></p>
@@ -856,7 +781,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/clase_08_complejidad_modelos_sobreajuste_10_0.png" src="../_images/clase_08_complejidad_modelos_sobreajuste_10_0.png" />
+<img alt="../_images/clase_08_complejidad_modelos_sobreajuste_8_0.png" src="../_images/clase_08_complejidad_modelos_sobreajuste_8_0.png" />
 </div>
 </div>
 <p><strong>Criterios para seleccionar modelos según su complejidad:</strong></p>
@@ -891,7 +816,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/clase_08_complejidad_modelos_sobreajuste_13_0.png" src="../_images/clase_08_complejidad_modelos_sobreajuste_13_0.png" />
+<img alt="../_images/clase_08_complejidad_modelos_sobreajuste_11_0.png" src="../_images/clase_08_complejidad_modelos_sobreajuste_11_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -901,7 +826,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/clase_08_complejidad_modelos_sobreajuste_14_0.png" src="../_images/clase_08_complejidad_modelos_sobreajuste_14_0.png" />
+<img alt="../_images/clase_08_complejidad_modelos_sobreajuste_12_0.png" src="../_images/clase_08_complejidad_modelos_sobreajuste_12_0.png" />
 </div>
 </div>
 <p><strong>Ejemplo</strong></p>
@@ -926,13 +851,13 @@ title="Print to PDF"
     
 <span class="n">size</span> <span class="o">=</span> <span class="mi">50</span>
 <span class="n">f_x</span><span class="p">,</span><span class="n">f_y</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">size</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">f_x</span><span class="p">,</span> <span class="n">f_y</span><span class="p">)</span>
+<span class="c1">#plt.plot(f_x, f_y)</span>
 <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">sample</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="s1">&#39;k.&#39;</span><span class="p">)</span>
 <span class="n">model</span> <span class="o">=</span> <span class="n">PolynomialLinearRegression</span><span class="p">(</span><span class="n">degree</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
 <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
 <span class="n">p_y</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">f_x</span><span class="p">,</span> <span class="n">f_y</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;true function&quot;</span><span class="p">)</span>
+<span class="c1">#plt.plot(f_x, f_y, label=&quot;true function&quot;)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="s1">&#39;k.&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;data&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">p_y</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;polynomial fit&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span>
@@ -941,7 +866,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/clase_08_complejidad_modelos_sobreajuste_16_0.png" src="../_images/clase_08_complejidad_modelos_sobreajuste_16_0.png" />
+<img alt="../_images/clase_08_complejidad_modelos_sobreajuste_14_0.png" src="../_images/clase_08_complejidad_modelos_sobreajuste_14_0.png" />
 </div>
 </div>
 <p>…Ajustando el hiperparámetro del modelo: grado del polinomio</p>
@@ -969,7 +894,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/clase_08_complejidad_modelos_sobreajuste_18_0.png" src="../_images/clase_08_complejidad_modelos_sobreajuste_18_0.png" />
+<img alt="../_images/clase_08_complejidad_modelos_sobreajuste_16_0.png" src="../_images/clase_08_complejidad_modelos_sobreajuste_16_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1011,7 +936,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/clase_08_complejidad_modelos_sobreajuste_19_0.png" src="../_images/clase_08_complejidad_modelos_sobreajuste_19_0.png" />
+<img alt="../_images/clase_08_complejidad_modelos_sobreajuste_17_0.png" src="../_images/clase_08_complejidad_modelos_sobreajuste_17_0.png" />
 </div>
 </div>
 </section>
@@ -1031,7 +956,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/clase_08_complejidad_modelos_sobreajuste_23_0.png" src="../_images/clase_08_complejidad_modelos_sobreajuste_23_0.png" />
+<img alt="../_images/clase_08_complejidad_modelos_sobreajuste_21_0.png" src="../_images/clase_08_complejidad_modelos_sobreajuste_21_0.png" />
 </div>
 </div>
 <p>Imagen tomada de este <a class="reference external" href="https://scikit-learn.org/stable/modules/cross_validation.html">sitio</a>.</p>
@@ -1096,7 +1021,7 @@ title="Print to PDF"
 <span class="c1">#----------------------------------------------------------</span>
 <span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 
-<span class="n">kf</span> <span class="o">=</span> <span class="n">KFold</span><span class="p">(</span><span class="n">n_splits</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">kf</span> <span class="o">=</span> <span class="n">KFold</span><span class="p">(</span><span class="n">n_splits</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
 <span class="n">Acc</span> <span class="o">=</span> <span class="n">FronterasCV</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span><span class="n">y_train</span><span class="p">,</span> <span class="n">kf</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Accuracy en cada fold = &#39;</span><span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">array_str</span><span class="p">(</span><span class="n">Acc</span><span class="p">))</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Accuracy promedio = &#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">Acc</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span> <span class="o">+</span> <span class="s1">&#39;+/-&#39;</span> <span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">Acc</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="mi">2</span><span class="p">))</span>
@@ -1104,12 +1029,12 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/clase_08_complejidad_modelos_sobreajuste_26_0.png" src="../_images/clase_08_complejidad_modelos_sobreajuste_26_0.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Accuracy en cada fold = [[0.925    0.93125  0.915625 0.90625  0.93125 ]
- [0.9375   0.9375   0.93125  0.921875 0.946875]
- [0.946875 0.934375 0.9375   0.934375 0.95    ]
- [0.95625  0.93125  0.946875 0.940625 0.946875]]
-Accuracy promedio = [0.921875 0.935    0.940625 0.944375]+/-[0.01936492 0.01648863 0.01311011 0.01648863]
+<img alt="../_images/clase_08_complejidad_modelos_sobreajuste_24_0.png" src="../_images/clase_08_complejidad_modelos_sobreajuste_24_0.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Accuracy en cada fold = [[0.905  0.91   0.8925 0.9175]
+ [0.9175 0.93   0.9175 0.9375]
+ [0.9275 0.9275 0.915  0.9475]
+ [0.9225 0.935  0.925  0.9425]]
+Accuracy promedio = [0.90625  0.925625 0.929375 0.93125 ]+/-[0.01820027 0.01709349 0.02328492 0.01600781]
 </pre></div>
 </div>
 </div>
@@ -1125,7 +1050,7 @@ Accuracy promedio = [0.921875 0.935    0.940625 0.944375]+/-[0.01936492 0.016488
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Accuracy en test = 0.935
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Accuracy en test = 0.96
 </pre></div>
 </div>
 </div>
@@ -1157,7 +1082,7 @@ Accuracy promedio = [0.921875 0.935    0.940625 0.944375]+/-[0.01936492 0.016488
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/clase_08_complejidad_modelos_sobreajuste_33_0.png" src="../_images/clase_08_complejidad_modelos_sobreajuste_33_0.png" />
+<img alt="../_images/clase_08_complejidad_modelos_sobreajuste_31_0.png" src="../_images/clase_08_complejidad_modelos_sobreajuste_31_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1171,12 +1096,12 @@ Accuracy promedio = [0.921875 0.935    0.940625 0.944375]+/-[0.01936492 0.016488
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/clase_08_complejidad_modelos_sobreajuste_34_0.png" src="../_images/clase_08_complejidad_modelos_sobreajuste_34_0.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Accuracy en cada fold = [[0.9375 0.9125 0.905  0.925  0.92  ]
- [0.95   0.925  0.9325 0.9225 0.925 ]
- [0.95   0.925  0.93   0.92   0.93  ]
- [0.9525 0.93   0.935  0.9325 0.9275]]
-Accuracy promedio = [0.92   0.931  0.931  0.9355]+/-[0.02213594 0.02014944 0.02039608 0.01772005]
+<img alt="../_images/clase_08_complejidad_modelos_sobreajuste_32_0.png" src="../_images/clase_08_complejidad_modelos_sobreajuste_32_0.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Accuracy en cada fold = [[0.9075 0.91   0.93   0.9225 0.91  ]
+ [0.9175 0.9275 0.94   0.945  0.92  ]
+ [0.9225 0.93   0.95   0.9525 0.935 ]
+ [0.92   0.93   0.945  0.9525 0.93  ]]
+Accuracy promedio = [0.916  0.93   0.938  0.9355]+/-[0.01749286 0.02167948 0.02310844 0.02332381]
 </pre></div>
 </div>
 </div>
@@ -1254,7 +1179,7 @@ Accuracy promedio = [0.92   0.931  0.931  0.9355]+/-[0.02213594 0.02014944 0.020
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/clase_08_complejidad_modelos_sobreajuste_43_0.png" src="../_images/clase_08_complejidad_modelos_sobreajuste_43_0.png" />
+<img alt="../_images/clase_08_complejidad_modelos_sobreajuste_41_0.png" src="../_images/clase_08_complejidad_modelos_sobreajuste_41_0.png" />
 </div>
 </div>
 <p>Para garantizar que se mantenga la proporción del conjunto de datos original, se debe usar un versión <strong>estratificada</strong> de la metodología de validación:</p>
@@ -1280,7 +1205,7 @@ Accuracy promedio = [0.92   0.931  0.931  0.9355]+/-[0.02213594 0.02014944 0.020
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/clase_08_complejidad_modelos_sobreajuste_45_0.png" src="../_images/clase_08_complejidad_modelos_sobreajuste_45_0.png" />
+<img alt="../_images/clase_08_complejidad_modelos_sobreajuste_43_0.png" src="../_images/clase_08_complejidad_modelos_sobreajuste_43_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1319,7 +1244,7 @@ Accuracy promedio = [0.92   0.931  0.931  0.9355]+/-[0.02213594 0.02014944 0.020
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-  <div id="df-a4e81270-7ac5-40f8-89f2-d1164cc91f78">
+  <div id="df-f772cc95-3050-4321-9efa-7a08a1ec2864">
     <div class="colab-df-container">
       <div>
 <style scoped>
@@ -1607,7 +1532,7 @@ Accuracy promedio = [0.92   0.931  0.931  0.9355]+/-[0.02213594 0.02014944 0.020
 </table>
 <p>10 rows × 24 columns</p>
 </div>
-      <button class="colab-df-convert" onclick="convertToInteractive('df-a4e81270-7ac5-40f8-89f2-d1164cc91f78')"
+      <button class="colab-df-convert" onclick="convertToInteractive('df-f772cc95-3050-4321-9efa-7a08a1ec2864')"
               title="Convert this dataframe to an interactive table."
               style="display:none;">
 
@@ -1658,12 +1583,12 @@ Accuracy promedio = [0.92   0.931  0.931  0.9355]+/-[0.02213594 0.02014944 0.020
 
       <script>
         const buttonEl =
-          document.querySelector('#df-a4e81270-7ac5-40f8-89f2-d1164cc91f78 button.colab-df-convert');
+          document.querySelector('#df-f772cc95-3050-4321-9efa-7a08a1ec2864 button.colab-df-convert');
         buttonEl.style.display =
           google.colab.kernel.accessAllowed ? 'block' : 'none';
 
         async function convertToInteractive(key) {
-          const element = document.querySelector('#df-a4e81270-7ac5-40f8-89f2-d1164cc91f78');
+          const element = document.querySelector('#df-f772cc95-3050-4321-9efa-7a08a1ec2864');
           const dataTable =
             await google.colab.kernel.invokeFunction('convertToInteractive',
                                                      [key], {});
@@ -1712,7 +1637,7 @@ Accuracy promedio = [0.92   0.931  0.931  0.9355]+/-[0.02213594 0.02014944 0.020
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-  <div id="df-f8ada007-f35b-47b5-bf49-b92f4994ebeb">
+  <div id="df-c2a357ba-a606-46f4-b016-f4124d7582c0">
     <div class="colab-df-container">
       <div>
 <style scoped>
@@ -2000,7 +1925,7 @@ Accuracy promedio = [0.92   0.931  0.931  0.9355]+/-[0.02213594 0.02014944 0.020
 </table>
 <p>10 rows × 24 columns</p>
 </div>
-      <button class="colab-df-convert" onclick="convertToInteractive('df-f8ada007-f35b-47b5-bf49-b92f4994ebeb')"
+      <button class="colab-df-convert" onclick="convertToInteractive('df-c2a357ba-a606-46f4-b016-f4124d7582c0')"
               title="Convert this dataframe to an interactive table."
               style="display:none;">
 
@@ -2051,12 +1976,12 @@ Accuracy promedio = [0.92   0.931  0.931  0.9355]+/-[0.02213594 0.02014944 0.020
 
       <script>
         const buttonEl =
-          document.querySelector('#df-f8ada007-f35b-47b5-bf49-b92f4994ebeb button.colab-df-convert');
+          document.querySelector('#df-c2a357ba-a606-46f4-b016-f4124d7582c0 button.colab-df-convert');
         buttonEl.style.display =
           google.colab.kernel.accessAllowed ? 'block' : 'none';
 
         async function convertToInteractive(key) {
-          const element = document.querySelector('#df-f8ada007-f35b-47b5-bf49-b92f4994ebeb');
+          const element = document.querySelector('#df-c2a357ba-a606-46f4-b016-f4124d7582c0');
           const dataTable =
             await google.colab.kernel.invokeFunction('convertToInteractive',
                                                      [key], {});
@@ -2108,8 +2033,7 @@ Accuracy promedio = [0.92   0.931  0.931  0.9355]+/-[0.02213594 0.02014944 0.020
 </div>
 </div>
 </div>
-<section id="probemos-asumiendo-independencia">
-<h3>Probemos asumiendo independencia<a class="headerlink" href="#probemos-asumiendo-independencia" title="Permalink to this headline">#</a></h3>
+<p><strong>Asumiendo independencia</strong></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">StandardScaler</span>
@@ -2172,8 +2096,7 @@ Accuracy validación = 0.9473684210526315
 </div>
 </div>
 <section id="noten-la-gran-diferencia-entre-el-desempeno-en-validacion-y-el-desempeno-en-test">
-<h4>Noten la gran diferencia entre el desempeño en validación y el desempeño en test!<a class="headerlink" href="#noten-la-gran-diferencia-entre-el-desempeno-en-validacion-y-el-desempeno-en-test" title="Permalink to this headline">#</a></h4>
-</section>
+<h3>Noten la gran diferencia entre el desempeño en validación y el desempeño en test!<a class="headerlink" href="#noten-la-gran-diferencia-entre-el-desempeno-en-validacion-y-el-desempeno-en-test" title="Permalink to this headline">#</a></h3>
 </section>
 <section id="ahora-probemos-teniendo-en-cuenta-los-pacientes">
 <h3>Ahora probemos teniendo en cuenta los pacientes<a class="headerlink" href="#ahora-probemos-teniendo-en-cuenta-los-pacientes" title="Permalink to this headline">#</a></h3>
@@ -2186,7 +2109,7 @@ Accuracy validación = 0.9473684210526315
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>GridSearchCV(cv=&lt;generator object BaseShuffleSplit.split at 0x7fba815043d0&gt;,
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>GridSearchCV(cv=&lt;generator object BaseShuffleSplit.split at 0x7f486d8cc5d0&gt;,
              estimator=KNeighborsClassifier(),
              param_grid=[{&#39;metric&#39;: [&#39;minkowski&#39;],
                           &#39;n_neighbors&#39;: [1, 3, 5, 7, 9], &#39;p&#39;: [1, 2]},
@@ -2285,7 +2208,7 @@ Accuracy validación = 0.8695006543843753
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/clase_08_complejidad_modelos_sobreajuste_73_0.png" src="../_images/clase_08_complejidad_modelos_sobreajuste_73_0.png" />
+<img alt="../_images/clase_08_complejidad_modelos_sobreajuste_71_0.png" src="../_images/clase_08_complejidad_modelos_sobreajuste_71_0.png" />
 </div>
 </div>
 <p>Podemos observar que los resultados muestran comportamientos de alta varianza, es decir con cierto nivel de sobre ajuste y una clara necesidad de contar con una base de datos más grande.</p>
@@ -2329,7 +2252,7 @@ Accuracy validación = 0.8695006543843753
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/clase_08_complejidad_modelos_sobreajuste_79_0.png" src="../_images/clase_08_complejidad_modelos_sobreajuste_79_0.png" />
+<img alt="../_images/clase_08_complejidad_modelos_sobreajuste_77_0.png" src="../_images/clase_08_complejidad_modelos_sobreajuste_77_0.png" />
 </div>
 </div>
 <p>En este caso vemos que el modelo SVM alcanza baja varianza y bajo bias, además se requieren más de 1200 muestras para el entrenamiento del modelo.</p>
