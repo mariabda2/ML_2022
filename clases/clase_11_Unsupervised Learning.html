@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Clustering &#8212; Modelos y Simulación de Sistemas II</title>
+    <title>Aprendizaje no supervisado &#8212; Modelos y Simulación de Sistemas II</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -238,7 +238,9 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     Clustering
+     <strong>
+      Aprendizaje no supervisado
+     </strong>
     </a>
    </li>
    <li class="toctree-l2">
@@ -524,49 +526,49 @@ title="Print to PDF"
     </div>
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#clustering">
    Clustering
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#referencias-generales">
    Referencias Generales
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#metodos-jerarquicos-aglomerativos">
    Métodos jerárquicos/aglomerativos
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#ventajas-y-desventajas-de-los-metodos-aglomerativos">
      Ventajas y desventajas de los métodos aglomerativos
     </a>
    </li>
   </ul>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#metodos-de-clustering">
    Métodos de clustering
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#k-means-metodo-duro">
      k-means (método duro)
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#desventajas">
      Desventajas
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#numero-de-clusters">
      Número de clusters
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#coeficiente-silhouette">
      Coeficiente silhouette
     </a>
@@ -582,7 +584,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Clustering</h1>
+                <h1>Aprendizaje no supervisado</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -592,49 +594,49 @@ title="Print to PDF"
                         </div>
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#clustering">
    Clustering
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#referencias-generales">
    Referencias Generales
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#metodos-jerarquicos-aglomerativos">
    Métodos jerárquicos/aglomerativos
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#ventajas-y-desventajas-de-los-metodos-aglomerativos">
      Ventajas y desventajas de los métodos aglomerativos
     </a>
    </li>
   </ul>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#metodos-de-clustering">
    Métodos de clustering
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#k-means-metodo-duro">
      k-means (método duro)
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#desventajas">
      Desventajas
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#numero-de-clusters">
      Número de clusters
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#coeficiente-silhouette">
      Coeficiente silhouette
     </a>
@@ -658,13 +660,15 @@ title="Print to PDF"
 </div>
 </div>
 </div>
+<section class="tex2jax_ignore mathjax_ignore" id="aprendizaje-no-supervisado">
+<h1><strong>Aprendizaje no supervisado</strong><a class="headerlink" href="#aprendizaje-no-supervisado" title="Permalink to this headline">#</a></h1>
 <section id="clustering">
-<h1>Clustering<a class="headerlink" href="#clustering" title="Permalink to this headline">#</a></h1>
+<h2>Clustering<a class="headerlink" href="#clustering" title="Permalink to this headline">#</a></h2>
 <p>Una tarea muy común en el análisis de datos es el agrupamiento (clustering) de conjuntos de objetos, de tal manera que los objetos queden organizados en subgrupos en los que los elementos son más similares entre ellos que en relación con objetos de otros subgrupos. Este tipo de problemas corresponde al <b>aprendizaje no supervisado</b> y son de gran utilidad en diferentes campos. Si queremos establecer el patrón de comportamiento de un usuario de dispositivo móvil, se puede utilizar la información de GPS y los luagres de mayor interés para el usuario, en un cierto radio de cobertura, quedarán agrupados.</p>
 <p>El algoritmo EM puede ser usado como técnica de agrupamiento porque es en realidad una técnica no supervisada, que agrupa los datos en diferentes subconjuntos representando cada uno por una distribución Gaussiana, sin embargo existen otros métodos alternativos al EM, que pueden ser usados en problemas de agrupamiento (No en clasificación).</p>
 </section>
 <section id="referencias-generales">
-<h1>Referencias Generales<a class="headerlink" href="#referencias-generales" title="Permalink to this headline">#</a></h1>
+<h2>Referencias Generales<a class="headerlink" href="#referencias-generales" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Cluster_analysis">Cluster Analysis on Wikipedia</a></p></li>
 <li><p><a class="reference external" href="https://arxiv.org/pdf/1109.2378v1.pdf">Modern hierarchical, agglomerative
@@ -676,7 +680,7 @@ clustering algorithms</a></p></li>
 <p><img alt="alt text" src="clases/local/imgs/Colorful_books.jpg" /></p>
 </section>
 <section id="metodos-jerarquicos-aglomerativos">
-<h1>Métodos jerárquicos/aglomerativos<a class="headerlink" href="#metodos-jerarquicos-aglomerativos" title="Permalink to this headline">#</a></h1>
+<h2>Métodos jerárquicos/aglomerativos<a class="headerlink" href="#metodos-jerarquicos-aglomerativos" title="Permalink to this headline">#</a></h2>
 <p>Son los métodos más comunes para resumir la estructura de un conjunto de muestras. Los esquemas de clustering aglomerativo comienzan con el conjunto de datos divido en nodos que representan cada una de las muestras y paso a paso van uniendo los nodos más cercanos para formar un nuevo nodo, hasta que el final sólo se obtiene un nodo que representa el conjunto de datos completo.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -695,7 +699,7 @@ clustering algorithms</a></p></li>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/clase_11_Unsupervised Learning_6_0.png" src="../_images/clase_11_Unsupervised Learning_6_0.png" />
+<img alt="../_images/clase_11_Unsupervised Learning_7_0.png" src="../_images/clase_11_Unsupervised Learning_7_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -720,7 +724,7 @@ clustering algorithms</a></p></li>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 0, &#39;points&#39;)
 </pre></div>
 </div>
-<img alt="../_images/clase_11_Unsupervised Learning_8_1.png" src="../_images/clase_11_Unsupervised Learning_8_1.png" />
+<img alt="../_images/clase_11_Unsupervised Learning_9_1.png" src="../_images/clase_11_Unsupervised Learning_9_1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -737,7 +741,7 @@ clustering algorithms</a></p></li>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 0, &#39;points&#39;)
 </pre></div>
 </div>
-<img alt="../_images/clase_11_Unsupervised Learning_9_1.png" src="../_images/clase_11_Unsupervised Learning_9_1.png" />
+<img alt="../_images/clase_11_Unsupervised Learning_10_1.png" src="../_images/clase_11_Unsupervised Learning_10_1.png" />
 </div>
 </div>
 <p>Varios esquemas comparten el mismo principio de funcionamiento, pero difieren en la forma en que la medida de similitud entre clusters es actualizada después de cada paso. Algunas de las estrategias más usadas son:</p>
@@ -794,7 +798,7 @@ clustering algorithms</a></p></li>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 0, &#39;points&#39;)
 </pre></div>
 </div>
-<img alt="../_images/clase_11_Unsupervised Learning_12_1.png" src="../_images/clase_11_Unsupervised Learning_12_1.png" />
+<img alt="../_images/clase_11_Unsupervised Learning_13_1.png" src="../_images/clase_11_Unsupervised Learning_13_1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -811,7 +815,7 @@ clustering algorithms</a></p></li>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 0, &#39;points&#39;)
 </pre></div>
 </div>
-<img alt="../_images/clase_11_Unsupervised Learning_13_1.png" src="../_images/clase_11_Unsupervised Learning_13_1.png" />
+<img alt="../_images/clase_11_Unsupervised Learning_14_1.png" src="../_images/clase_11_Unsupervised Learning_14_1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -826,11 +830,11 @@ clustering algorithms</a></p></li>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 0, &#39;points&#39;)
 </pre></div>
 </div>
-<img alt="../_images/clase_11_Unsupervised Learning_14_1.png" src="../_images/clase_11_Unsupervised Learning_14_1.png" />
+<img alt="../_images/clase_11_Unsupervised Learning_15_1.png" src="../_images/clase_11_Unsupervised Learning_15_1.png" />
 </div>
 </div>
 <section id="ventajas-y-desventajas-de-los-metodos-aglomerativos">
-<h2>Ventajas y desventajas de los métodos aglomerativos<a class="headerlink" href="#ventajas-y-desventajas-de-los-metodos-aglomerativos" title="Permalink to this headline">#</a></h2>
+<h3>Ventajas y desventajas de los métodos aglomerativos<a class="headerlink" href="#ventajas-y-desventajas-de-los-metodos-aglomerativos" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>No es necesario definir previamente el número de clusters, pueden definirse a partir del dendograma o definiendo el umbral a partir de la distancia entre grupos.</p></li>
 <li><p>Son fáciles de implementar y los dendogramas son un herramienta últi para interpretar el resultado.</p></li>
@@ -842,13 +846,13 @@ clustering algorithms</a></p></li>
 </section>
 </section>
 <section id="metodos-de-clustering">
-<h1>Métodos de clustering<a class="headerlink" href="#metodos-de-clustering" title="Permalink to this headline">#</a></h1>
+<h2>Métodos de clustering<a class="headerlink" href="#metodos-de-clustering" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p><strong>Métodos duros</strong>: En este caso se asigna cada muestra a exactamente un sólo cluster</p></li>
 <li><p><strong>Métodos suaves</strong>: Métodos que asignan cada muestra a diferentes clusters o conglomerados con diferentes grados de pertenencia.</p></li>
 </ul>
 <section id="k-means-metodo-duro">
-<h2>k-means (método duro)<a class="headerlink" href="#k-means-metodo-duro" title="Permalink to this headline">#</a></h2>
+<h3>k-means (método duro)<a class="headerlink" href="#k-means-metodo-duro" title="Permalink to this headline">#</a></h3>
 <p>El algoritmo K-means es tal vez el más popular algoritmo de clustering, éste agrupa los datos intentando separar las muestras en <span class="math notranslate nohighlight">\(K\)</span> grupos de igual varianza, minimizando un criterio conocido como la <em>inercia</em> o la dispersión intra-cluster:</p>
 <p>Minimizar $<span class="math notranslate nohighlight">\(\sum_{k=1}^K \sum_{{\bf{x}}_k \in C_k} \| {\bf{x}}_k - \mu_k\|^2\)</span><span class="math notranslate nohighlight">\( Con respecto a \)</span>\mu_k$.</p>
 <p><span class="math notranslate nohighlight">\(\mu_k\)</span> corresponde al centroide del cluster <span class="math notranslate nohighlight">\(k\)</span>-ésimo y <span class="math notranslate nohighlight">\(C_k\)</span> representa todo el conjunto de muestras pertenecientes al cluster <span class="math notranslate nohighlight">\(k\)</span>.</p>
@@ -931,7 +935,7 @@ if (outputEl) {{
 </div>
 </section>
 <section id="desventajas">
-<h2>Desventajas<a class="headerlink" href="#desventajas" title="Permalink to this headline">#</a></h2>
+<h3>Desventajas<a class="headerlink" href="#desventajas" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>Es muy dependiente de la inicialización, se recomienda usar no una inicialización aleatoria, sino el parámetro <strong>init=’k-means++’</strong>, que inicializa los centroides en puntos distantes  y produce mejores resultados.</p></li>
 <li><p>En sklearn también se puede hacer uso del parámetro <strong>n_init=10</strong>, para que el algoritmo se inicialice varias veces y nos devuelva la solución de menor inercia.</p></li>
@@ -952,7 +956,7 @@ if (outputEl) {{
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/clase_11_Unsupervised Learning_24_0.png" src="../_images/clase_11_Unsupervised Learning_24_0.png" />
+<img alt="../_images/clase_11_Unsupervised Learning_25_0.png" src="../_images/clase_11_Unsupervised Learning_25_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -972,13 +976,13 @@ if (outputEl) {{
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/clase_11_Unsupervised Learning_25_0.png" src="../_images/clase_11_Unsupervised Learning_25_0.png" />
-<img alt="../_images/clase_11_Unsupervised Learning_25_1.png" src="../_images/clase_11_Unsupervised Learning_25_1.png" />
+<img alt="../_images/clase_11_Unsupervised Learning_26_0.png" src="../_images/clase_11_Unsupervised Learning_26_0.png" />
+<img alt="../_images/clase_11_Unsupervised Learning_26_1.png" src="../_images/clase_11_Unsupervised Learning_26_1.png" />
 </div>
 </div>
 </section>
 <section id="numero-de-clusters">
-<h2>Número de clusters<a class="headerlink" href="#numero-de-clusters" title="Permalink to this headline">#</a></h2>
+<h3>Número de clusters<a class="headerlink" href="#numero-de-clusters" title="Permalink to this headline">#</a></h3>
 <p>Escoger el número de clusters puede ser una tarea complicada cuando no se tiene información a priori sobre el número de grupos existente en los datos. Existen diferentes criterios para seleccionar el número de clusters, pero ninguno de ellos es completamente acertado. Una forma habitual es utilizar una medida conocida como el porcentaje de varianza explicada, el cual se define como el cociente entre la varianza entre grupos sobre total de varianza.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1027,12 +1031,12 @@ if (outputEl) {{
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;Elbow for KMeans clustering&#39;)
 </pre></div>
 </div>
-<img alt="../_images/clase_11_Unsupervised Learning_27_1.png" src="../_images/clase_11_Unsupervised Learning_27_1.png" />
+<img alt="../_images/clase_11_Unsupervised Learning_28_1.png" src="../_images/clase_11_Unsupervised Learning_28_1.png" />
 </div>
 </div>
 </section>
 <section id="coeficiente-silhouette">
-<h2>Coeficiente silhouette<a class="headerlink" href="#coeficiente-silhouette" title="Permalink to this headline">#</a></h2>
+<h3>Coeficiente silhouette<a class="headerlink" href="#coeficiente-silhouette" title="Permalink to this headline">#</a></h3>
 <p>Es una de las medidas más usadas para escoger el número de clusters. Asuma que las muestras han sido agrupadas en <span class="math notranslate nohighlight">\(k\)</span> clusers, el coeficiente silhouette para una muestra está dado por:</p>
 <p>$<span class="math notranslate nohighlight">\( S(i) = \frac{b(i) - a(i)}{\max(a(i),b(i))}\)</span><span class="math notranslate nohighlight">\(, si \)</span>|C_i| &gt; 1$</p>
 <p><span class="math notranslate nohighlight">\(a(i) = \frac{1}{|C_i|-1}\sum_{j\in C_i, i \neq j} d(i,j)\)</span> es la distancia media entre la muestra <span class="math notranslate nohighlight">\(i\)</span>, y todas las otras muestras en el mismo cluster.</p>
@@ -1069,9 +1073,10 @@ if (outputEl) {{
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/clase_11_Unsupervised Learning_30_0.png" src="../_images/clase_11_Unsupervised Learning_30_0.png" />
+<img alt="../_images/clase_11_Unsupervised Learning_31_0.png" src="../_images/clase_11_Unsupervised Learning_31_0.png" />
 </div>
 </div>
+</section>
 </section>
 </section>
 
