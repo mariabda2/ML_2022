@@ -589,13 +589,6 @@ title="Print to PDF"
     <a class="reference internal nav-link" href="#multiples-salidas">
      Múltiples salidas
     </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#bibliografia">
-       Bibliografía
-      </a>
-     </li>
-    </ul>
    </li>
   </ul>
  </li>
@@ -676,13 +669,6 @@ title="Print to PDF"
     <a class="reference internal nav-link" href="#multiples-salidas">
      Múltiples salidas
     </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#bibliografia">
-       Bibliografía
-      </a>
-     </li>
-    </ul>
    </li>
   </ul>
  </li>
@@ -706,17 +692,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&quot;wget&quot; no se reconoce como un comando interno o externo,
-programa o archivo por lotes ejecutable.
-</pre></div>
-</div>
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="nn">Input In [1],</span> in <span class="ni">&lt;cell line: 2&gt;</span><span class="nt">()</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">get_ipython</span><span class="p">()</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s1">&#39;wget --no-cache -O init.py -q https://raw.githubusercontent.com/mariabda2/ML_2022/main/init.py&#39;</span><span class="p">)</span>
-<span class="ne">----&gt; </span><span class="mi">2</span> <span class="kn">import</span> <span class="nn">init</span><span class="p">;</span> <span class="n">init</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="n">force_download</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-
-<span class="ne">ModuleNotFoundError</span>: No module named &#39;init&#39;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>replicating local resources
 </pre></div>
 </div>
 </div>
@@ -791,6 +767,9 @@ programa o archivo por lotes ejecutable.
 <span class="n">Image</span><span class="p">(</span><span class="s2">&quot;local/imgs/Arbol.png&quot;</span><span class="p">,</span> <span class="n">width</span> <span class="o">=</span> <span class="mi">600</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/clase_12_arboles de Decision_Voting_Bagging_Random_Forest_14_0.png" src="../_images/clase_12_arboles de Decision_Voting_Bagging_Random_Forest_14_0.png" />
 </div>
 </div>
 <li>Los círculos representan los nodos internos, que son variables y umbrales.</li>
@@ -969,15 +948,15 @@ programa o archivo por lotes ejecutable.
 <section id="comite-de-maquinas-metodos-de-ensamble">
 <h2>Comité de Máquinas (Métodos de ensamble)<a class="headerlink" href="#comite-de-maquinas-metodos-de-ensamble" title="Permalink to this headline">#</a></h2>
 <p>Es usual en el aprendizaje de máquina no dejar la responsabilidad de la decisión a un solo modelo, sino por el contrario combinar la decisión de varios modelos para tomar una decisión final. Existen muchas maneras de combinar modelos de ML, lo que se conoce como métodos de ensamble. La más sencilla es entrenar modelos diferentes diferentes (<strong>ensamble de modelos</strong>) con el objetivo de combinar las fortalezas de cada uno y tomar la decisión basada en concenso. A este método se le conoce como <strong>voting</strong>.</p>
-<p><img src="./Images/Voting.jpg"
-     alt="Árbol de decisión"
-     width="600px" /></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">Image</span>
-<span class="n">Image</span><span class="p">(</span><span class="s2">&quot;local/imgs/Voting.png&quot;</span><span class="p">,</span> <span class="n">width</span> <span class="o">=</span> <span class="mi">600</span><span class="p">)</span>
+<span class="n">Image</span><span class="p">(</span><span class="s2">&quot;local/imgs/Voting.jpg&quot;</span><span class="p">,</span> <span class="n">width</span> <span class="o">=</span> <span class="mi">600</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/clase_12_arboles de Decision_Voting_Bagging_Random_Forest_56_0.jpg" src="../_images/clase_12_arboles de Decision_Voting_Bagging_Random_Forest_56_0.jpg" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1028,19 +1007,7 @@ programa o archivo por lotes ejecutable.
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[DecisionTreeRegressor(ccp_alpha=0.0, criterion=&#39;mse&#39;, max_depth=3,
-                       max_features=None, max_leaf_nodes=None,
-                       min_impurity_decrease=0.0, min_impurity_split=None,
-                       min_samples_leaf=1, min_samples_split=2,
-                       min_weight_fraction_leaf=0.0, presort=&#39;deprecated&#39;,
-                       random_state=None, splitter=&#39;best&#39;),
- DecisionTreeRegressor(ccp_alpha=0.0, criterion=&#39;mse&#39;, max_depth=5,
-                       max_features=None, max_leaf_nodes=None,
-                       min_impurity_decrease=0.0, min_impurity_split=None,
-                       min_samples_leaf=1, min_samples_split=2,
-                       min_weight_fraction_leaf=0.0, presort=&#39;deprecated&#39;,
-                       random_state=None, splitter=&#39;best&#39;),
- LinearRegression(copy_X=True, fit_intercept=True, n_jobs=None, normalize=False)]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DecisionTreeRegressor(max_depth=3)
 </pre></div>
 </div>
 </div>
@@ -1050,13 +1017,15 @@ programa o archivo por lotes ejecutable.
 <h2>Bagging<a class="headerlink" href="#bagging" title="Permalink to this headline">#</a></h2>
 <p>Sin embargo existen otras alternativas que usan como modelos bases un mismo modelo de ML, pero modifican las estrategias de combinación. Una de esas estrategias es conocida como <b>Bagging</b> “Bootstrap Agreggating”, la cual consiste en realizar <span class="math notranslate nohighlight">\(B\)</span> muestreos (con substitución) a partir del conjunto de entrenamiento y entrenar un modelos a partir de cada uno de los conjuntos de muestras.</p>
 <p>La decisión final se toma dependiendo de si el problema es de clasificación o de regresión, si el problema es de clasificación se utiliza la regla del mayor voto (moda) y si por el contrario el problema es de regresión se usa el promedio de las predicción de cada clasificador. Este tipo de aproximaciones permiten reducir la varianza en el error obtenido por el modelo predictivo.</p>
-<p><img alt="alt text" src="clases/Images/Bagging.jpeg" /></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">Image</span>
-<span class="n">Image</span><span class="p">(</span><span class="s2">&quot;local/imgs/Bagging.png&quot;</span><span class="p">,</span> <span class="n">width</span> <span class="o">=</span> <span class="mi">600</span><span class="p">)</span>
+<span class="n">Image</span><span class="p">(</span><span class="s2">&quot;local/imgs/Bagging.jpeg&quot;</span><span class="p">,</span> <span class="n">width</span> <span class="o">=</span> <span class="mi">600</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/clase_12_arboles de Decision_Voting_Bagging_Random_Forest_61_0.jpg" src="../_images/clase_12_arboles de Decision_Voting_Bagging_Random_Forest_61_0.jpg" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1098,7 +1067,7 @@ programa o archivo por lotes ejecutable.
 <h3>Veamos el efecto de las fronteras en clasificación<a class="headerlink" href="#veamos-el-efecto-de-las-fronteras-en-clasificacion" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">library.regularization</span> <span class="kn">import</span> <span class="n">Fronteras</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">local.lib.regularization</span> <span class="kn">import</span> <span class="n">Fronteras</span>
 <span class="n">clf</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">DecisionTreeClassifier</span><span class="p">(</span><span class="n">max_depth</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
 <span class="n">Fronteras</span><span class="p">(</span><span class="n">clf</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span>
 </pre></div>
@@ -1352,12 +1321,12 @@ programa o archivo por lotes ejecutable.
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/clase_12_arboles de Decision_Voting_Bagging_Random_Forest_86_0.png" src="../_images/clase_12_arboles de Decision_Voting_Bagging_Random_Forest_86_0.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>downloading Olivetti faces from https://ndownloader.figshare.com/files/5976027 to /root/scikit_learn_data
+</pre></div>
+</div>
+<img alt="../_images/clase_12_arboles de Decision_Voting_Bagging_Random_Forest_86_1.png" src="../_images/clase_12_arboles de Decision_Voting_Bagging_Random_Forest_86_1.png" />
 </div>
 </div>
-<section id="bibliografia">
-<h4>Bibliografía<a class="headerlink" href="#bibliografia" title="Permalink to this headline">#</a></h4>
-</section>
 </section>
 </section>
 </section>
